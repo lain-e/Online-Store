@@ -43,6 +43,7 @@
             display: none; /* Initially hidden */
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Center content vertically */
             z-index: 1000;
         }
 
@@ -61,6 +62,14 @@
             transform: scale(2); /* Zoom level */
         }
 
+        .caption {
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            text-align: center;
+            max-width: 90%;
+        }
+
         .close-btn {
             position: absolute;
             top: 20px;
@@ -76,30 +85,32 @@
 <body>
 
     <div class="gallery">
-        <img src="andy.jpg" alt="Description for andy">
-        <img src="apple.jpg" alt="Description for apple">
-        <img src="beaux.jpg" alt="Description for beaux">
-        <img src="boug.jpg" alt="Description for boug">
-        <img src="busts.png" alt="Description for busts">
-        <img src="charlie.jpg" alt="Description for charlie">
-        <img src="comp.jpg" alt="Description for comp">
-        <img src="cup.jpg" alt="Description for cup">
-        <img src="doll.jpg" alt="Description for doll">
-        <img src="floral.jpg" alt="Description for floral">
-        <img src="kasaj.jpg" alt="Description for kasaj">
-        <img src="lamp.jpg" alt="Description for lamp">
-        <img src="mermaid.jpg" alt="Description for mermaid">
-        <img src="mucha.jpg" alt="Description for mucha">
-        <img src="peggy.jpg" alt="Description for peggy">
-        <img src="picasso.png" alt="Description for picasso">
-        <img src="sargent.jpg" alt="Description for sargent">
-        <img src="sasha.jpg" alt="Description for sasha">
-        <img src="tea.jpg" alt="Description for tea">
+        <img src="andy.jpg" alt="A cropped section of a person's torso">
+        <img src="apple.jpg" alt="A painting of a green apple">
+        <img src="beaux.jpg" alt="A painting of a red building and a person walking down the street">
+        <img src="boug.jpg" alt="A painting of an ornate bottle and a lamp shade">
+        <img src="busts.jpg" alt="A painting of two classical busts on a red background">
+        <img src="charlie.jpg" alt="A painting of a flying poodle with wings on a person's lap">
+        <img src="comp.jpg" alt="A painting of an ornate red bottle with green details">
+        <img src="concept.jpg" alt="A painting of a person's arms draped in white fabric">
+        <img src="cup.jpg" alt="A painting of a person in a purple dress standing outside with some trees in the background">
+        <img src="doll.jpg" alt="A painting of a person's arms">
+        <img src="floral.jpg" alt="A painting of a person lighting a cigarette">
+        <img src="kasaj.jpg" alt="A painting of a bald man and a dog">
+        <img src="lamp.jpg" alt="A painting of a person's arms">
+        <img src="mermaid.jpg" alt="A sketch of a winged figure">
+        <img src="mucha.jpg" alt="A sketch of a dog and a person sitting on a chair">
+        <img src="peggy.jpg" alt="A painting of a flying poodle">
+        <img src="picasso.png" alt="A screenshot of the Online-Store GitHub repository">
+        <img src="sargent.jpg" alt="A sketch of a figure with raised arms">
+        <img src="sasha.jpg" alt="A painting of a person in colorful robes">
+        <img src="tea.jpg" alt="A painting of two classical busts on a red background">
     </div>
 
     <div class="popup">
         <span class="close-btn">&times;</span>
         <img src="" alt="" class="popup-img">
+        <div class="caption"></div>
     </div>
 
     <script>
@@ -108,11 +119,14 @@
             const popup = document.querySelector('.popup');
             const popupImg = document.querySelector('.popup-img');
             const closeBtn = document.querySelector('.close-btn');
+            const caption = document.querySelector('.caption'); // New caption element
 
             gallery.addEventListener('click', (e) => {
                 if (e.target.tagName === 'IMG') {
                     const imageUrl = e.target.getAttribute('src');
+                    const imageAlt = e.target.getAttribute('alt'); // Get alt text
                     popupImg.setAttribute('src', imageUrl);
+                    caption.textContent = imageAlt; // Set caption text
                     popup.style.display = 'flex';
                 }
             });
