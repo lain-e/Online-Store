@@ -3,151 +3,1001 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
+    <title>Lulu Roze Art</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Bodoni Moda for H1, Playfair Display for H2/H3, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Bodoni+Moda:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: sans-serif;
-            margin: 0;
-            background-color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfc; /* Softer, warmer off-white background */
+            color: #334155; /* Darker text */
+            opacity: 0; /* Initial state for fade-in */
+            transition: opacity 1s ease-in; /* Smooth fade-in transition */
+        }
+        body.fade-in-active {
+            opacity: 1; /* Target state for fade-in */
         }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            padding: 20px;
+        /* Specific font for H1 for a striking, elegant look */
+        h1 {
+            font-family: 'Bodoni Moda', serif;
+            letter-spacing: 0.05em; /* Slightly increased letter spacing for elegance */
+            font-weight: 700; /* Bold for impact */
+        }
+        h2 {
+            font-family: 'Bodoni Moda', serif;
+            letter-spacing: 0.001em; /* Slightly increased letter spacing for elegance */
+            font-weight: 200; /* Bold for impact */
+            font-style: italic;
+        }
+        h3 {
+            font-family: 'Playfair Display', serif; /* Elegant font for headings */
+        }
+        .container {
             max-width: 1200px;
-            margin: auto;
         }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        /* Custom modal styles for fade transition */
+        .modal {
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
+            /* Initial state for fade-in/out */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 0.75rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: translateY(20px); /* Slight slide effect */
             transition: transform 0.3s ease-in-out;
         }
-
-        .gallery img:hover {
-            transform: scale(1.05);
+        .modal.show .modal-content {
+            transform: translateY(0);
         }
 
-        .popup {
-            position: fixed;
+        /* Specific styles for the painting detail modal */
+        #painting-detail-modal .modal-content {
+            max-width: 700px; /* Larger for image */
+            padding: 0; /* Remove padding for full-width image */
+            overflow: hidden; /* Ensure rounded corners on image */
+        }
+        #painting-detail-modal .modal-body {
+            padding: 20px; /* Add padding back to content */
+        }
+
+        /* Specific styles for the request painting modal */
+        #request-painting-modal .modal-content {
+            max-width: 600px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Styles for the SOLD banner */
+        .painting-card {
+            position: relative; /* Needed for absolute positioning of the banner */
+            overflow: hidden; /* Ensure banner stays within card bounds */
+        }
+        .sold-banner {
+            position: absolute;
+            top: 15px; /* Adjusted to bring it more into view */
+            right: -30px; /* Adjusted to ensure full word visibility when rotated */
+            background-color: rgba(220, 38, 38, 0.8); /* Red with transparency */
+            color: white;
+            padding: 8px 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transform: rotate(45deg);
+            transform-origin: 100% 0%; /* Rotate from top-right corner */
+            z-index: 10; /* Ensure it's above the image */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            white-space: nowrap; /* Ensure text doesn't wrap */
+        }
+        .painting-card.sold-overlay img {
+            filter: grayscale(50%) brightness(80%); /* Slightly dim and desaturate sold images */
+            transition: filter 0.3s ease;
+        }
+
+        /* Full viewport height for the home section */
+        #home {
+            min-height: calc(100vh - 80px); /* Full viewport height minus header height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* For positioning slideshow elements */
+            overflow: hidden; /* Hide overflowing slides */
+            background-color: #fcfcfc; /* Ensure background matches body */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-md */
+        }
+
+        /* Slideshow specific styles */
+        .slide {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none; /* Initially hidden */
+            opacity: 0;
+            transition: opacity 1s ease-in-out; /* Smooth transition between slides */
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column; /* Center content vertically */
-            z-index: 1000;
-        }
-
-        .popup-img {
-            max-width: 90%;
-            max-height: 90%;
-            transform-origin: center center;
-            transition: transform 0.3s ease-out;
-        }
-
-        .popup.zoomed {
-            cursor: zoom-out;
-        }
-
-        .popup.zoomed .popup-img {
-            transform: scale(2); /* Zoom level */
-        }
-
-        .caption {
-            color: white;
-            font-size: 1.2rem;
-            margin-top: 10px;
             text-align: center;
-            max-width: 90%;
+            background-size: cover;
+            background-position: center;
+            color: white; /* Text color for overlay */
+            padding: 20px;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .slide h2, .slide p {
+            z-index: 1; /* Ensure text is above overlay */
+            color: white; /* Force white text over dark overlay */
+            font-family: 'Bodoni Moda', serif; /* Consistent font for titles */
+        }
+        .slide h2 {
+            font-size: 3.5rem; /* Larger for impact */
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .slide p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        .close-btn {
+        /* Slideshow navigation */
+        .slideshow-nav {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 20; /* Above slides and overlay */
+            padding: 0 20px;
+        }
+        .nav-button {
+            background-color: rgba(0, 0, 0, 0.5);
             color: white;
-            font-size: 40px;
-            font-weight: bold;
+            border: none;
+            padding: 10px 15px;
             cursor: pointer;
-            z-index: 1001;
+            font-size: 2rem;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        .nav-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            gap: 10px;
+        }
+        .dot {
+            height: 12px;
+            width: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .dot.active {
+            background-color: white;
+            transform: scale(1.2);
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg py-4">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+            <h1 class="text-4xl font-extrabold tracking-tight mb-4 md:mb-0">Lulu Roze Art</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="text-white hover:text-blue-200 transition duration-300 ease-in-out text-lg font-medium">Home</a></li>
+                    <li><a href="#paintings" class="text-white hover:text-blue-200 transition duration-300 ease-in-out text-lg font-medium">Paintings</a></li>
+                    <li><a href="#cart" class="text-white hover:text-blue-200 transition duration-300 ease-in-out text-lg font-medium relative">
+                        Cart (<span id="cart-count" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-1">0</span>)
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="gallery">
-        <img src="busts.png" alt="Oil painting of bust from life, original">
-         <img src="tea.jpg" alt="My favorite tea set from life, oil, original">
-        <img src="doll.jpg" alt="Doll painted from life, original">
-        <img src="apple.jpg" alt="Obligatory apple from life, in oil, original">
-         <img src="floral.jpg" alt="Flowers painted from life, original">
-        <img src="boug.jpg" alt="Study of Biblis by Bouguereau, oil">
-         <img src="sasha.jpg" alt="My mom's dog, Sasha, painted from photograph, oil, original">
-         <img src="peggy.jpg" alt="Painting of jpegmafia's album cover 'All My Heroes Are Cornballs', oil">
-        <img src="charlie.jpg" alt="Dog painted from photo, original">
-        <img src="andy.jpg" alt="Model painted from photo, oil, original">
-        <img src="lamp.jpg" alt="My lamp painted from life, original">
-        <img src="mucha.jpg" alt="Study of a Mucha, gouache">
-        <img src="beaux.jpg" alt="Study of Henry Drinker's portrait by Beaux, oil">
-        <img src="kasaj.jpg" alt="My friend painted from a photo, original">
-       
-        <img src="mermaid.jpg" alt="a SUPER messy draft of a sketch, original">
-        
-       <img src="comp.jpg" alt="Typical Comp sketch from my notebook, original">
-        <img src="cup.jpg" alt="Still life study of a cup, oil, original">
-        <img src="picasso.png" alt="Painting of a photo of Pablo Picasso and his friend, oil">
-        <img src="sargent.jpg" alt="Life size study of my FAVORITE painting, Carnation Lily Lily Rose, by Sargent">
-       
-       
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto p-6">
+        <!-- Home Section - Now with initial welcome message then slideshow -->
+        <section id="home" class="py-12 text-center bg-white rounded-xl shadow-md mb-8">
+            <div id="welcome-message-content" class="absolute inset-0 flex flex-col justify-center items-center p-6">
+                <h2 class="text-5xl font-bold text-gray-800 mb-6">Welcome to My Online Gallery!</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Explore a unique collection of original paintings, crafted with passion and creativity. Find the perfect piece to adorn your space or gift to a loved one.
+                </p>
+            </div>
+
+            <div id="slideshow-content" class="absolute inset-0 w-full h-full relative" style="display: none;">
+                <div id="slideshow-container" class="w-full h-full relative">
+                    <!-- Slides will be dynamically loaded here by JavaScript -->
+                </div>
+
+                <div class="slideshow-nav">
+                    <button class="nav-button" onclick="plusSlides(-1)">&#10094;</button>
+                    <button class="nav-button" onclick="plusSlides(1)">&#10095;</button>
+                </div>
+
+                <div id="dots-container" class="dots-container">
+                    <!-- Dots will be dynamically loaded here by JavaScript -->
+                </div>
+            </div>
+
+            <button id="view-paintings-button-persistent" onclick="document.getElementById('paintings').scrollIntoView({ behavior: 'smooth' });"
+                    class="absolute bottom-10 left-1/2 transform -translate-x-1/2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out z-30">
+                View Paintings
+            </button>
+        </section>
+
+        <!-- Paintings Section -->
+        <section id="paintings" class="py-12">
+            <h2 class="text-4xl font-bold text-gray-800 text-center mb-10">Our Collection</h2>
+            <div id="paintings-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Paintings will be dynamically loaded here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart" class="py-12">
+            <h2 class="text-4xl font-bold text-gray-800 text-center mb-10">Your Shopping Cart</h2>
+            <div id="cart-items" class="bg-white rounded-xl shadow-md p-6 mb-6">
+                <!-- Cart items will be dynamically loaded here by JavaScript -->
+                <p id="empty-cart-message" class="text-center text-gray-500 text-lg">Your cart is empty.</p>
+            </div>
+            <div class="flex justify-end items-center bg-white rounded-xl shadow-md p-6">
+                <p class="text-2xl font-bold text-gray-800 mr-4">Total: $<span id="cart-total">0.00</span></p>
+                <button id="request-painting-button"
+                        class="px-8 py-4 bg-green-600 text-white text-xl font-semibold rounded-full shadow-lg hover:bg-green-700 transform hover:scale-105 transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled>
+                    Request Painting
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-8">
+        <div class="container mx-auto text-center px-4">
+            <p>&copy; 2025 Lulu Roze Art. All rights reserved.</p>
+            <p class="text-sm mt-2">Designed with passion by an artist, for art lovers.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Modal for General Messages -->
+    <div id="custom-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title" class="text-2xl font-bold mb-4 text-gray-800"></h3>
+            <p id="modal-message" class="text-lg text-gray-700"></p>
+            <div class="mt-6 flex justify-end space-x-4" id="modal-actions">
+                <!-- Buttons will be dynamically added here -->
+            </div>
+        </div>
     </div>
 
-    <div class="popup">
-        <span class="close-btn">&times;</span>
-        <img src="" alt="" class="popup-img">
-        <div class="caption"></div>
+    <!-- Painting Detail Modal -->
+    <div id="painting-detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closePaintingDetailModal()">&times;</span>
+            <img id="detail-painting-image" src="" alt="" class="w-full h-80 object-cover rounded-t-lg">
+            <div class="modal-body p-6">
+                <h3 id="detail-painting-name" class="text-3xl font-bold text-gray-900 mb-2"></h3>
+                <p id="detail-painting-description" class="text-gray-700 text-base mb-4"></p>
+                <div class="flex justify-between items-center mt-4">
+                    <span id="detail-painting-price" class="text-2xl font-bold text-blue-600"></span>
+                    <button id="detail-add-to-cart-button"
+                            class="px-6 py-3 bg-purple-600 text-white text-lg font-semibold rounded-full hover:bg-purple-700 transition duration-300 ease-in-out shadow-md">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Painting Modal -->
+    <div id="request-painting-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeRequestPaintingModal()">&times;</span>
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">Request Your Painting(s)</h3>
+            <p class="text-gray-700 mb-6">Please fill out your details so we can contact you regarding your request.</p>
+
+            <form id="request-form" class="space-y-4">
+                <input type="hidden" name="_subject" value="Painting Request from My Art Gallery">
+                <input type="hidden" name="_replyto" id="form-reply-to-email">
+                <input type="hidden" name="Cart Details" id="cart-details-input">
+
+                <div>
+                    <label for="requester-name" class="block text-gray-700 text-sm font-bold mb-2">Your Name:</label>
+                    <input type="text" id="requester-name" name="Name" required
+                           class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="requester-contact" class="block text-gray-700 text-sm font-bold mb-2">Email or Phone Number:</label>
+                    <input type="text" id="requester-contact" name="Contact" required
+                           class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="requester-address" class="block text-gray-700 text-sm font-bold mb-2">Your Address:</label>
+                    <textarea id="requester-address" name="Address" rows="3" required
+                              class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"></textarea>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button type="submit"
+                            class="px-6 py-3 bg-green-600 text-white text-lg font-semibold rounded-full hover:bg-green-700 transition duration-300 ease-in-out shadow-md">
+                        Send Request
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script>
+        // PAINTINGS FOR SALE GO HERE
+        // Added 'isSold' boolean property to each painting
+        const paintings = [
+            {
+                id: 'p1',
+                name: 'Sunset Over the Lake',
+                price: 150.00,
+                imageUrl: 'https://placehold.co/1200x800/A78BFA/ffffff?text=Sunset+Lake', // Larger image for slideshow
+                description: 'A vibrant oil painting capturing the serene beauty of a sunset over a calm lake. This piece uses warm tones to evoke a sense of peace and tranquility, perfect for any living space.',
+                isSold: false // Added isSold property
+            },
+            {
+                id: 'p2',
+                name: 'Abstract Cityscape',
+                price: 220.00,
+                imageUrl: 'https://placehold.co/1200x800/60A5FA/ffffff?text=Abstract+City', // Larger image for slideshow
+                description: 'Bold strokes and dynamic colors depict a modern cityscape at dusk. This painting explores the energy and movement of urban life through abstract forms and striking contrasts.',
+                isSold: true // Example: This painting is now marked as SOLD
+            },
+            {
+                id: 'p3',
+                name: 'Forest Whispers',
+                price: 180.00,
+                imageUrl: 'https://placehold.co/1200x800/34D399/ffffff?text=Forest+Whispers', // Larger image for slideshow
+                description: 'An ethereal acrylic painting of a mystical forest, full of hidden light. The interplay of light and shadow creates a magical atmosphere, inviting viewers to step into a serene natural world.',
+                isSold: false
+            },
+            {
+                id: 'p4',
+                name: 'Ocean Breeze',
+                price: 195.00,
+                imageUrl: 'https://placehold.co/1200x800/FBBF24/ffffff?text=Ocean+Breeze', // Larger image for slideshow
+                description: 'Feel the cool breeze and hear the waves with this calming ocean scene. This piece captures the vastness and power of the sea, with gentle blues and whites creating a soothing effect.',
+                isSold: false
+            },
+            {
+                id: 'p5',
+                name: 'Portrait of Serenity',
+                price: 280.00,
+                imageUrl: 'https://placehold.co/1200x800/EF4444/ffffff?text=Serenity+Portrait', // Larger image for slideshow
+                description: 'A captivating portrait focusing on peace and introspection. The subtle expressions and soft lighting draw the viewer in, conveying a deep sense of calm and reflection.',
+                isSold: false
+            },
+            {
+                id: 'p6',
+                name: 'Mountain Majesty',
+                price: 250.00,
+                imageUrl: 'https://placehold.co/1200x800/8B5CF6/ffffff?text=Mountain+Majesty', // Larger image for slideshow
+                description: 'The grandeur of snow-capped mountains under a vast sky. This landscape painting emphasizes the scale and timeless beauty of nature, with dramatic peaks and expansive skies.',
+                isSold: false
+            }
+        ];
+
+        let cart = []; // Initialize cart array
+
+        // DOM elements for general store functionality
+        const paintingsGrid = document.getElementById('paintings-grid');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalSpan = document.getElementById('cart-total');
+        const cartCountSpan = document.getElementById('cart-count');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const requestPaintingButton = document.getElementById('request-painting-button');
+
+        // DOM elements for the general custom modal
+        const customModal = document.getElementById('custom-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalMessage = document.getElementById('modal-message');
+        const modalActions = document.getElementById('modal-actions');
+
+        // DOM elements for the painting detail modal
+        const paintingDetailModal = document.getElementById('painting-detail-modal');
+        const detailPaintingImage = document.getElementById('detail-painting-image');
+        const detailPaintingName = document.getElementById('detail-painting-name');
+        const detailPaintingDescription = document.getElementById('detail-painting-description');
+        const detailPaintingPrice = document.getElementById('detail-painting-price');
+        const detailAddToCartButton = document.getElementById('detail-add-to-cart-button');
+
+        // DOM elements for the request painting modal
+        const requestPaintingModal = document.getElementById('request-painting-modal');
+        const requestForm = document.getElementById('request-form');
+        const requesterNameInput = document.getElementById('requester-name');
+        const requesterContactInput = document.getElementById('requester-contact');
+        const requesterAddressInput = document.getElementById('requester-address');
+        const cartDetailsInput = document.getElementById('cart-details-input'); // Hidden input for cart details
+        const formReplyToEmail = document.getElementById('form-reply-to-email'); // Hidden input for reply-to email
+
+        // Formspree endpoint updated with the provided ID
+        // IMPORTANT: If you encounter "In order to submit via AJAX, you need to set a custom key or reCAPTCHA must be disabled in this form's settings page."
+        // error, go to your Formspree form settings (https://formspree.io/f/xblyewaq/settings) and disable reCAPTCHA for AJAX submissions.
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xblyewaq';
+
+        /**
+         * Opens a custom modal with a title, message, and optional buttons.
+         * This modal is for general messages (e.g., item added, error).
+         * @param {string} title - The title of the modal.
+         * @param {string} message - The message content of the modal.
+         * @param {Array<Object>} buttons - An array of button objects { text: string, className: string, onClick: function }.
+         */
+        function openModal(title, message, buttons = []) {
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            modalActions.innerHTML = ''; // Clear previous buttons
+
+            if (buttons.length === 0) {
+                // Default "OK" button if no buttons are provided
+                const okButton = document.createElement('button');
+                okButton.textContent = 'OK';
+                okButton.className = 'px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200';
+                okButton.onclick = closeModal;
+                modalActions.appendChild(okButton);
+            } else {
+                buttons.forEach(btn => {
+                    const button = document.createElement('button');
+                    button.textContent = btn.text;
+                    button.className = btn.className;
+                    button.onclick = btn.onClick;
+                    modalActions.appendChild(button);
+                });
+            }
+            customModal.classList.add('show'); // Add 'show' class for fade-in
+        }
+
+        /**
+         * Closes the general custom modal.
+         */
+        function closeModal() {
+            customModal.classList.remove('show'); // Remove 'show' class for fade-out
+        }
+
+        /**
+         * Opens the painting detail modal.
+         * @param {string} paintingId - The ID of the painting to display details for.
+         */
+        function openPaintingDetailModal(paintingId) {
+            const painting = paintings.find(p => p.id === paintingId);
+            if (painting) {
+                detailPaintingImage.src = painting.imageUrl;
+                detailPaintingImage.alt = painting.name;
+                detailPaintingName.textContent = painting.name;
+                detailPaintingDescription.textContent = painting.description;
+                detailPaintingPrice.textContent = `$${painting.price.toFixed(2)}`;
+
+                // Set up the "Add to Cart" button in the detail modal
+                // Only allow adding to cart if the painting is not sold
+                if (!painting.isSold) {
+                    detailAddToCartButton.onclick = () => {
+                        addToCart(painting.id);
+                        closePaintingDetailModal(); // Close detail modal after adding to cart
+                    };
+                    detailAddToCartButton.disabled = false;
+                    detailAddToCartButton.textContent = 'Add to Cart';
+                    detailAddToCartButton.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                    detailAddToCartButton.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                } else {
+                    detailAddToCartButton.textContent = 'SOLD';
+                    detailAddToCartButton.disabled = true;
+                    detailAddToCartButton.classList.add('bg-gray-400', 'cursor-not-allowed');
+                    detailAddToCartButton.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+                }
+
+
+                paintingDetailModal.classList.add('show'); // Add 'show' class for fade-in
+            }
+        }
+
+        /**
+         * Closes the painting detail modal.
+         */
+        function closePaintingDetailModal() {
+            paintingDetailModal.classList.remove('show'); // Remove 'show' class for fade-out
+        }
+
+        /**
+         * Opens the request painting modal.
+         */
+        function openRequestPaintingModal() {
+            requestPaintingModal.classList.add('show');
+        }
+
+        /**
+         * Closes the request painting modal.
+         */
+        function closeRequestPaintingModal() {
+            requestPaintingModal.classList.remove('show');
+        }
+
+        /**
+         * Event listener to close modal if clicked outside the modal content.
+         * @param {Event} event - The click event.
+         * @param {HTMLElement} modalElement - The modal container element.
+         * @param {Function} closeFunction - The function to call to close the modal.
+         */
+        function handleOutsideClick(event, modalElement, closeFunction) {
+            // Check if the click occurred directly on the modal background (not its content)
+            if (event.target === modalElement) {
+                closeFunction();
+            }
+        }
+
+        // Add event listeners to close modals on outside click
+        customModal.addEventListener('click', (event) => handleOutsideClick(event, customModal, closeModal));
+        paintingDetailModal.addEventListener('click', (event) => handleOutsideClick(event, paintingDetailModal, closePaintingDetailModal));
+        requestPaintingModal.addEventListener('click', (event) => handleOutsideClick(event, requestPaintingModal, closeRequestPaintingModal));
+
+
+        /**
+         * Renders all paintings from the `paintings` array into the grid.
+         */
+        function renderPaintings() {
+            paintingsGrid.innerHTML = ''; // Clear existing content
+            paintings.forEach(painting => {
+                // Add 'sold-overlay' class to the card if the painting is sold
+                const cardClasses = painting.isSold ? 'painting-card bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cursor-pointer sold-overlay' : 'painting-card bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out cursor-pointer';
+
+                // Conditionally add the SOLD banner
+                const soldBannerHtml = painting.isSold ? '<div class="sold-banner">SOLD</div>' : '';
+
+                const paintingCard = `
+                    <div class="${cardClasses}" onclick="openPaintingDetailModal('${painting.id}')">
+                        ${soldBannerHtml}
+                        <img src="${painting.imageUrl}" alt="${painting.name}" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">${painting.name}</h3>
+                            <p class="text-gray-600 text-sm mb-4 truncate">${painting.description}</p> <!-- Truncate description on card -->
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-blue-600">$${painting.price.toFixed(2)}</span>
+                                <button onclick="event.stopPropagation(); addToCart('${painting.id}')"
+                                        class="px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition duration-300 ease-in-out shadow-md ${painting.isSold ? 'opacity-50 cursor-not-allowed' : ''}"
+                                        ${painting.isSold ? 'disabled' : ''}>
+                                    ${painting.isSold ? 'SOLD' : 'Add to Cart'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                paintingsGrid.insertAdjacentHTML('beforeend', paintingCard);
+            });
+        }
+
+        /**
+         * Adds a painting to the cart.
+         * @param {string} paintingId - The ID of the painting to add.
+         */
+        function addToCart(paintingId) {
+            const painting = paintings.find(p => p.id === paintingId);
+            if (painting && !painting.isSold) { // Only add if not sold
+                const existingItem = cart.find(item => item.id === paintingId);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({ ...painting, quantity: 1 });
+                }
+                saveCart();
+                renderCart();
+                openModal('Item Added!', `${painting.name} has been added to your cart.`, [
+                    { text: 'Continue Shopping', className: 'px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200', onClick: closeModal },
+                    { text: 'View Cart', className: 'px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition duration-200', onClick: () => { closeModal(); document.getElementById('cart').scrollIntoView({ behavior: 'smooth' }); } }
+                ]);
+            } else if (painting.isSold) {
+                openModal('Item Sold', `${painting.name} is currently sold and cannot be added to the cart.`);
+            }
+        }
+
+        /**
+         * Removes an item from the cart.
+         * @param {string} paintingId - The ID of the painting to remove.
+         */
+        function removeFromCart(paintingId) {
+            openModal('Remove Item?', 'Are you sure you want to remove this item from your cart?', [
+                { text: 'Cancel', className: 'px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400 transition duration-200', onClick: closeModal },
+                { text: 'Remove', className: 'px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-200', onClick: () => {
+                    cart = cart.filter(item => item.id !== paintingId);
+                    saveCart();
+                    renderCart();
+                    closeModal();
+                    openModal('Item Removed', 'The item has been removed from your cart.');
+                }}
+            ]);
+        }
+
+        /**
+         * Updates the quantity of an item in the cart.
+         * @param {string} paintingId - The ID of the painting to update.
+         * @param {number} change - The amount to change the quantity by (+1 or -1).
+         */
+        function updateQuantity(paintingId, change) {
+            const item = cart.find(i => i.id === paintingId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(paintingId); // Remove if quantity drops to 0 or less
+                } else {
+                    saveCart();
+                    renderCart();
+                }
+            }
+        }
+
+        /**
+         * Renders the current state of the cart.
+         */
+        function renderCart() {
+            cartItemsContainer.innerHTML = ''; // Clear existing cart items
+            let total = 0;
+
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                requestPaintingButton.disabled = true;
+            } else {
+                emptyCartMessage.classList.add('hidden');
+                requestPaintingButton.disabled = false;
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    const cartItemHtml = `
+                        <div class="flex items-center justify-between border-b border-gray-200 py-4 last:border-b-0">
+                            <div class="flex items-center">
+                                <img src="${item.imageUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md mr-4">
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-900">${item.name}</h4>
+                                    <p class="text-gray-600 text-sm">$${item.price.toFixed(2)} each</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center border border-gray-300 rounded-md">
+                                    <button onclick="updateQuantity('${item.id}', -1)" class="px-3 py-1 text-gray-700 hover:bg-gray-100 rounded-l-md">-</button>
+                                    <span class="px-3 py-1 text-gray-800">${item.quantity}</span>
+                                    <button onclick="updateQuantity('${item.id}', 1)" class="px-3 py-1 text-gray-700 hover:bg-gray-100 rounded-r-md">+</button>
+                                </div>
+                                <span class="text-lg font-bold text-gray-800">$${itemTotal.toFixed(2)}</span>
+                                <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 transition duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.insertAdjacentHTML('beforeend', cartItemHtml);
+                });
+            }
+
+            cartTotalSpan.textContent = total.toFixed(2);
+            cartCountSpan.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+
+        /**
+         * Saves the current cart to localStorage.
+         */
+        function saveCart() {
+            try {
+                localStorage.setItem('artistStoreCart', JSON.stringify(cart));
+            } catch (e) {
+                console.error("Error saving cart to localStorage:", e);
+                openModal('Error', 'Could not save your cart. Please check your browser settings.');
+            }
+        }
+
+        /**
+         * Loads the cart from localStorage.
+         */
+        function loadCart() {
+            try {
+                const storedCart = localStorage.getItem('artistStoreCart');
+                if (storedCart) {
+                    cart = JSON.parse(storedCart);
+                }
+            } catch (e) {
+                console.error("Error loading cart from localStorage:", e);
+                openModal('Error', 'Could not load your previous cart. It might be corrupted.');
+                cart = []; // Reset cart if corrupted
+            }
+        }
+
+        // Event listener for the "Request Painting" button
+        requestPaintingButton.addEventListener('click', () => {
+            if (cart.length > 0) {
+                openRequestPaintingModal();
+            } else {
+                openModal('Cart Empty', 'Your cart is empty. Please add items before requesting a painting.');
+            }
+        });
+
+        // Event listener for the "Send Request" form submission using Formspree
+        requestForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = requesterNameInput.value;
+            const contact = requesterContactInput.value;
+            const address = requesterAddressInput.value;
+
+            if (!name || !contact || !address) {
+                openModal('Missing Information', 'Please fill in all required fields (Name, Email/Phone, Address).');
+                return;
+            }
+
+            // Format cart details for the email body
+            let cartDetails = `Requested Painting(s):\n`;
+            cart.forEach(item => {
+                cartDetails += `- ${item.name} (Qty: ${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            cartDetails += `\nTotal Cart Value: $${cartTotalSpan.textContent}`;
+
+            // Set the value of the hidden input fields
+            cartDetailsInput.value = cartDetails;
+            // Use the contact email/phone as the reply-to-email if it looks like an email
+            if (contact.includes('@')) {
+                formReplyToEmail.value = contact;
+            } else {
+                formReplyToEmail.value = ''; // Formspree will use the default email if _replyto is empty
+            }
+
+
+            // Collect form data
+            const formData = new FormData(requestForm);
+
+            try {
+                // Send the form data to Formspree
+                const response = await fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Close the request painting modal IMMEDIATELY after successful submission
+                    closeRequestPaintingModal();
+
+                    openModal('Request Sent!', 'Your painting request has been successfully sent. We will contact you soon!', [
+                        { text: 'OK', className: 'px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200', onClick: () => {
+                            cart = []; // Clear cart after successful request
+                            saveCart();
+                            renderCart();
+                            closeModal();
+                            // Clear form fields
+                            requesterNameInput.value = '';
+                            requesterContactInput.value = '';
+                            requesterAddressInput.value = '';
+                        }}
+                    ]);
+                } else {
+                    // Handle errors from Formspree (e.g., invalid form ID, rate limiting)
+                    const data = await response.json();
+                    console.error('Formspree error:', data);
+                    openModal('Error Sending Request', 'There was an issue sending your request. Please try again later or contact us directly. Error: ' + (data.errors ? data.errors.map(e => e.message).join(', ') : response.statusText));
+                }
+            } catch (error) {
+                console.error('Network or fetch error:', error);
+                openModal('Network Error', 'Could not connect to the server to send your request. Please check your internet connection.');
+            }
+        });
+
+        // Slideshow variables
+        let slideIndex = 0;
+        let slideshowInterval;
+        const welcomeMessageContent = document.getElementById('welcome-message-content');
+        const slideshowContent = document.getElementById('slideshow-content');
+        const slideshowContainer = document.getElementById('slideshow-container');
+        const dotsContainer = document.getElementById('dots-container');
+
+        /**
+         * Renders the slideshow slides and dots.
+         */
+        function renderSlideshow() {
+            slideshowContainer.innerHTML = '';
+            dotsContainer.innerHTML = '';
+
+            paintings.forEach((painting, index) => {
+                // Create slide element
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'slide';
+                slideDiv.style.backgroundImage = `url('${painting.imageUrl}')`;
+                slideDiv.innerHTML = `
+                    <div class="slide-overlay">
+                        <h2 class="text-white text-5xl font-bold mb-4">${painting.name}</h2>
+                        <p class="text-white text-lg max-w-2xl">${painting.description}</p>
+                        ${painting.isSold ? '<span class="text-red-400 text-3xl font-bold uppercase mt-4">SOLD</span>' : ''}
+                    </div>
+                `;
+                slideshowContainer.appendChild(slideDiv);
+
+                // Create dot element
+                const dotSpan = document.createElement('span');
+                dotSpan.className = 'dot';
+                dotSpan.onclick = () => currentSlide(index);
+                dotsContainer.appendChild(dotSpan);
+            });
+
+            showSlides(slideIndex); // Show the first slide
+            startSlideshow(); // Start automatic transition
+        }
+
+        /**
+         * Displays a specific slide and updates the active dot.
+         * @param {number} n - The index of the slide to show.
+         */
+        function showSlides(n) {
+            const slides = document.getElementsByClassName('slide');
+            const dots = document.getElementsByClassName('dot');
+
+            if (slides.length === 0) return; // No slides to show
+
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        /**
+         * Changes the slide by a given number (e.g., +1 for next, -1 for previous).
+         * @param {number} n - The number of slides to change by.
+         */
+        function plusSlides(n) {
+            stopSlideshow(); // Stop automatic slideshow on manual interaction
+            slideIndex += n;
+            showSlides(slideIndex);
+            startSlideshow(); // Restart slideshow after a brief pause
+        }
+
+        /**
+         * Sets the current slide to a specific index.
+         * @param {number} n - The index of the slide to set as current.
+         */
+        function currentSlide(n) {
+            stopSlideshow(); // Stop automatic slideshow on manual interaction
+            slideIndex = n;
+            showSlides(slideIndex);
+            startSlideshow(); // Restart slideshow after a brief pause
+        }
+
+        /**
+         * Starts the automatic slideshow transition.
+         */
+        function startSlideshow() {
+            stopSlideshow(); // Clear any existing interval
+            slideshowInterval = setInterval(() => {
+                slideIndex++;
+                showSlides(slideIndex);
+            }, 5000); // Change image every 5 seconds
+        }
+
+        /**
+         * Stops the automatic slideshow transition.
+         */
+        function stopSlideshow() {
+            clearInterval(slideshowInterval);
+        }
+
+        /**
+         * Initializes the home section: displays welcome message, then transitions to slideshow.
+         */
+        function initializeHomeSection() {
+            // Ensure welcome message is visible and slideshow is hidden initially
+            welcomeMessageContent.style.display = 'flex'; // Use flex to center content
+            slideshowContent.style.display = 'none';
+
+            // Start timer to transition to slideshow
+            setTimeout(() => {
+                welcomeMessageContent.style.display = 'none'; // Hide welcome message
+                slideshowContent.style.display = 'block'; // Show slideshow container
+                renderSlideshow(); // Populate and start the slideshow
+            }, 10000); // 10 seconds
+        }
+
+        // Initialize the store and home section when the page loads
         document.addEventListener('DOMContentLoaded', () => {
-            const gallery = document.querySelector('.gallery');
-            const popup = document.querySelector('.popup');
-            const popupImg = document.querySelector('.popup-img');
-            const closeBtn = document.querySelector('.close-btn');
-            const caption = document.querySelector('.caption'); // New caption element
-
-            gallery.addEventListener('click', (e) => {
-                if (e.target.tagName === 'IMG') {
-                    const imageUrl = e.target.getAttribute('src');
-                    const imageAlt = e.target.getAttribute('alt'); // Get alt text
-                    popupImg.setAttribute('src', imageUrl);
-                    caption.textContent = imageAlt; // Set caption text
-                    popup.style.display = 'flex';
-                }
-            });
-
-            closeBtn.addEventListener('click', () => {
-                popup.style.display = 'none';
-                popup.classList.remove('zoomed');
-            });
-
-            popup.addEventListener('click', (e) => {
-                if (e.target.classList.contains('popup')) {
-                    popup.style.display = 'none';
-                    popup.classList.remove('zoomed');
-                } else if (e.target.classList.contains('popup-img')) {
-                    popup.classList.toggle('zoomed');
-                }
-            });
+            document.body.classList.add('fade-in-active');
+            loadCart();
+            renderPaintings(); // Renders the main gallery
+            initializeHomeSection(); // Manages the welcome message and slideshow transition
         });
     </script>
 </body>
 </html>
+
