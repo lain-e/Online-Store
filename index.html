@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laine!</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: 'Press Start 2P' for pixelated titles -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         /* Base styles to match the retro aesthetic */
@@ -19,12 +17,11 @@
             cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/pixel-pointer.cur), default;
             display: pixelated;
         }
-     
+      
         /* New CSS rule to change the cursor on click */
         body.body-active-cursor {
             cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/pixel-grab.cur), grabbing;
         }
-
 
         /* The new retro window-style box */
         .window-box {
@@ -35,16 +32,12 @@
             /* Position relative for the close button positioning */
             position: relative;
         }
-   iframe{
-display: flex;
-align-items: center;
- justify-content: center;
 
- height:60vh;
-position: relative;
-
-
-
+        /* UPDATED: Iframe style to fill its container */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* The title bar of the window */
@@ -57,13 +50,11 @@ position: relative;
             align-items: center;
         }
 
-
         /* Styles for the minimize and close buttons */
         .window-buttons {
             display: flex;
             gap: 4px;
         }
-
 
         .window-button {
             width: 16px;
@@ -78,32 +69,32 @@ position: relative;
             line-height: 1;
         }
 
-
         .window-button-close {
             background-color: #f43f5e; /* Rose-500 */
         }
-       
+        
         /* Use the pixelated font for titles */
         .pixel-font {
             font-family: 'Press Start 2P', cursive;
             /* Added letter spacing for improved readability */
             letter-spacing: 0.05em;
         }
-       
-        /* Styles for the main content area and navigation to get the two-column layout */
+        
+        /* UPDATED: Styles for the main content area and navigation to get the two-column layout */
+        /* Use flexbox for height control and layout */
         .site-container {
-            display: grid;
-            grid-template-columns: 220px 1fr; /* Fixed-width nav, flexible content */
+            display: flex;
+            flex-grow: 1;
             gap: 20px;
         }
-       
+
         /* Responsive design for small screens */
         @media (max-width: 768px) {
             .site-container {
-                grid-template-columns: 1fr; /* Stack columns on small screens */
+                flex-direction: column;
             }
         }
-       
+        
         /* Navigation button styling to match the reference site */
         .nav-button {
             border: 2px solid #888888;
@@ -116,15 +107,13 @@ position: relative;
             cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/pixel-pointer-hover.cur), pointer;
         }
 
-
         /* Active navigation button styling */
         .nav-button.active {
             background-color: #fef08a; /* Yellow-200 */
         }
 
-
         /* Fix: We've now moved the sub-nav styling to a single container.
-         * We also set a minimum height to prevent layout shifts. */
+        * We also set a minimum height to prevent layout shifts. */
         #sub-nav {
             display: flex;
             flex-wrap: wrap; /* Allows wrapping on smaller screens */
@@ -140,7 +129,6 @@ position: relative;
             align-items: center;
         }
 
-
         .sub-nav-link {
             /* Styling to make links look like buttons */
             font-size: 0.875rem; /* text-sm */
@@ -151,19 +139,16 @@ position: relative;
             cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/pixel-pointer-hover.cur), pointer;
         }
 
-
         .sub-nav-link:hover {
             background-color: #fef08a;
             color: #4b5563;
         }
-
 
         .sub-nav-link.active {
             font-weight: bold;
             background-color: #fef08a;
             border: 2px solid #888888;
         }
-
 
         /* Modal styling for custom alerts */
         .modal {
@@ -180,7 +165,6 @@ position: relative;
             align-items: center;
         }
 
-
         /* Button that appears after the window is closed */
         .restore-button {
             /* Same button styling as the navigation buttons for consistency */
@@ -192,12 +176,11 @@ position: relative;
             transition: all 0.2s ease-in-out;
             cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/pixel-pointer-hover.cur), pointer;
         }
-       
+        
         .restore-button:hover {
             background-color: #55c468;
         }
     </style>
-
 
     <script>
         /**
@@ -265,8 +248,9 @@ position: relative;
                         <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
                             This portfolio features my most polished and professional fine art pieces, including paintings and sculptures.
                         </p>
-                        <iframe src=https://www.laineroze.com/gallery.html>
-                        </iframe>
+                        <div class="flex-grow">
+                            <iframe src="https://www.laineroze.com/gallery.html"></iframe>
+                        </div>
                     `},
                     { name: 'graphic design', id: 'graphic-design', content: `
                         <h3 class="pixel-font text-lg mb-2">Graphic Design</h3>
@@ -323,7 +307,6 @@ position: relative;
             }
         };
 
-
         /**
          * Renders the main content area based on the provided section and sub-section.
          * @param {string} sectionId - The ID of the main section (e.g., 'about').
@@ -333,15 +316,13 @@ position: relative;
             const section = siteData[sectionId];
             if (!section) return; // Exit if section is not found
 
-
             const contentContainer = document.getElementById('content-container');
-           
+            
             // Set the title of the main content window
             const mainTitle = contentContainer.querySelector('.main-content-title');
             if (mainTitle) {
                 mainTitle.textContent = section.title;
             }
-
 
             // Populate main content or sub-content
             if (subsectionId && section.subNav.length > 0) {
@@ -356,7 +337,6 @@ position: relative;
             }
         }
 
-
         /**
          * Populates the sub-navigation based on the selected section.
          * @param {string} sectionId - The name of the main section (e.g., 'projects').
@@ -364,10 +344,9 @@ position: relative;
         function updateSubNav(sectionId) {
             const subNavDiv = document.getElementById('sub-nav');
             const links = siteData[sectionId]?.subNav || [];
-           
+            
             // Clear previous sub-nav content to prevent duplication
             subNavDiv.innerHTML = '';
-
 
             // Dynamically create and append sub-nav links if they exist
             links.forEach(link => {
@@ -379,7 +358,6 @@ position: relative;
             });
         }
 
-
         /**
          * Handles content and sub-navigation updates when a main nav link is clicked.
          * @param {string} targetId - The ID of the target content section.
@@ -390,19 +368,17 @@ position: relative;
                 link.classList.remove('active');
             });
 
-
             // Add 'active' class to the clicked link
             const activeLink = document.querySelector(`.nav-button[href="#${targetId}"]`);
             if (activeLink) {
                 activeLink.classList.add('active');
             }
-           
+            
             // Update the sub-navigation based on the target section's name
             updateSubNav(targetId);
-           
+            
             // Render the main content
             renderContent(targetId);
-
 
             // Automatically click the first sub-navigation link if it exists
             const firstSubLink = document.querySelector(`#sub-nav .sub-nav-link`);
@@ -412,14 +388,12 @@ position: relative;
             }
         }
 
-
         /**
          * Hides the custom modal.
          */
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
         }
-
 
         /**
          * Updates the digital clock and date in the header.
@@ -432,7 +406,6 @@ position: relative;
             document.getElementById('clock-date').innerText = dateString;
         }
 
-
         /**
          * Hides the entire retro window and shows the restore button.
          */
@@ -441,7 +414,6 @@ position: relative;
             document.getElementById('restore-button-container').classList.remove('hidden');
         }
 
-
         /**
          * Shows the entire retro window and hides the restore button.
          */
@@ -449,7 +421,6 @@ position: relative;
             document.getElementById('retro-window').style.display = 'block';
             document.getElementById('restore-button-container').classList.add('hidden');
         }
-
 
         // Initialize the app on page load
         document.addEventListener('DOMContentLoaded', () => {
@@ -462,7 +433,7 @@ position: relative;
                     updateContent(targetId);
                 }
             });
-           
+            
             // Dynamic sub-nav links via event delegation
             document.getElementById('sub-nav').addEventListener('click', (e) => {
                 const target = e.target.closest('a.sub-nav-link');
@@ -484,91 +455,67 @@ position: relative;
                 }
             });
 
-
             // Event listener for the window close button
             document.querySelector('.window-button-close').addEventListener('click', () => {
                 closeWindow();
             });
 
-
             // Event listener for the restore button
             document.getElementById('restore-button').addEventListener('click', () => {
                 showWindow();
             });
-           
+            
             // Add mouse down/up event listeners to change the cursor
             document.body.addEventListener('mousedown', () => {
                 document.body.classList.add('body-active-cursor');
             });
-           
+            
             document.body.addEventListener('mouseup', () => {
                 document.body.classList.remove('body-active-cursor');
             });
 
-
             updateClock();
             setInterval(updateClock, 1000);
-           
+            
             // Show the 'home' content by default on page load
             updateContent('home');
         });
     </script>
 </head>
 
-
 <body class="p-4 md:p-8 flex justify-center items-start min-h-screen">
 
-
-    <!-- The decorative background pattern on the body is a solid color -->
     <div class="absolute inset-0 z-0" style="background-color: #e5e7eb;"></div>
 
-
-    <!-- Main content container with the new retro window style -->
     <div id="retro-window" class="window-box w-full max-w-7xl z-10">
-       
-        <!-- Retro Window Header/Title Bar -->
+        
         <div class="window-header">
             <span class="pixel-font text-xs sm:text-sm">Laine.exe</span>
             <div class="window-buttons">
-                <!-- Minimize button -->
                 <button class="window-button bg-gray-400 border-gray-600 shadow-sm">&minus;</button>
-                <!-- Close button -->
                 <button onclick="closeWindow()" class="window-button window-button-close border-gray-600 shadow-sm">X</button>
             </div>
         </div>
 
-
-        <!-- Inner content container with padding -->
-        <div class="p-6 md:p-10">
-            <!-- Header Section -->
+        <div class="p-6 md:p-10 flex flex-col flex-grow">
             <header class="flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
-                <!-- Clock and Date -->
                 <div class="flex flex-col items-start p-2 border-2 border-gray-400 rounded-none bg-gray-100 shadow-md">
                     <span id="clock-time" class="pixel-font text-xs sm:text-sm">00:00 AM</span>
                     <span id="clock-date" class="text-xs sm:text-sm mt-1">August 28, 2025</span>
                 </div>
-                <!-- Welcome message and pixel art -->
                 <div class="text-center pixel-font text-xl sm:text-2xl text-gray-800">
                     <span>Welcome to Laine's site!</span>
                 </div>
             </header>
 
-
-            <!-- Dynamic Sub-Navigation Section -->
-            <!-- The `min-h-[4rem]` class prevents the layout from shifting -->
             <div id="sub-nav" class="bg-white rounded-none p-4 shadow-md border-2 border-gray-300 mt-6 min-h-[4rem] flex flex-wrap justify-start gap-2 items-center">
-                <!-- Sub-navigation links will be dynamically injected here by JS -->
-            </div>
+                </div>
 
-
-            <!-- Main site container with the two-column layout -->
             <div class="site-container mt-6">
-                <!-- Left Navigation Bar -->
                 <aside class="space-y-4">
                     <div class="bg-white rounded-none p-4 shadow-md border-2 border-gray-300">
                         <h3 class="pixel-font text-lg text-gray-800 mb-2">Navigation</h3>
                         <nav id="main-nav" class="space-y-2">
-                            <!-- Added 'Home' button with the 'active' class -->
                             <a href="#home" class="block nav-button active">@ Home</a>
                             <a href="#about" class="block nav-button">@ About</a>
                             <a href="#projects" class="block nav-button">@ Projects</a>
@@ -579,35 +526,27 @@ position: relative;
                     </div>
                 </aside>
 
-
-                <!-- Main Content Area -->
-                <main id="content-container" class="bg-white rounded-none p-6 shadow-md border-2 border-gray-300">
+                <main id="content-container" class="bg-white rounded-none p-6 shadow-md border-2 border-gray-300 flex flex-col flex-grow">
                     <h2 class="main-content-title pixel-font text-xl sm:text-2xl text-gray-800 mb-4 tracking-wide">
                         Home
                     </h2>
-                    <div class="main-content-body">
-                        <!-- Content will be dynamically inserted here -->
-                    </div>
+                    <div class="main-content-body flex-grow">
+                        </div>
                 </main>
             </div>
 
-
-            <!-- Footer Section -->
             <footer class="text-center text-gray-600 text-sm mt-8">
                 <p>&copy; 2024 My Retro Site. All rights reserved.</p>
             </footer>
         </div>
     </div>
-   
-    <!-- Container for the restore button, initially hidden -->
+    
     <div id="restore-button-container" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <button id="restore-button" onclick="showWindow()" class="restore-button pixel-font text-lg px-6 py-3">
             Oops! Go Back!
         </button>
     </div>
 
-
-    <!-- Custom Modal for Alerts (replacing alert()) -->
     <div id="modal" class="modal">
         <div class="bg-white p-6 rounded-none border-2 border-gray-800 shadow-lg text-center">
             <h3 id="modal-title" class="pixel-font text-xl mb-4"></h3>
@@ -619,12 +558,3 @@ position: relative;
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
