@@ -3,560 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laine Roze</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/lain-e/Online-Store/main/l.png">
-     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Image Gallery</title>
     <style>
-        /* Base styles to match the retro aesthetic */
         body {
-            /* Using a font stack that includes MS UI Gothic, with fallbacks */
-            font-family: "MS UI Gothic", "Segoe UI", sans-serif;
-            background-color: #e5e7eb; /* Solid light gray background */
-            color: #4b5563;
-            /* Added custom pixelated cursor */
-            cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/pixel-pointer.cur), default;
-            display: pixelated;
-        }
-      
-        /* New CSS rule to change the cursor on click */
-        body.body-active-cursor {
-            cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/pixel-grab.cur), grabbing;
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f0f0f0;
         }
 
-        /* The new retro window-style box */
-        .window-box {
-            background-color: #fef9ef; /* Creamy off-white background for content */
-            border-radius: 0; /* Square corners */
-            border: 2px solid #888888;
-            box-shadow: 12px 12px 0 0 rgba(0,0,0,0.8);
-            /* Position relative for the close button positioning */
-            position: relative;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
         }
 
-        /* UPDATED: Iframe style to fill its container */
-        iframe {
+        .gallery img {
             width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* The title bar of the window */
-        .window-header {
-            background-color: #d1d5db; /* Gray-300 for the header */
-            border-bottom: 2px solid #888888;
-            padding: 4px 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Styles for the minimize and close buttons */
-        .window-buttons {
-            display: flex;
-            gap: 4px;
-        }
-
-        .window-button {
-            width: 16px;
-            height: 16px;
-            background-color: #ef4444; /* Red for the close button */
-            border: 1px solid #888888;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 10px;
-            line-height: 1;
-        }
-
-        .window-button-close {
-            background-color: #f43f5e; /* Rose-500 */
-        }
-        
-        /* Use the pixelated font for titles */
-        .pixel-font {
-            font-family: 'Press Start 2P', cursive;
-            /* Added letter spacing for improved readability */
-            letter-spacing: 0.05em;
-        }
-        
-        /* UPDATED: Styles for the main content area and navigation to get the two-column layout */
-        /* Use flexbox for height control and layout */
-        .site-container {
-            display: flex;
-            flex-grow: 1;
-            gap: 20px;
-        }
-
-        /* Responsive design for small screens */
-        @media (max-width: 768px) {
-            .site-container {
-                flex-direction: column;
-            }
-        }
-        
-        /* Navigation button styling to match the reference site */
-        .nav-button {
-            border: 2px solid #888888;
-            border-radius: 8px; /* Kept rounded as requested */
-            padding: 8px 12px;
-            background-color: #e5e5f7; /* Light purple */
-            box-shadow: 4px 4px 0 0 rgba(0,0,0,0.8);
-            margin-bottom: 8px;
-            transition: all 0.2s ease-in-out;
-            cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/pixel-pointer-hover.cur), pointer;
-        }
-
-        /* Active navigation button styling */
-        .nav-button.active {
-            background-color: #fef08a; /* Yellow-200 */
-        }
-
-        /* Fix: We've now moved the sub-nav styling to a single container.
-        * We also set a minimum height to prevent layout shifts. */
-        #sub-nav {
-            display: flex;
-            flex-wrap: wrap; /* Allows wrapping on smaller screens */
-            justify-content: flex-start;
-            gap: 8px; /* Spacing between buttons */
-            padding: 8px;
-            border-radius: 8px; /* Kept rounded as requested */
-            border: 2px solid #888888;
-            background-color: #e5e5f7;
-            box-shadow: 4px 4px 0 0 rgba(0,0,0,0.8);
-            /* Add a minimum height to prevent layout shifts */
-            min-height: 4rem; /* Adjusted for a consistent look with or without content */
-            align-items: center;
-        }
-
-        .sub-nav-link {
-            /* Styling to make links look like buttons */
-            font-size: 0.875rem; /* text-sm */
-            padding: 6px 10px;
-            border-radius: 6px; /* Kept rounded as requested */
-            transition: all 0.2s ease-in-out;
-            border: 2px solid transparent; /* Border for hover/active state */
-            cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/pixel-pointer-hover.cur), pointer;
-        }
-
-        .sub-nav-link:hover {
-            background-color: #fef08a;
-            color: #4b5563;
-        }
-
-        .sub-nav-link.active {
-            font-weight: bold;
-            background-color: #fef08a;
-            border: 2px solid #888888;
-        }
-
-        /* Modal styling for custom alerts */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Button that appears after the window is closed */
-        .restore-button {
-            /* Same button styling as the navigation buttons for consistency */
-            border: 2px solid #888888;
+            height: auto;
             border-radius: 8px;
-            padding: 8px 12px;
-            background-color: #92e09b; /* A soft green color */
-            box-shadow: 4px 4px 0 0 rgba(0,0,0,0.8);
-            transition: all 0.2s ease-in-out;
-            cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/pixel-pointer-hover.cur), pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
         }
-        
-        .restore-button:hover {
-            background-color: #55c468;
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Center content vertically */
+            z-index: 1000;
+        }
+
+        .popup-img {
+            max-width: 90%;
+            max-height: 90%;
+            transform-origin: center center;
+            transition: transform 0.3s ease-out;
+        }
+
+        .popup.zoomed {
+            cursor: zoom-out;
+        }
+
+        .popup.zoomed .popup-img {
+            transform: scale(2); /* Zoom level */
+        }
+
+        .caption {
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
         }
     </style>
+</head>
+<body>
+
+    <div class="gallery">
+        <img src="busts.png" alt="Oil painting of bust from life, original">
+         <img src="tea.jpg" alt="My favorite tea set from life, oil, original">
+        <img src="doll.jpg" alt="Doll painted from life, original">
+        <img src="apple.jpg" alt="Obligatory apple from life, in oil, original">
+         <img src="floral.jpg" alt="Flowers painted from life, original">
+        <img src="boug.jpg" alt="Study of Biblis by Bouguereau, oil">
+         <img src="sasha.jpg" alt="My mom's dog, Sasha, painted from photograph, oil, original">
+         <img src="peggy.jpg" alt="Painting of jpegmafia's album cover 'All My Heroes Are Cornballs', oil">
+        <img src="charlie.jpg" alt="Dog painted from photo, original">
+        <img src="andy.jpg" alt="Model painted from photo, oil, original">
+        <img src="lamp.jpg" alt="My lamp painted from life, original">
+        <img src="mucha.jpg" alt="Study of a Mucha, gouache">
+        <img src="beaux.jpg" alt="Study of Henry Drinker's portrait by Beaux, oil">
+        <img src="kasaj.jpg" alt="My friend painted from a photo, original">
+       
+        <img src="mermaid.jpg" alt="a SUPER messy draft of a sketch, original">
+        
+       <img src="comp.jpg" alt="Typical Comp sketch from my notebook, original">
+        <img src="cup.jpg" alt="Still life study of a cup, oil, original">
+        <img src="picasso.png" alt="Painting of a photo of Pablo Picasso and his friend, oil">
+        <img src="sargent.jpg" alt="Life size study of my FAVORITE painting, Carnation Lily Lily Rose, by Sargent">
+       
+       
+    </div>
+
+    <div class="popup">
+        <span class="close-btn">&times;</span>
+        <img src="" alt="" class="popup-img">
+        <div class="caption"></div>
+    </div>
 
     <script>
-        /**
-         * Site content data organized by section and sub-section.
-         * This makes it easy to add or edit content without touching the HTML structure.
-         */
-        const siteData = {
-            'home': {
-                title: 'Home',
-                content: `
-                    <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                        Welcome to my personal website, designed with a nostalgic, retro aesthetic! Explore the different sections using the navigation menu on the left. Thanks for visiting!
-                    </p>
-                `,
-                subNav: []
-            },
-            'about': {
-                title: 'About Me',
-                content: '', // Main content can be empty as it has sub-sections
-                subNav: [
-                    { name: 'education', id: 'education', content: `
-                        <h3 class="pixel-font text-lg mb-2">Education</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            I am a graduate of Pixel University with a degree in Digital Arts. My studies focused on retro game design and pixel art techniques.
-                        </p>
-                    `},
-                    { name: 'lately', id: 'lately', content: `
-                        <h3 class="pixel-font text-lg mb-2">Lately</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            I've recently been exploring generative art and creating custom CSS animations for my websites. I'm also learning about vintage computer hardware.
-                        </p>
-                    `}
-                ]
-            },
-            'projects': {
-                title: 'Projects',
-                content: '',
-                subNav: [
-                    { name: 'painting', id: 'painting', content: `
-                        <h3 class="pixel-font text-lg mb-2">Painting</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            A showcase of my recent digital paintings and traditional media works. I love to experiment with color and light.
-                        </p>
-                    `},
-                    { name: 'drawing', id: 'drawing', content: `
-                        <h3 class="pixel-font text-lg mb-2">Drawing</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            From detailed pencil sketches to vibrant ink illustrations, this section contains a wide range of my drawings.
-                        </p>
-                    `},
-                    { name: 'growing up', id: 'growing-up', content: `
-                        <h3 class="pixel-font text-lg mb-2">Growing Up</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            A nostalgic look at my early art, including childhood doodles and school projects. It's fun to see how far I've come!
-                        </p>
-                    `}
-                ]
-            },
-            'portfolios': {
-                title: 'Portfolios',
-                content: '',
-                subNav: [
-                    { name: 'fine art', id: 'fine-art', content: `
-                        <h3 class="pixel-font text-lg mb-2">Fine Art</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            This portfolio features my most polished and professional fine art pieces, including paintings and sculptures.
-                        </p>
-                        <div class="flex-grow h-full">
-                            <iframe src="https://www.laineroze.com/gallery.html"></iframe>
-                        </div>
-                    `},
-                    { name: 'graphic design', id: 'graphic-design', content: `
-                        <h3 class="pixel-font text-lg mb-2">Graphic Design</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            A collection of my graphic design work, from branding and logo creation to digital advertisements and print materials.
-                        </p>
-                    `},
-                    { name: 'web design', id: 'web-design', content: `
-                        <h3 class="pixel-font text-lg mb-2">Web Design</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            Showcasing my web design projects, including layouts, user interfaces, and custom website templates.
-                        </p>
-                    `}
-                ]
-            },
-            'archive': {
-                title: 'Archive',
-                content: '',
-                subNav: [
-                    { name: 'cool sites', id: 'cool-sites', content: `
-                        <h3 class="pixel-font text-lg mb-2">Cool Sites</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            A curated list of my favorite websites from the early days of the internet and modern sites with a retro feel.
-                        </p>
-                    `},
-                    { name: 'videos', id: 'videos', content: `
-                        <h3 class="pixel-font text-lg mb-2">Videos</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            Links to short films and video projects I've worked on throughout the years.
-                        </p>
-                    `},
-                    { name: 'music', id: 'music', content: `
-                        <h3 class="pixel-font text-lg mb-2">Music</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            A collection of my musical compositions, sound design projects, and curated playlists.
-                        </p>
-                    `},
-                    { name: 'articles', id: 'articles', content: `
-                        <h3 class="pixel-font text-lg mb-2">Articles</h3>
-                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                            A library of articles and essays I've written on topics like art history, technology, and retro culture.
-                        </p>
-                    `}
-                ]
-            },
-            'contact': {
-                title: 'Contact',
-                content: `
-                    <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
-                        Get in touch! You can reach me via email at contact@example.com or find me on social media.
-                    </p>
-                `,
-                subNav: []
-            }
-        };
-
-        /**
-         * Renders the main content area based on the provided section and sub-section.
-         * @param {string} sectionId - The ID of the main section (e.g., 'about').
-         * @param {string} [subsectionId] - The ID of the sub-section (e.g., 'education').
-         */
-        function renderContent(sectionId, subsectionId) {
-            const section = siteData[sectionId];
-            if (!section) return; // Exit if section is not found
-
-            const contentContainer = document.getElementById('content-container');
-            
-            // Set the title of the main content window
-            const mainTitle = contentContainer.querySelector('.main-content-title');
-            if (mainTitle) {
-                mainTitle.textContent = section.title;
-            }
-
-            // Populate main content or sub-content
-            if (subsectionId && section.subNav.length > 0) {
-                // Find and display the specific sub-content
-                const subSection = section.subNav.find(sub => sub.id === subsectionId);
-                if (subSection) {
-                    contentContainer.querySelector('.main-content-body').innerHTML = subSection.content;
-                }
-            } else {
-                // Display the main content
-                contentContainer.querySelector('.main-content-body').innerHTML = section.content;
-            }
-        }
-
-        /**
-         * Populates the sub-navigation based on the selected section.
-         * @param {string} sectionId - The name of the main section (e.g., 'projects').
-         */
-        function updateSubNav(sectionId) {
-            const subNavDiv = document.getElementById('sub-nav');
-            const links = siteData[sectionId]?.subNav || [];
-            
-            // Clear previous sub-nav content to prevent duplication
-            subNavDiv.innerHTML = '';
-
-            // Dynamically create and append sub-nav links if they exist
-            links.forEach(link => {
-                const a = document.createElement('a');
-                a.href = `#${link.id}`;
-                a.textContent = link.name;
-                a.classList.add('sub-nav-link');
-                subNavDiv.appendChild(a);
-            });
-        }
-
-        /**
-         * Handles content and sub-navigation updates when a main nav link is clicked.
-         * @param {string} targetId - The ID of the target content section.
-         */
-        function updateContent(targetId) {
-            // Remove 'active' class from all main nav links
-            document.querySelectorAll('.nav-button').forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Add 'active' class to the clicked link
-            const activeLink = document.querySelector(`.nav-button[href="#${targetId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-            
-            // Update the sub-navigation based on the target section's name
-            updateSubNav(targetId);
-            
-            // Render the main content
-            renderContent(targetId);
-
-            // Automatically click the first sub-navigation link if it exists
-            const firstSubLink = document.querySelector(`#sub-nav .sub-nav-link`);
-            if (firstSubLink) {
-                firstSubLink.classList.add('active'); // Add active class
-                firstSubLink.click();
-            }
-        }
-
-        /**
-         * Hides the custom modal.
-         */
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
-        /**
-         * Updates the digital clock and date in the header.
-         */
-        function updateClock() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            const dateString = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            document.getElementById('clock-time').innerText = timeString;
-            document.getElementById('clock-date').innerText = dateString;
-        }
-
-        /**
-         * Hides the entire retro window and shows the restore button.
-         */
-        function closeWindow() {
-            document.getElementById('retro-window').style.display = 'none';
-            document.getElementById('restore-button-container').classList.remove('hidden');
-        }
-
-        /**
-         * Shows the entire retro window and hides the restore button.
-         */
-        function showWindow() {
-            document.getElementById('retro-window').style.display = 'block';
-            document.getElementById('restore-button-container').classList.add('hidden');
-        }
-
-        // Initialize the app on page load
         document.addEventListener('DOMContentLoaded', () => {
-            // Main nav links event listener
-            document.getElementById('main-nav').addEventListener('click', (e) => {
-                const target = e.target.closest('a.nav-button');
-                if (target) {
-                    e.preventDefault();
-                    const targetId = target.getAttribute('href').substring(1);
-                    updateContent(targetId);
-                }
-            });
-            
-            // Dynamic sub-nav links via event delegation
-            document.getElementById('sub-nav').addEventListener('click', (e) => {
-                const target = e.target.closest('a.sub-nav-link');
-                if (target) {
-                    e.preventDefault();
-                    const subsectionId = target.getAttribute('href').substring(1);
-                    // Find the currently active main navigation link
-                    const activeMainLink = document.querySelector('#main-nav a.active');
-                    if (activeMainLink) {
-                        const sectionId = activeMainLink.getAttribute('href').substring(1);
-                        // Render the content for the correct main section and sub-section
-                        renderContent(sectionId, subsectionId);
-                        // Add active class toggle for sub-nav links
-                        document.querySelectorAll('.sub-nav-link').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        target.classList.add('active');
-                    }
+            const gallery = document.querySelector('.gallery');
+            const popup = document.querySelector('.popup');
+            const popupImg = document.querySelector('.popup-img');
+            const closeBtn = document.querySelector('.close-btn');
+            const caption = document.querySelector('.caption'); // New caption element
+
+            gallery.addEventListener('click', (e) => {
+                if (e.target.tagName === 'IMG') {
+                    const imageUrl = e.target.getAttribute('src');
+                    const imageAlt = e.target.getAttribute('alt'); // Get alt text
+                    popupImg.setAttribute('src', imageUrl);
+                    caption.textContent = imageAlt; // Set caption text
+                    popup.style.display = 'flex';
                 }
             });
 
-            // Event listener for the window close button
-            document.querySelector('.window-button-close').addEventListener('click', () => {
-                closeWindow();
+            closeBtn.addEventListener('click', () => {
+                popup.style.display = 'none';
+                popup.classList.remove('zoomed');
             });
 
-            // Event listener for the restore button
-            document.getElementById('restore-button').addEventListener('click', () => {
-                showWindow();
+            popup.addEventListener('click', (e) => {
+                if (e.target.classList.contains('popup')) {
+                    popup.style.display = 'none';
+                    popup.classList.remove('zoomed');
+                } else if (e.target.classList.contains('popup-img')) {
+                    popup.classList.toggle('zoomed');
+                }
             });
-            
-            // Add mouse down/up event listeners to change the cursor
-            document.body.addEventListener('mousedown', () => {
-                document.body.classList.add('body-active-cursor');
-            });
-            
-            document.body.addEventListener('mouseup', () => {
-                document.body.classList.remove('body-active-cursor');
-            });
-
-            updateClock();
-            setInterval(updateClock, 1000);
-            
-            // Show the 'home' content by default on page load
-            updateContent('home');
         });
     </script>
-</head>
-
-<body class="p-4 md:p-8 flex flex-col justify-center items-center min-h-screen">
-
-    <div class="absolute inset-0 z-0" style="background-color: #e5e7eb;"></div>
-
-    <div id="retro-window" class="window-box w-full max-w-7xl z-10 flex flex-col flex-grow">
-        
-        <div class="window-header">
-            <span class="pixel-font text-xs sm:text-sm">Laine.exe</span>
-            <div class="window-buttons">
-                <button class="window-button bg-gray-400 border-gray-600 shadow-sm">&minus;</button>
-                <button onclick="closeWindow()" class="window-button window-button-close border-gray-600 shadow-sm">X</button>
-            </div>
-        </div>
-
-        <div class="p-6 md:p-10 flex flex-col flex-grow">
-            <header class="flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
-                <div class="flex flex-col items-start p-2 border-2 border-gray-400 rounded-none bg-gray-100 shadow-md">
-                    <span id="clock-time" class="pixel-font text-xs sm:text-sm">00:00 AM</span>
-                    <span id="clock-date" class="text-xs sm:text-sm mt-1">August 28, 2025</span>
-                </div>
-                <div class="text-center pixel-font text-xl sm:text-2xl text-gray-800">
-                    <span>Welcome to Laine's site!</span>
-                </div>
-            </header>
-
-            <div id="sub-nav" class="bg-white rounded-none p-4 shadow-md border-2 border-gray-300 mt-6 min-h-[4rem] flex flex-wrap justify-start gap-2 items-center">
-                </div>
-
-            <div class="site-container mt-6">
-                <aside class="space-y-4">
-                    <div class="bg-white rounded-none p-4 shadow-md border-2 border-gray-300">
-                        <h3 class="pixel-font text-lg text-gray-800 mb-2">Navigation</h3>
-                        <nav id="main-nav" class="space-y-2">
-                            <a href="#home" class="block nav-button active">@ Home</a>
-                            <a href="#about" class="block nav-button">@ About</a>
-                            <a href="#projects" class="block nav-button">@ Projects</a>
-                            <a href="#portfolios" class="block nav-button">@ Portfolios</a>
-                            <a href="#archive" class="block nav-button">@ Archive</a>
-                            <a href="#contact" class="block nav-button">@ Contact</a>
-                        </nav>
-                    </div>
-                </aside>
-
-                <main id="content-container" class="bg-white rounded-none p-6 shadow-md border-2 border-gray-300 flex flex-col flex-grow">
-                    <h2 class="main-content-title pixel-font text-xl sm:text-2xl text-gray-800 mb-4 tracking-wide">
-                        Home
-                    </h2>
-                    <!-- UPDATED: Added flex and column classes to this container -->
-                    <div class="main-content-body flex-grow flex flex-col">
-                        </div>
-                </main>
-            </div>
-
-            <footer class="text-center text-gray-600 text-sm mt-8">
-                <p>&copy; 2024 Laine Neufeld. All rights reserved.</p>
-            </footer>
-        </div>
-    </div>
-    
-    <div id="restore-button-container" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <button id="restore-button" onclick="showWindow()" class="restore-button pixel-font text-lg px-6 py-3">
-            Oops! Go Back!
-        </button>
-    </div>
-
-    <div id="modal" class="modal">
-        <div class="bg-white p-6 rounded-none border-2 border-gray-800 shadow-lg text-center">
-            <h3 id="modal-title" class="pixel-font text-xl mb-4"></h3>
-            <p id="modal-message" class="text-sm text-gray-700 mb-4"></p>
-            <button onclick="closeModal()" class="px-4 py-2 bg-pink-400 text-gray-900 font-bold rounded-lg shadow-lg hover:bg-pink-500 transition-colors">
-                OK
-            </button>
-        </div>
-    </div>
 </body>
 </html>
+
