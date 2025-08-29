@@ -248,7 +248,7 @@
                         <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
                             This portfolio features my most polished and professional fine art pieces, including paintings and sculptures.
                         </p>
-                        <div class="flex-grow">
+                        <div class="flex-grow h-full">
                             <iframe src="https://www.laineroze.com/gallery.html"></iframe>
                         </div>
                     `},
@@ -483,11 +483,11 @@
     </script>
 </head>
 
-<body class="p-4 md:p-8 flex justify-center items-start min-h-screen">
+<body class="p-4 md:p-8 flex flex-col justify-center items-center min-h-screen">
 
     <div class="absolute inset-0 z-0" style="background-color: #e5e7eb;"></div>
 
-    <div id="retro-window" class="window-box w-full max-w-7xl z-10">
+    <div id="retro-window" class="window-box w-full max-w-7xl z-10 flex flex-col flex-grow">
         
         <div class="window-header">
             <span class="pixel-font text-xs sm:text-sm">Laine.exe</span>
@@ -530,7 +530,8 @@
                     <h2 class="main-content-title pixel-font text-xl sm:text-2xl text-gray-800 mb-4 tracking-wide">
                         Home
                     </h2>
-                    <div class="main-content-body flex-grow">
+                    <!-- UPDATED: Added flex and column classes to this container -->
+                    <div class="main-content-body flex-grow flex flex-col">
                         </div>
                 </main>
             </div>
