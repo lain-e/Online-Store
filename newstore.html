@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laine Roze</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/lain-e/rolfsfilms/main/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Oswald:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles changed to a dark theme */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff; /* Changed to white */
+            color: #000; /* Changed to black */
+        }
+        h1, h3 {
+            font-family: 'Oswald', sans-serif;
+        }
+        h2, h4 {
+            font-family: 'Abril Fatface', serif;
+        }
+        .contact-img {
+            display: block;
+            width:50vw;
+            height:50vh;
+        }
+        .page-content {
+            display: none;
+            background-color: #fff; /* Changed to white */
+        }
+        .active-page {
+            display: block;
+        }
+        .portfolio-item {
+            margin-bottom: 2rem;
+        }
+        .portfolio-item h3 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: #000; /* Changed to black */
+            margin-bottom: 0.5rem;
+        }
+        .portfolio-item iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .portfolio-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1rem;
+        }
+        .description-box {
+            background-color: #f3f4f6; /* A light gray for contrast */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+            border: 1px solid #e5e7eb;
+        }
+        .description-box h4 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #000; /* Changed to black */
+            margin-bottom: 0.5rem;
+        }
+        .description-box p {
+            color: #374151; /* A darker gray for readability on the light background */
+        }
+        
+        @media (max-width: 768px) {
+            .portfolio-item iframe {
+                height: 250px;
+            }
+        }
+        
+        .hero-video-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /* The hidden class will be added/removed by JavaScript */
+        .hero-video-container.hidden {
+            display: none;
+        }
+        
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            /* Now using a single flex container for all hero text and the button */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center everything vertically */
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="bg-white text-black">
+
+    <div id="hero-section" class="hero-video-container">
+        <img class="hero-video" src="https://raw.githubusercontent.com/lain-e/rolfsfilms/main/rfilm.gif" alt="A looping montage of film clips by Laine ">
+        
+        <div class="hero-overlay">
+            <h1 class="text-5xl md:text-6xl font-normal mb-2">Laine</h1>
+            <h2 class="text-lg md:text-xl font-normal text-white mb-8">Artist + Designer</h2>
+            <a href="#portfolio-start" class="bg-white text-black font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-gray-200 transition duration-300 ease-in-out">
+                See My Work
+            </a>
+        </div>
+    </div>
+    
+    <!-- Updated Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white p-4 rounded-xl shadow-md flex justify-center space-x-4 mb-8">
+        <a href="#gallery" class="nav-link text-lg font-medium text-gray-600 hover:text-black transition duration-300">Gallery</a>
+        <a href="#fine-art" class="nav-link text-lg font-medium text-gray-600 hover:text-black transition duration-300">Fine Art</a>
+        <a href="#tattoo" class="nav-link text-lg font-medium text-gray-600 hover:text-black transition duration-300">Tattoo</a>
+        <a href="#graphic-design" class="nav-link text-lg font-medium text-gray-600 hover:text-black transition duration-300">Graphic Design</a>
+        <a  href="https://raw.githubusercontent.com/lain-e/online-store/main/store.html" data-internal="false" class="nav-link text-lg font-medium text-gray-600 hover:text-black transition duration-300">Store</a>
+       
+        
+        <a href="#other-projects" class="nav-link text-lg font-medium text-gray-600 hover:text-black transition duration-300">Other Projects</a>
+        <a href="#about" class="nav-link text-lg font-medium text-gray-600 hover:text-black transition duration-300">About Me</a>
+        <a href="#contact" class="nav-link text-lg font-medium text-gray-600 hover:text-black transition duration-300">Contact</a>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8 max-w-5xl pb-20 pt-24">
+        
+        <!-- Placeholder Fine Art Page -->
+        <div id="fine-art-page" class="page-content bg-white p-8 rounded-xl shadow-md">
+            <h1 class="text-5xl font-normal mb-8 text-center">Fine Art</h1>
+            <p class="text-lg text-gray-600 mb-8 text-center">A gallery of my fine art pieces.</p>
+            <div class="space-y-12">
+                <!-- Add your fine art images and descriptions here -->
+                <p>Content for Fine Art will go here.</p>
+            </div>
+        </div>
+
+        <!-- Placeholder Tattoo Page -->
+        <div id="tattoo-page" class="page-content bg-white p-8 rounded-xl shadow-md">
+            <h1 class="text-5xl font-normal mb-8 text-center">Tattoo</h1>
+            <p class="text-lg text-gray-600 mb-8 text-center">Tattoo designs and completed works.</p>
+            <div class="space-y-12">
+                <!-- Add your tattoo images and descriptions here -->
+                <p>Content for Tattoo will go here.</p>
+            </div>
+        </div>
+
+        <!-- Renamed Graphic Design Page -->
+        <div id="graphic-design-page" class="page-content bg-white p-8 rounded-xl shadow-md">
+            <h1 class="text-5xl font-normal mb-8 text-center">Graphic & Promotional Design</h1>
+            <p class="text-lg text-gray-600 mb-8 text-center">A collection of graphic and promotional design projects.</p>
+            <div class="space-y-8">
+                <div class="portfolio-item">
+                    <h3>Shut Up and Listen: The Kurt Cobain Special</h3>
+                    <img src="https://raw.githubusercontent.com/lain-e/rolfsfilms/main/SHUT%20UP%20AND%20LISTEN%20kurt%20poster.png" alt="SHUT UP AND LISTEN Kurt poster">
+                    <div class="description-box">
+                        <h4>Shut Up and Listen: The Kurt Cobain Special (2024)</h4>
+                        <p>I spearheaded the creation of a special segment for my college radio show at SUNY Purchase, honoring the 30th anniversary of Kurt Cobain’s passing, including a curated playlist.</p>
+                        <p class="mt-2 text-sm text-gray-500">Link to recorded segment: <a href="https://www.mixcloud.com/wpsr4ever/shut-up-and-listen-kurt-cobain-special/" class="text-blue-600 hover:underline">https://www.mixcloud.com/wpsr4ever/shut-up-and-listen-kurt-cobain-special/</a></p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Beatle-Media</h3>
+                    <img src="https://raw.githubusercontent.com/lain-e/rolfsfilms/main/beatlemedia%20flyer%20v2.jpg" alt="Beatle-Media flyer">
+                    <div class="description-box">
+                        <h4>Beatle-Media</h4>
+                        <p>I co-organized a curatorial exhibition and screening called “Beatle-Media” celebrating the Beatles through physical media (i.e. 16mm film, VHS, vinyl records, CDs).</p>
+                        <p class="mt-2 text-sm text-gray-500">Viewing link: <a href="https://youtube.com/shorts/IJPOwAFlrFY?feature=share" class="text-blue-600 hover:underline">https://youtube.com/shorts/IJPOwAFlrFY?feature=share</a></p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>WPSR Sticker</h3>
+                    <img src="https://raw.githubusercontent.com/lain-e/rolfsfilms/main/wspr%20sticker%20v2.png" alt="WPSR sticker">
+                    <div class="description-box">
+                        <h4>WPSR Sticker</h4>
+                        <p>A sticker created for WPSR, the college radio station at SUNY Purchase.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Corrected ID to make it work with JS -->
+        <div id="gallery-page" class="page-content active-page bg-white p-8 rounded-xl shadow-md">
+            
+            <div id="portfolio-start"></div>
+            <h1 class="text-5xl font-normal mb-8 text-center">Gallery</h1>
+            <p class="text-lg text-gray-600 mb-8 text-center">A collection of recent projects</p>
+            <div class="space-y-12">
+                <div class="portfolio-item">
+                    <h3>A childhood home</h3>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1107240298?h=0174cdc88e&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="A Childhood Home (2023)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Grá</h3>
+                    <iframe src="https://www.youtube.com/embed/XcXllw0P0-w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="description-box">
+                        <h4>Grá (2023)</h4>
+                        <p>Grá is an interactive art installation piece using elements of video, projection, and sculpture to explore themes of memory and trauma, specifically within the context of Northern Ireland’s “Troubles.” Edited with Adobe Premiere Pro.</p>
+                        <p class="mt-2 text-sm text-gray-500">Viewing link: <a href="https://youtu.be/XcXllw0P0-w" class="text-blue-600 hover:underline">https://youtu.be/XcXllw0P0-w</a></p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>LIAR!</h3>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1108855103?h=05f5dd7839&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="LIAR! (2022)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Let It Roll</h3>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1108858327?h=56d4aa6ca5&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Let It Roll - A One Scene Short (2023)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                    <div class="description-box">
+                        <h4>Let It Roll (2023)</h4>
+                        <p>Let It Roll is an original short film based on a scene from my senior thesis screenplay. This scene focuses on the relationship between the main character and her mother. The film was a collaborative effort, thanks to my team of peers who worked seamlessly alongside me under a tight schedule. Edited with Adobe Premiere Pro.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>How to make a bookshelf</h3>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1108854144?h=783d67546a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="how to make a bookshelf (2022)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                    <div class="description-box">
+                        <h4>How to Make a Bookshelf (2022)</h4>
+                        <p>How to Make a Bookshelf is an experimental short film in which the filmmaker uses an everyday item in a nonsensical and unconventional manner, to challenge traditional values and what we as a society deem unusual. Edited with Adobe Premiere Pro.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>The inside of…. My brain</h3>
+                    <div style="padding:62.5% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1107241322?h=a96d3a7a0f&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="the inside of.... my brain (2023)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                    <div class="description-box">
+                        <h4>The Inside of…. My Brain (2023)</h4>
+                        <p>The Inside of…. My Brain is a desktop documentary—utilizing modern Mac OS computer software as a base for collaging multiple screens or “tabs” to communicate emotions more often internalized than not.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>A chat over hours old coffee</h3>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1108867706?h=a26fdabdde&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="A Chat Over Hours-Old Coffee (2022)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+                <div class="portfolio-item">
+                    <h3>A portrait of Theo Haegele</h3>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1108869393?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="A Portrait of Theo Haegele (2021)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                    <div class="description-box">
+                        <h4>A Portrait of Theo Haegele (2021)</h4>
+                        <p>A Portrait of Theo Haegele is a documentary film about my close friend, Theo Haegele, his passion for sculpture, and what it means to him philosophically and emotionally. Edited with Adobe Premiere Pro.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <h3>2018</h3>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1108873318?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="2018 (2023)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+                <div class="portfolio-item">
+                    <h3>The Glistening Eastern Sea</h3>
+                    <iframe src="https://www.youtube.com/embed/x7wJntS__R0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="description-box">
+                        <h4>The Glistening Eastern Sea (2023)</h4>
+                        <p>The Glistening Eastern Sea is an experimental documentary film on my late grandfather. In this piece, I chose to explore the idea of having a conversation with someone who is physically absent. This idea presents itself in the long shots of nature as if nature’s ambiance speaks on behalf of the deceased individual. Edited with Adobe Premiere Pro.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Placeholder Store Page -->
+        <div id="store-page" class="page-content bg-white p-8 rounded-xl shadow-md">
+            <h1 class="text-5xl font-normal mb-8 text-center">Store</h1>
+            <p class="text-lg text-gray-600 mb-8 text-center">Here you'll find prints, merchandise, and other items for sale.</p>
+            <div class="space-y-12">
+                <p>Content for the store will go here.</p>
+            </div>
+        </div>
+        
+        <!-- Placeholder Other Projects Page -->
+        <div id="other-projects-page" class="page-content bg-white p-8 rounded-xl shadow-md">
+            <h1 class="text-5xl font-normal mb-8 text-center">Other Projects</h1>
+            <p class="text-lg text-gray-600 mb-8 text-center">A collection of various other projects.</p>
+            <div class="space-y-12">
+                <p>Content for other projects will go here.</p>
+            </div>
+        </div>
+
+        <div id="about-page" class="page-content bg-white p-8 rounded-xl shadow-md">
+            <h1 class="text-5xl font-normal mb-6 text-center">About Me</h1>
+            <p class="text-lg text-gray-600 mb-4">Bio here</p>
+        </div>
+
+        <div id="contact-page" class="page-content bg-white p-8 rounded-xl shadow-md">
+            <h1 class="text-5xl font-normal mb-6 text-center">Contact</h1>
+            <p class="text-lg text-gray-600 mb-4 text-center">Interested in working with me? Please see my contact information below.</p>
+        
+            <div class="text-center">
+                <p class="text-xl font-semibold">Email: elenarose23@gmail.com</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="fixed bottom-0 left-0 w-full bg-white text-black text-center py-4 px-8">
+        <p class="text-sm md:text-base">Laine Roze © 2024 elenarose23@gmail.com</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page-content');
+            const heroSection = document.getElementById('hero-section');
+            const scrollButton = document.querySelector('.hero-overlay a');
+
+            // Add an event listener to the scroll button
+            if (scrollButton) {
+                scrollButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = e.target.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+
+            // Function to show the correct page and manage the hero section visibility
+            function showPage(pageId) {
+                pages.forEach(page => {
+                    page.classList.remove('active-page');
+                });
+
+                const activePage = document.getElementById(pageId + '-page');
+                if (activePage) {
+                    activePage.classList.add('active-page');
+                }
+                
+                // Show the hero section only for the 'gallery' page
+                if (pageId === 'gallery') {
+                    heroSection.classList.remove('hidden');
+                    // Add padding to the top of the content to accommodate the hero section
+                    document.querySelector('.container').classList.remove('pt-24');
+                } else {
+                    heroSection.classList.add('hidden');
+                    // Add padding to the top of the content for a fixed navbar
+                    document.querySelector('.container').classList.add('pt-24');
+                }
+            }
+            
+            // Handle navigation clicks
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-internal') !== 'false') {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const pageId = e.target.getAttribute('href').substring(1);
+                        showPage(pageId);
+                    });
+                }
+            });
+
+            // Handle initial page load based on URL hash
+            const initialHash = window.location.hash.substring(1) || 'gallery';
+            showPage(initialHash);
+        });
+    </script>
+</body>
+</html>
