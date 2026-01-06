@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laine Neufeld | Links</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1b1d16;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+            background-image: radial-gradient(circle at top right, rgba(84, 70, 93, 0.15), transparent),
+                              radial-gradient(circle at bottom left, rgba(164, 172, 150, 0.1), transparent);
+        }
+
+        /* Background ASCII container */
+        #bg-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-star {
+            position: absolute;
+            font-family: monospace;
+            color: #a4ac96;
+            opacity: 0;
+            user-select: none;
+            transition: opacity 0.8s ease-in-out, transform 8s linear;
+            white-space: pre;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .shooting-star {
+            position: absolute;
+            font-family: monospace;
+            color: #cadf9e;
+            opacity: 0;
+            user-select: none;
+            white-space: pre;
+            line-height: 1.1;
+            font-size: 4px;
+            pointer-events: none;
+            z-index: 2;
+            transition: opacity 1s ease-in-out, transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .star-tracer {
+            position: absolute;
+            font-family: monospace;
+            color: #cadf9e;
+            pointer-events: none;
+            z-index: 1;
+            font-size: 8px;
+            opacity: 0.7;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 8px;
+            line-height: 1.1;
+            color: #cadf9e;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            user-select: none;
+        }
+
+        .glass-link {
+            background: rgba(84, 70, 93, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(164, 172, 150, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            padding: 1.1rem;
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            z-index: 10;
+        }
+
+        .glass-link:hover {
+            background: rgba(164, 172, 150, 0.3);
+            border-color: rgba(202, 223, 158, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .profile-container {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            animation: fadeInDown 1s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .links-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            z-index: 10;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer-spacer {
+            margin-top: auto;
+            padding-top: 2rem;
+            z-index: 10;
+        }
+
+        footer {
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="bg-stars"></div>
+
+    <div class="profile-container">
+        <div class="ascii-art">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣤⣤⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡤⠤⠶⢦⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⠀⣀⠀⢀⡤⢈⣡⡴⠶⠶⠶⣤⣄⠀⢤⡀⢀⡀⢀⡀⠀⠀⠀⠀
+⠀⠀⠀⠁⢸⡏⣸⠋⣰⠏⣰⠟⢡⡴⠖⠚⠶⣤⡉⢷⡀⢳⡈⢷⡌⡿⠈⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢿⠀⡟⢰⡏⣰⠏⣰⠞⠛⢢⠈⣧⠘⡇⠈⡇⠸⠃⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠈⠃⢺⡇⢺⡄⢿⡀⠢⠜⣠⡏⢠⡏⠸⠃⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡈⢳⣌⡙⠳⠟⢋⣴⠏⢀⡄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠘⢷⣌⠻⢦⣌⣙⡛⠛⣉⣡⡴⠋⣀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢼⣤⡙⠷⣦⠌⠉⠙⠋⢉⣡⣴⠾⣋⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣦⡌⠛⠀⠀⠀⠀⠀⠀⠀⠈⠐⠚⠋⡁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</div>
+        <h1 class="text-2xl font-normal tracking-tight">Laine Neufeld</h1>
+        <p class="text-[#857f74] mt-1 text-sm font-light uppercase tracking-widest">Visual Development + UI</p>
+    </div>
+
+    <div class="links-container">
+        <a href="https://laineneufeld.com" class="glass-link">
+            <span>Website</span>
+        </a>
+
+        <a href="https://artstation.com" class="glass-link">
+            <span>Artstation</span>
+        </a>
+
+        <a href="https://linkedin.com" class="glass-link">
+            <span>LinkedIn</span>
+        </a>
+
+        <a href="mailto:hello@laineneufeld.com" class="glass-link">
+            <span>Get in touch</span>
+        </a>
+    </div>
+
+    <div class="footer-spacer"></div>
+
+    <footer class="mt-8 text-[9px] text-[#857f74] uppercase tracking-[0.3em] font-light">
+        © 2026 Laine Neufeld
+    </footer>
+
+    <script>
+        const starShapes = ['+', '*', '°', '.', '✧', '⊹', '⋆', '•', '·', 'x'];
+        const shootingStarArt = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠋⠀⠀⠙⢿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣸⡇⠀⠀⠀⠀⠀⠙⢿⣦⡀⠀⠀⢀⣀⣀⣠⣤⣀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀⠀⠙⠿⠿⠟⠛⠛⠋⠉⠉⠛⣷⡄
+⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇
+⠀⠀⠀⠀⣀⣤⣶⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠃
+⠀⣠⣶⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡿⠣⠀
+⢸⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠁⠀⠀
+⢸⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡀⠄⠀
+⠀⠙⠿⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡄⠀
+⠀⠀⠀⠀⠉⠛⠿⣶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡄
+⠀⠀⠀⠀⠀⠀⠀⠘⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇
+⠀⠀⠀⠀⠀⠀⠀⠀⣿⡆⠀⠀⠀⠀⠀⠀⠀⣠⣶⣶⣦⣤⣤⣄⣀⣀⣤⡿⠃
+⠀⠀⠀⠀⠀⠀⠀⠀⢹⡇⠀⠀⠀⠀⠀⣠⣾⠏⠀⠀⠀⠈⠉⠉⠙⠛⠉⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣄⠀⠀⣠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠛⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`;
+
+        const bgContainer = document.getElementById('bg-stars');
+        const maxStars = 40; 
+
+        function createStar() {
+            const currentStars = document.querySelectorAll('.bg-star');
+            if (currentStars.length >= maxStars) return;
+
+            const star = document.createElement('div');
+            star.className = 'bg-star';
+            star.innerText = starShapes[Math.floor(Math.random() * starShapes.length)];
+            star.style.fontSize = (Math.random() * 12 + 8) + 'px';
+            
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            
+            const initialRot = Math.random() * 360;
+            star.style.transform = `rotate(${initialRot}deg)`;
+
+            bgContainer.appendChild(star);
+
+            const twinkle = () => {
+                if (!star.parentElement) return;
+                star.style.opacity = (Math.random() * 0.3 + 0.05).toString();
+                setTimeout(twinkle, Math.random() * 800 + 400);
+            };
+
+            setTimeout(() => {
+                star.style.opacity = "0.2";
+                twinkle();
+            }, 100);
+
+            const duration = Math.random() * 6000 + 4000;
+            setTimeout(() => {
+                star.style.opacity = '0';
+                setTimeout(() => star.remove(), 2000);
+            }, duration);
+        }
+
+        function spawnTracer(x, y, spread) {
+            // Doubled density: count increased from 3 to 6 per spawn
+            const count = 6;
+            for(let i=0; i<count; i++) {
+                const tracer = document.createElement('div');
+                tracer.className = 'star-tracer';
+                // Mixed characters for a "massier" trail
+                tracer.innerText = Math.random() > 0.5 ? '·' : '°';
+                
+                const offsetX = (Math.random() - 0.5) * spread;
+                const offsetY = (Math.random() - 0.5) * spread;
+                
+                tracer.style.left = (x + offsetX) + 'px';
+                tracer.style.top = (y + offsetY) + 'px';
+                bgContainer.appendChild(tracer);
+
+                setTimeout(() => {
+                    tracer.style.opacity = '0';
+                    tracer.style.transform = 'scale(0.2)';
+                    setTimeout(() => tracer.remove(), 500);
+                }, 50);
+            }
+        }
+
+        function createShootingStar() {
+            const sStar = document.createElement('div');
+            sStar.className = 'shooting-star';
+            sStar.innerText = shootingStarArt;
+            
+            const startSides = ['left', 'top', 'right'];
+            const side = startSides[Math.floor(Math.random() * startSides.length)];
+            
+            let startX, startY, endX, endY, rotation;
+
+            if (side === 'left') {
+                startX = -20; startY = Math.random() * 50;
+                endX = 120; endY = startY + 40;
+                rotation = 15;
+            } else if (side === 'top') {
+                startX = Math.random() * 80; startY = -20;
+                endX = startX + 50; endY = 120;
+                rotation = 45;
+            } else {
+                startX = 120; startY = Math.random() * 40;
+                endX = -20; endY = startY + 50;
+                rotation = -160;
+            }
+
+            sStar.style.left = startX + 'vw';
+            sStar.style.top = startY + 'vh';
+            sStar.style.transform = `rotate(${rotation}deg) scale(0.5)`;
+
+            bgContainer.appendChild(sStar);
+
+            // Tracer interval tightened from 60 to 40 for more mass/trail length
+            let tracerInterval = setInterval(() => {
+                const rect = sStar.getBoundingClientRect();
+                if (rect.width === 0) return;
+                spawnTracer(rect.left + rect.width / 2, rect.top + rect.height / 2, rect.width * 0.9);
+            }, 40);
+
+            setTimeout(() => {
+                sStar.style.opacity = "0.4";
+                sStar.style.transform = `rotate(${rotation}deg) scale(0.8) translate(${endX - startX}vw, ${endY - startY}vh)`;
+            }, 100);
+
+            setTimeout(() => {
+                sStar.style.opacity = "0";
+                clearInterval(tracerInterval);
+            }, 2500);
+
+            setTimeout(() => {
+                clearInterval(tracerInterval);
+                sStar.remove();
+            }, 5000);
+        }
+
+        function spawnLoop() {
+            createStar();
+            if (Math.random() > 0.96) createShootingStar();
+            
+            const nextSpawn = Math.random() * 600 + 200;
+            setTimeout(spawnLoop, nextSpawn);
+        }
+
+        window.addEventListener('load', () => {
+            spawnLoop();
+            for(let i=0; i<25; i++) {
+                setTimeout(createStar, i * 150);
+            }
+            setInterval(() => {
+                if (Math.random() > 0.4) createShootingStar();
+            }, 7000);
+        });
+
+        window.addEventListener('resize', () => {
+            bgContainer.innerHTML = '';
+        });
+    </script>
+</body>
+</html>
