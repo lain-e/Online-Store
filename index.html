@@ -3,158 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
-      <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/lain-e/online-store/main/logo.png">
+    <title>Curated Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        
         body {
-            font-family: sans-serif;
-            margin: 0;
-            background-color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
         }
 
-        .gallery {
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .img-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
             cursor: pointer;
-            transition: transform 0.3s ease-in-out;
         }
 
-        .gallery img:hover {
+        .img-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .img-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .img-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .img-card:hover .img-overlay {
+            opacity: 1;
+        }
+
+        /* Password Screen Animation */
+        #auth-screen {
+            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+        }
+
+        #auth-screen.authenticated {
+            opacity: 0;
+            visibility: hidden;
             transform: scale(1.05);
         }
 
-        .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none; /* Initially hidden */
-            justify-content: center;
-            align-items: center;
-            flex-direction: column; /* Center content vertically */
-            z-index: 1000;
-        }
-
-        .popup-img {
-            max-width: 90%;
-            max-height: 90%;
-            transform-origin: center center;
-            transition: transform 0.3s ease-out;
-        }
-
-        .popup.zoomed {
-            cursor: zoom-out;
-        }
-
-        .popup.zoomed .popup-img {
-            transform: scale(2); /* Zoom level */
-        }
-
-        .caption {
-            color: white;
-            font-size: 1.2rem;
-            margin-top: 10px;
-            text-align: center;
-            max-width: 90%;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
+        /* Lightbox */
+        #lightbox.active {
+            display: flex;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen">
 
-    <div class="gallery">
-     
-       <img src="doll.jpg" alt="Doll painted from life, oil, original">
-      <img src="IMG_4040.jpeg" alt="Gouache painting of photo">
-     
-     
-  <img src="IMG_3762.jpeg" alt="watercolor of bust from life, original">
-    
-        <img src="skullscan.jpeg" alt="watercolor study from photo, original">
-         <img src="guitar.jpeg" alt="watercolor from life, original">
-         
-        <img src="tea.jpg" alt="My favorite tea set from life, oil, original">
-        
-        <img src="apple.jpg" alt="Obligatory apple from life, in oil, original">
-         <img src="floral.jpg" alt="Flowers painted from life in gouache, original">
-        <img src="boug.jpg" alt="Study of Biblis by Bouguereau, oil">
-         <img src="sasha.jpg" alt="My mom's dog, Sasha, painted from photograph, oil, original">
-         <img src="peggy.jpg" alt="Painting of jpegmafia's album cover 'All My Heroes Are Cornballs', oil">
-        <img src="charlie.jpg" alt="Dog painted from photo, original">
-        <img src="andy.jpg" alt="Model painted from photo, oil, original">
-        <img src="lamp.jpg" alt="My lamp painted from life, original">
-        <img src="mucha.jpg" alt="Study of a Mucha, gouache">
-        <img src="beaux.jpg" alt="Study of Henry Drinker's portrait by Beaux, oil">
-        <img src="kasaj.jpg" alt="My friend painted from a photo, original">
-       
-       
-        <img src="cup.jpg" alt="Still life study of a cup, oil, original">
-        <img src="picasso.png" alt="Painting of a photo of Pablo Picasso and his friend, oil">
-     
-         </div>
+    <!-- Password Protection Overlay -->
+    <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950 px-4">
+        <div class="glass-panel p-8 rounded-2xl w-full max-w-md text-center shadow-2xl">
+            <div class="mb-6 inline-flex p-4 bg-pink-500/10 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+            </div>
+            <h1 class="text-3xl font-bold mb-2 text-white">Welcome!</h1>
+            <h2 class="text-slate-400 mb-8 leading-relaxed">hopefully, Laine remembered to give you a code... if so, please enter it here.</h2>
+            
+            <div class="space-y-4">
+                <input type="password" id="pass-code" placeholder="what's the password?" autofocus
+                    class="w-full bg-slate-800/50 border border-slate-700 rounded-lg py-3 px-4 text-center text-lg tracking-normal text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all">
+                <button id="unlock-btn" class="w-full bg-slate-800 hover:bg-slate-700 text-white text-2xl py-3 rounded-lg transition-colors border border-slate-700 shadow-lg">
+                    🗝₊˚⊹♡
+                </button>
+                <p id="error-msg" class="text-red-400 text-sm h-4 opacity-0 transition-opacity">Incorrect access code.</p>
+            </div>
+        </div>
+    </div>
 
-    <div class="popup">
-        <span class="close-btn">&times;</span>
-        <img src="" alt="" class="popup-img">
-        <div class="caption"></div>
+    <!-- Main Content -->
+    <main id="main-content" class="opacity-0 transition-opacity duration-1000 p-6 lg:p-12 pointer-events-none">
+        <header class="max-w-7xl mx-auto mb-12 text-center">
+            <h2 class="text-4xl font-light tracking-tight mb-4 text-white">Digital Portfolio</h2>
+            <div class="h-1 w-20 bg-pink-500 mx-auto rounded-full mb-8"></div>
+            
+            <!-- Navigation -->
+            <nav class="flex flex-wrap justify-center gap-2">
+                <button onclick="filterGallery('all')" class="nav-filter px-6 py-2 rounded-full glass-panel hover:bg-pink-600 transition-all text-sm font-medium">All</button>
+                <button onclick="filterGallery('personal')" class="nav-filter px-6 py-2 rounded-full glass-panel hover:bg-pink-600 transition-all text-sm font-medium">Personal</button>
+                <button onclick="filterGallery('academic')" class="nav-filter px-6 py-2 rounded-full glass-panel hover:bg-pink-600 transition-all text-sm font-medium">Academic</button>
+                <button onclick="filterGallery('professional')" class="nav-filter px-6 py-2 rounded-full glass-panel hover:bg-pink-600 transition-all text-sm font-medium">Professional</button>
+                <button onclick="filterGallery('other')" class="nav-filter px-6 py-2 rounded-full glass-panel hover:bg-pink-600 transition-all text-sm font-medium">Other</button>
+            </nav>
+        </header>
+
+        <!-- Gallery Grid -->
+        <div id="gallery" class="max-w-7xl mx-auto gallery-grid">
+            <!-- Items will be injected by JS -->
+        </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center p-4 cursor-zoom-out" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" class="max-w-full max-h-full rounded shadow-2xl">
+        <button class="absolute top-6 right-6 text-white hover:text-pink-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const gallery = document.querySelector('.gallery');
-            const popup = document.querySelector('.popup');
-            const popupImg = document.querySelector('.popup-img');
-            const closeBtn = document.querySelector('.close-btn');
-            const caption = document.querySelector('.caption'); // New caption element
+        const AUTH_CODE = "2323";
+        
+        const galleryData = [
+            { id: 1, cat: 'personal', title: 'Summer Retreat', url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800' },
+            { id: 2, cat: 'academic', title: 'Final Research', url: 'https://images.unsplash.com/photo-1434031213662-8743c5394962?auto=format&fit=crop&w=800' },
+            { id: 3, cat: 'professional', title: 'Studio Project', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800' },
+            { id: 4, cat: 'other', title: 'Street Photography', url: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800' },
+            { id: 5, cat: 'personal', title: 'Mountain Hike', url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800' },
+            { id: 6, cat: 'academic', title: 'Campus Library', url: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800' },
+            { id: 7, cat: 'professional', title: 'Design Workspace', url: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800' },
+            { id: 8, cat: 'other', title: 'Midnight City', url: 'https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=800' },
+        ];
 
-            gallery.addEventListener('click', (e) => {
-                if (e.target.tagName === 'IMG') {
-                    const imageUrl = e.target.getAttribute('src');
-                    const imageAlt = e.target.getAttribute('alt'); // Get alt text
-                    popupImg.setAttribute('src', imageUrl);
-                    caption.textContent = imageAlt; // Set caption text
-                    popup.style.display = 'flex';
-                }
-            });
+        const authScreen = document.getElementById('auth-screen');
+        const mainContent = document.getElementById('main-content');
+        const passInput = document.getElementById('pass-code');
+        const unlockBtn = document.getElementById('unlock-btn');
+        const errorMsg = document.getElementById('error-msg');
+        const galleryEl = document.getElementById('gallery');
 
-            closeBtn.addEventListener('click', () => {
-                popup.style.display = 'none';
-                popup.classList.remove('zoomed');
-            });
+        function tryUnlock() {
+            const val = passInput.value.trim();
+            if (val === AUTH_CODE) {
+                authScreen.classList.add('authenticated');
+                mainContent.classList.remove('opacity-0', 'pointer-events-none');
+                mainContent.classList.add('opacity-100');
+                renderGallery('all');
+            } else {
+                errorMsg.classList.replace('opacity-0', 'opacity-100');
+                passInput.classList.add('border-red-500');
+                
+                setTimeout(() => {
+                    errorMsg.classList.replace('opacity-100', 'opacity-0');
+                    passInput.classList.remove('border-red-500');
+                    passInput.value = "";
+                }, 2000);
+            }
+        }
 
-            popup.addEventListener('click', (e) => {
-                if (e.target.classList.contains('popup')) {
-                    popup.style.display = 'none';
-                    popup.classList.remove('zoomed');
-                } else if (e.target.classList.contains('popup-img')) {
-                    popup.classList.toggle('zoomed');
-                }
-            });
+        unlockBtn.addEventListener('click', tryUnlock);
+        passInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') tryUnlock();
         });
+
+        function renderGallery(filter) {
+            galleryEl.innerHTML = '';
+            const filtered = filter === 'all' ? galleryData : galleryData.filter(d => d.cat === filter);
+            
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'img-card';
+                card.onclick = () => openLightbox(item.url);
+                card.innerHTML = `
+                    <img src="${item.url}" alt="${item.title}" loading="lazy">
+                    <div class="img-overlay">
+                        <div>
+                            <span class="text-xs uppercase tracking-widest text-pink-400 font-bold">${item.cat}</span>
+                            <h3 class="text-white text-lg font-semibold">${item.title}</h3>
+                        </div>
+                    </div>
+                `;
+                galleryEl.appendChild(card);
+            });
+        }
+
+        function filterGallery(category) {
+            renderGallery(category);
+        }
+
+        function openLightbox(url) {
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            lbImg.src = url;
+            lb.classList.add('active');
+            lb.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('active');
+            lb.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
-
