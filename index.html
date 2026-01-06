@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laine Neufeld - Artist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1b1d16;
+            color: #f8fafc;
+            overflow-x: hidden;
+            height: 100vh;
+            cursor: auto;
+            position: relative;
+        }
+
+        /* Background Effects Layer */
+        #bg-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-star {
+            position: absolute;
+            font-family: monospace;
+            color: #a4ac96;
+            opacity: 0;
+            user-select: none;
+            transition: opacity 0.8s ease-in-out, transform 8s linear;
+            white-space: pre;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .shooting-star {
+            position: absolute;
+            font-family: monospace;
+            color: #cadf9e;
+            opacity: 0;
+            user-select: none;
+            white-space: pre;
+            line-height: 1.1;
+            font-size: 4px;
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 1s ease-in-out, transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .glass-panel {
+            background: rgba(84, 70, 93, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(164, 172, 150, 0.2);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .img-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0px; 
+            transition: transform 0.3s ease;
+            cursor: pointer; 
+            z-index: 10;
+        }
+
+        .img-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .img-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border-radius: 0px; 
+        }
+
+        .img-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(27, 29, 22, 0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .img-card:hover .img-overlay {
+            opacity: 1;
+        }
+
+        .fade-in-welcome {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sparkle Click Effect */
+        .click-sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-family: monospace;
+            color: #cadf9e;
+            user-select: none;
+            animation: sparkleOut 0.8s ease-out forwards;
+        }
+
+        @keyframes sparkleOut {
+            0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(var(--tr)); opacity: 0; }
+        }
+
+        #lightbox.active { display: flex; }
+        .gallery-item-transition { transition: all 0.4s ease-in-out; }
+        button, input, a, .nav-filter { cursor: pointer !important; }
+        
+        main {
+            position: relative;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Background Space -->
+    <div id="bg-stars"></div>
+
+    <main id="main-content" class="p-6 lg:p-12 h-full overflow-y-auto fade-in-welcome">
+        <header class="max-w-7xl mx-auto mb-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-light tracking-tight text-white uppercase">Laine Neufeld</h1>
+            <div class="text-[#cadf9e] my-4 text-xl tracking-widest animate-pulse">⋆˚☆˖°⋆｡° ✮˖ ࣪ ⊹⋆.˚</div>
+            <h2 class="text-2xl font-light tracking-widest text-[#857f74] uppercase mb-8">Visual Development + UI</h2>
+            
+            <nav class="flex flex-wrap justify-center gap-4">
+                <button onclick="filterGallery('all')" class="nav-filter px-8 py-2 rounded-none glass-panel hover:bg-[#cadf9e] hover:text-[#1b1d16] transition-all text-sm font-medium tracking-widest uppercase">Portfolio</button>
+                <button onclick="filterGallery('contact')" class="nav-filter px-8 py-2 rounded-none glass-panel hover:bg-[#cadf9e] hover:text-[#1b1d16] transition-all text-sm font-medium tracking-widest uppercase">Contact</button>
+                <button onclick="filterGallery('about')" class="nav-filter px-8 py-2 rounded-none glass-panel hover:bg-[#cadf9e] hover:text-[#1b1d16] transition-all text-sm font-medium tracking-widest uppercase">About</button>
+            </nav>
+        </header>
+        <div id="gallery" class="max-w-7xl mx-auto gallery-grid"></div>
+    </main>
+
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-[#1b1d16]/95 hidden items-center justify-center p-4 cursor-zoom-out" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-none shadow-2xl border-4 border-[#54465d]">
+    </div>
+
+    <script>
+        (function() {
+            // Assets
+            const starShapes = ['+', '*', '°', '.', '✧', '⊹', '⋆', '•', '·', 'x'];
+            const clickShapes = ['✧', '⊹', '⋆', '°', '+', '*'];
+            
+            const galleryData = [
+                { id: 1, cat: 'Visual Dev', title: 'World Concept A', url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800' },
+                { id: 2, cat: 'UI Design', title: 'Dashboard System', url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800' },
+                { id: 3, cat: 'Visual Dev', title: 'Character Environment', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800' },
+                { id: 4, cat: 'UI Design', title: 'Mobile Interface', url: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=800' },
+                { id: 5, cat: 'Visual Dev', title: 'Prop Design', url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800' },
+                { id: 6, cat: 'UI Design', title: 'Design System', url: 'https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&w=800' },
+                { id: 7, cat: 'Visual Dev', title: 'Atmospheric Study', url: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800' },
+                { id: 8, cat: 'UI Design', title: 'Component Library', url: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&w=800' },
+            ];
+
+            const galleryEl = document.getElementById('gallery');
+            const bgContainer = document.getElementById('bg-stars');
+
+            // --- Background Stars Logic ---
+            function createBgStars() {
+                for (let i = 0; i < 80; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'bg-star';
+                    star.textContent = starShapes[Math.floor(Math.random() * starShapes.length)];
+                    star.style.left = Math.random() * 100 + 'vw';
+                    star.style.top = Math.random() * 100 + 'vh';
+                    star.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                    bgContainer.appendChild(star);
+                    
+                    setTimeout(() => {
+                        star.style.opacity = Math.random() * 0.5 + 0.1;
+                    }, Math.random() * 2000);
+
+                    setInterval(() => {
+                        star.style.opacity = Math.random() * 0.5 + 0.1;
+                    }, 3000 + Math.random() * 3000);
+                }
+            }
+
+            function launchShootingStar() {
+                const star = document.createElement('div');
+                star.className = 'shooting-star';
+                star.textContent = '✧';
+                const startX = Math.random() * 100;
+                const startY = Math.random() * 50;
+                star.style.left = startX + 'vw';
+                star.style.top = startY + 'vh';
+                bgContainer.appendChild(star);
+
+                requestAnimationFrame(() => {
+                    star.style.opacity = '1';
+                    star.style.transform = `translate(30vw, 30vh) scale(2)`;
+                });
+
+                setTimeout(() => {
+                    star.style.opacity = '0';
+                    setTimeout(() => star.remove(), 1000);
+                }, 3000);
+            }
+
+            // --- Gallery Logic ---
+            function renderGallery(filter) {
+                galleryEl.innerHTML = '';
+                
+                if (filter === 'contact') {
+                    const msg = document.createElement('div');
+                    msg.className = 'col-span-full py-20 text-center glass-panel p-12 mx-auto max-w-2xl';
+                    msg.innerHTML = `
+                        <h3 class="text-2xl text-[#cadf9e] uppercase tracking-widest mb-6">Contact</h3>
+                        <p class="text-gray-300 mb-8">Feel free to reach out for collaborations or inquiries.</p>
+                        <a href="mailto:hello@laine.com" class="text-white border-b border-[#cadf9e] pb-1 hover:text-[#cadf9e] transition-colors">hello@laine.com</a>
+                    `;
+                    galleryEl.appendChild(msg);
+                    return;
+                }
+
+                if (filter === 'about') {
+                    const msg = document.createElement('div');
+                    msg.className = 'col-span-full py-20 text-center glass-panel p-12 mx-auto max-w-2xl';
+                    msg.innerHTML = `
+                        <h3 class="text-2xl text-[#cadf9e] uppercase tracking-widest mb-6">About</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Laine Neufeld is a visual development artist and UI designer based in [Location]. 
+                            Specializing in cohesive world-building and intuitive digital interfaces.
+                        </p>
+                    `;
+                    galleryEl.appendChild(msg);
+                    return;
+                }
+
+                galleryData.forEach((item, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'img-card gallery-item-transition opacity-0';
+                    card.onclick = () => openLightbox(item.url);
+                    card.innerHTML = `
+                        <img src="${item.url}" alt="${item.title}" loading="lazy">
+                        <div class="img-overlay">
+                            <div>
+                                <span class="text-xs uppercase tracking-widest text-[#cadf9e] font-bold">${item.cat}</span>
+                                <h3 class="text-white text-lg font-semibold">${item.title}</h3>
+                            </div>
+                        </div>`;
+                    galleryEl.appendChild(card);
+                    setTimeout(() => card.classList.replace('opacity-0', 'opacity-100'), index * 80);
+                });
+            }
+
+            window.filterGallery = (category) => renderGallery(category);
+            window.openLightbox = (url) => {
+                const lb = document.getElementById('lightbox');
+                const lbImg = document.getElementById('lightbox-img');
+                lbImg.src = url;
+                lb.classList.remove('hidden');
+                lb.classList.add('active');
+            };
+            window.closeLightbox = () => {
+                const lb = document.getElementById('lightbox');
+                lb.classList.add('hidden');
+                lb.classList.remove('active');
+            };
+
+            // Sparkle Click Effect
+            document.addEventListener('mousedown', (e) => {
+                const count = 6;
+                for(let i = 0; i < count; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'click-sparkle';
+                    sparkle.textContent = clickShapes[Math.floor(Math.random() * clickShapes.length)];
+                    
+                    const angle = (i / count) * Math.PI * 2 + (Math.random() * 0.5);
+                    const distance = 40 + Math.random() * 60;
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+                    const rot = Math.random() * 360;
+                    
+                    sparkle.style.left = `${e.clientX}px`;
+                    sparkle.style.top = `${e.clientY}px`;
+                    sparkle.style.fontSize = (Math.random() * 14 + 10) + 'px';
+                    sparkle.style.setProperty('--tx', `${tx}px`);
+                    sparkle.style.setProperty('--ty', `${ty}px`);
+                    sparkle.style.setProperty('--tr', `${rot}deg`);
+                    
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 800);
+                }
+            });
+
+            // Init
+            createBgStars();
+            renderGallery('all');
+            setInterval(launchShootingStar, 4000);
+        })();
+    </script>
+</body>
+</html>
