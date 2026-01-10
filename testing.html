@@ -566,15 +566,22 @@
                 renderGallery(category);
             };
 
-            window.openLightbox = (url) => {
-                const lb = document.getElementById('lightbox');
-                document.getElementById('lightbox-img').src = url;
-                lb.classList.remove('hidden'); lb.classList.add('active');
-            };
-            window.closeLightbox = () => document.getElementById('lightbox').classList.add('hidden');
+           window.openLightbox = (url) => {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = url;
+    lb.classList.remove('hidden');
+    lb.classList.add('active');
+    // Prevent background scrolling while viewing image
+    document.body.style.overflow = 'hidden'; 
+};
 
-            unlockBtn.addEventListener('click', tryUnlock);
-            passInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') tryUnlock(); });
+window.closeLightbox = () => {
+    const lb = document.getElementById('lightbox');
+    lb.classList.add('hidden');
+    lb.classList.remove('active');
+    // Restore scrolling
+    document.body.style.overflow = 'auto'; 
+};
         })();
     </script>
 </body>
