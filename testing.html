@@ -279,7 +279,11 @@
             
             <div id="page-subtitle" class="text-white/60 text-sm uppercase tracking-widest italic max-w-2xl mx-auto min-h-[1.5rem] transition-opacity duration-300"></div>
         </header>
-        <div id="gallery" class="max-w-7xl mx-auto gallery-grid pb-48"></div>
+        <div id="gallery" class="max-w-7xl mx-auto gallery-grid pb-48">
+
+
+            
+        </div>
     </main>
 
     <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center p-4 cursor-zoom-out" onclick="closeLightbox()">
@@ -405,7 +409,102 @@
             }
             animate();
 
-            const galleryData = [];
+            const galleryData = [
+
+          { id: 1, cat: 'personal', title: 'Gumball Machine Prop Concept', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/001/large/laine-neufeld-gummmmmm.jpg?1767654480' },
+ { id: 2, cat: 'personal', title: 'Merry-Go-Round', url: 'https://cdnb.artstation.com/p/assets/images/images/095/115/049/large/laine-neufeld-carouselllll.jpg?1767661890' },
+ { id: 3, cat: 'personal', title: 'Green Payphone', url: 'https://cdna.artstation.com/p/assets/images/images/095/113/368/large/laine-neufeld-greenphonee.jpg?1767657751' },
+ { id: 4, cat: 'personal', title: 'Ice Cream Fridge', url: 'https://cdna.artstation.com/p/assets/images/images/095/112/762/large/laine-neufeld-icecreaam.jpg?1767654361' },
+ { id: 5, cat: 'personal', title: 'Tea Set', url: 'https://cdna.artstation.com/p/assets/images/images/095/115/182/large/laine-neufeld-teacup.jpg?1767662396' },
+ { id: 6, cat: 'personal', title: 'Ferris Wheel', url: 'https://cdna.artstation.com/p/assets/images/images/095/114/714/large/laine-neufeld-ferriswheel.webp?1767660525' },
+ { id: 7, cat: 'personal', title: 'Bowl of Sweets', url: 'https://cdnb.artstation.com/p/assets/images/images/095/114/593/large/laine-neufeld-image-7.jpg?1767660195' },
+ { id: 8, cat: 'personal', title: 'Kitchen Scene', url: 'https://cdnb.artstation.com/p/assets/images/images/095/114/537/large/laine-neufeld-kitchen.jpg?1767659852' },
+ { id: 9, cat: 'personal', title: 'Drum Kit', url: 'https://cdnb.artstation.com/p/assets/images/images/095/114/281/large/laine-neufeld-drms.webp?1767658910' },
+ { id: 10, cat: 'personal', title: 'Stairs', url: 'https://cdnb.artstation.com/p/assets/images/images/095/114/203/large/laine-neufeld-steps.jpg?1767658585' },
+ { id: 11, cat: 'personal', title: 'Psychic Lair', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/885/large/laine-neufeld-tarot.webp?1767657422' },
+ { id: 12, cat: 'personal', title: 'Skee-Ball', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/769/large/laine-neufeld-game2-1.jpg?1767657172' },
+ { id: 13, cat: 'personal', title: 'ATM', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/761/large/laine-neufeld-atm.webp?1767656960' },
+ { id: 14, cat: 'personal', title: 'Retro Video Game Controls', url: 'https://cdna.artstation.com/p/assets/images/images/095/113/604/large/laine-neufeld-game.jpg?1767656451' },
+ { id: 15, cat: 'personal', title: 'TV', url: 'https://cdna.artstation.com/p/assets/images/images/095/113/598/large/laine-neufeld-tv.webp?1767656414' }, 
+ { id: 16, cat: 'personal', title: 'Green Car', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/359/large/laine-neufeld-greencar.webp?1767655756' },
+ { id: 17, cat: 'personal', title: 'Kitty in the Window', url: 'https://cdnb.artstation.com/p/assets/images/images/095/112/441/large/laine-neufeld-kittybushes.jpg?1767653644' },
+ { id: 18, cat: 'personal', title: 'Garden', url: 'https://cdnb.artstation.com/p/assets/images/images/095/114/973/large/laine-neufeld-outdoors.webp?1767661440' },
+ // TRADITIONAL
+ { id: 19, cat: 'traditional', title: 'Busts from life in watercolor', url: 'bustwater.jpg' },
+ { id: 20, cat: 'traditional', title: 'Doll from life in oil', url: 'doll.jpg' },
+ { id: 21, cat: 'traditional', title: 'Buddha ceramic drawn from life in marker', url: 'buddha.jpg' },
+ { id: 22, cat: 'traditional', title: 'Apple from life in oil', url: 'apple.jpg' },
+ { id: 23, cat: 'traditional', title: 'Flowers from life in gouache', url: 'floral.jpg' },
+ { id: 24, cat: 'traditional', title: 'Sasha the dog in oil', url: 'sasha.jpg' },
+ { id: 25, cat: 'traditional', title: 'Charlie the dog in oil', url: 'charlie.jpg' },
+ { id: 26, cat: 'traditional', title: 'Model painted from photo in oil', url: 'andy.jpg' },
+ { id: 27, cat: 'traditional', title: 'Lamp painted from life in oil', url: 'lamp.jpg' },
+ { id: 28, cat: 'traditional', title: 'Friend painted from photo in oil', url: 'kasaj.jpg' },
+ { id: 29, cat: 'traditional', title: 'Cup painted from life in oil', url: 'cup.jpg' },
+ { id: 30, cat: 'traditional', title: 'Guitar painted from life in watercolor', url: 'guitarwater.jpg' },
+ { id: 31, cat: 'traditional', title: 'Teacups from life in oil', url: 'tea.jpg' },
+ { id: 32, cat: 'traditional', title: 'Study of JPEGMAFIA album cover in oil - All My Heroes are Cornballs', url: 'peggy.jpg' },
+ // ACADEMIC
+ { id: 33, cat: 'academic', title: 'Study of Mucha, gouache', url: 'mucha.jpg' },
+ { id: 34, cat: 'academic', title: 'Study of Beaux, oil', url: 'beaux.jpg' },
+ { id: 35, cat: 'academic', title: 'Study of Bouguereau, oil', url: 'boug.jpg' },
+ { id: 36, cat: 'academic', title: 'Life Size Study of Sargent, oil', url: 'sargent.jpg' },
+ { id: 37, cat: 'academic', title: 'Study of Leyendecker, gouache', url: 'leyen1.jpg' },
+ { id: 38, cat: 'academic', title: 'Study of Leyendecker, gouache', url: 'leyen2.jpg' },
+ // PROCESS
+ { id: 39, cat: 'process', title: 'Process', url: 'process (1).jpg' },
+ { id: 40, cat: 'process', title: 'Process', url: 'process (1).png' },
+ { id: 41, cat: 'process', title: 'Process', url: 'process (10).jpg' },
+ { id: 42, cat: 'process', title: 'Process', url: 'process (2).jpg' },
+ { id: 43, cat: 'process', title: 'Process', url: 'process (2).png' },
+ { id: 44, cat: 'process', title: 'Process', url: 'process (3).jpg' },
+ { id: 45, cat: 'process', title: 'Process', url: 'process (3).png' },
+ { id: 46, cat: 'process', title: 'Process', url: 'process (4).jpg' },
+ { id: 47, cat: 'process', title: 'Process', url: 'process (4).png' },
+ { id: 48, cat: 'process', title: 'Process', url: 'process (5).jpg' },
+ { id: 49, cat: 'process', title: 'Process', url: 'process (6).jpg' },
+ { id: 50, cat: 'process', title: 'Process', url: 'process (7).jpg' },
+ { id: 51, cat: 'process', title: 'Process', url: 'process (8).jpg' },
+ { id: 52, cat: 'process', title: 'Process', url: 'process (9).jpg' },
+ // PROFESSIONAL
+ { id: 53, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (1).jpg' },
+ { id: 54, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (2).jpg' },
+ { id: 55, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (3).jpg' },
+ { id: 56, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (4).jpg' },
+ { id: 57, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (5).jpg' },
+ { id: 58, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (6).jpg' },
+ { id: 59, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (7).jpg' },
+ { id: 60, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (8).jpg' },
+ { id: 61, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (9).jpg' },
+ { id: 62, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (10).jpg' },
+ { id: 63, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (11).jpg' },
+ { id: 64, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (12).jpg' },
+ { id: 65, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (13).jpg' },
+ { id: 66, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (14).jpg' },
+ { id: 67, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (15).jpg' },
+ { id: 68, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (16).jpg' },
+ { id: 69, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (17).jpg' },
+ { id: 70, cat: 'professional', title: 'Cover Art for Client (McGraw Hill)', url: 'cover (18).jpg' },
+ //other adds
+ { id: 71, cat: 'academic', title: 'Study of Yuming Li', url: 'knight2.jpg' },
+ { id: 72, cat: 'personal', title: 'Study of Knight', url: 'knightpaint.jpg' },
+ { id: 73, cat: 'personal', title: 'Gouache Flowers', url: 'floral2.jpg' },
+ { id: 74, cat: 'academic', title: 'Study of Beaux', url: 'beaux2.jpg' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            ];
             const authScreen = document.getElementById('auth-screen');
             const mainContent = document.getElementById('main-content');
             const passInput = document.getElementById('pass-code');
