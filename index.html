@@ -8,101 +8,58 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-        /* Loading OpenDyslexic from a public CDN */
-        @font-face {
-            font-family: 'OpenDyslexic';
-            src: url('https://cdn.jsdelivr.net/npm/opendyslexic@1.0.3/font/OpenDyslexic-Regular.otf');
-        }
-
-        :root {
-            /* 2. ORIGINAL THEME (Default) */
-            --bg-color: #1b1d16;
-            --text-main: #f8fafc;
-            --accent: #cadf9e;
-            --secondary-text: #857f74;
-            --glass: rgba(84, 70, 93, 0.4);
-            --star-color: #a4ac96;
-            --overlay-grad: rgba(27, 29, 22, 0.9);
-        }
-
-        /* 1. CHERRY PINK */
-        [data-theme="cherry"] {
-            --bg-color: #2d161d;
-            --text-main: #ffe4e6;
-            --accent: #fb7185;
-            --secondary-text: #9f1239;
-            --glass: rgba(159, 18, 57, 0.2);
-            --star-color: #fda4af;
-            --overlay-grad: rgba(45, 22, 29, 0.9);
-        }
-
-        /* 3. MIDNIGHT BLUE */
-        [data-theme="midnight"] {
-            --bg-color: #020617;
-            --text-main: #f1f5f9;
-            --accent: #38bdf8;
-            --secondary-text: #475569;
-            --glass: rgba(30, 41, 59, 0.5);
-            --star-color: #94a3b8;
-            --overlay-grad: rgba(2, 6, 23, 0.9);
-        }
-
-        /* 4. COLORBLIND (High Contrast / Symbol Focus) */
-        [data-theme="colorblind"] {
-            --bg-color: #000000;
-            --text-main: #ffffff;
-            --accent: #fde047; /* Bright Yellow is highly visible */
-            --secondary-text: #cccccc;
-            --glass: rgba(255, 255, 255, 0.1);
-            --star-color: #ffffff;
-            --overlay-grad: rgba(0, 0, 0, 0.95);
-        }
-
-        /* 5. MIGRAINE/LOW STRAIN (Warm Amber, Low Contrast) */
-        [data-theme="migraine"] {
-            --bg-color: #26211a;
-            --text-main: #d9c5b2;
-            --accent: #b38b6d;
-            --secondary-text: #736356;
-            --glass: rgba(60, 50, 40, 0.4);
-            --star-color: #594d42;
-            --overlay-grad: rgba(38, 33, 26, 0.9);
-        }
-
-        /* 7. DESERT ORANGE */
-        [data-theme="desert"] {
-            --bg-color: #431407;
-            --text-main: #ffedd5;
-            --accent: #f97316;
-            --secondary-text: #9a3412;
-            --glass: rgba(154, 52, 18, 0.3);
-            --star-color: #fdba74;
-            --overlay-grad: rgba(67, 20, 7, 0.9);
-        }
-
-        /* 6. DYSLEXIC FONT */
-        body.dyslexic { font-family: 'OpenDyslexic', sans-serif !important; }
-        body:not(.dyslexic) { font-family: 'Inter', sans-serif; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            transition: all 0.4s ease;
-            overflow-x: hidden;
-        }
-
-        /* Accessibility: Reduce motion if user prefers */
-        @media (prefers-reduced-motion: reduce) {
-            * { animation: none !important; transition: none !important; }
-        }
-
-        #bg-stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-        .bg-star { position: absolute; color: var(--star-color); transition: color 0.5s; }
         
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1b1d16;
+            color: #f8fafc;
+            overflow-x: hidden;
+            height: 100vh;
+            cursor: auto;
+            position: relative;
+        }
+
+        /* Background Effects Layer */
+        #bg-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-star {
+            position: absolute;
+            font-family: monospace;
+            color: #a4ac96;
+            opacity: 0;
+            user-select: none;
+            transition: opacity 0.8s ease-in-out, transform 8s linear;
+            white-space: pre;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .shooting-star {
+            position: absolute;
+            font-family: monospace;
+            color: #cadf9e;
+            opacity: 0;
+            user-select: none;
+            white-space: pre;
+            line-height: 1.1;
+            font-size: 4px;
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 1s ease-in-out, transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
         .glass-panel {
-            background: var(--glass);
+            background: rgba(84, 70, 93, 0.4);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(164, 172, 150, 0.2);
         }
 
         .gallery-grid {
@@ -111,101 +68,140 @@
             gap: 1.5rem;
         }
 
-        .img-card { position: relative; overflow: hidden; transition: transform 0.3s ease; z-index: 10; cursor: pointer; }
-        .img-card:hover { transform: translateY(-5px); }
-        .img-card img { width: 100%; height: 300px; object-fit: cover; }
-        
+        .img-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0px; 
+            transition: transform 0.3s ease;
+            cursor: pointer; 
+            z-index: 10;
+        }
+
+        .img-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .img-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border-radius: 0px; 
+        }
+
+        .img-card:hover img {
+            transform: scale(1.1);
+        }
+
         .img-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--overlay-grad), transparent);
-            opacity: 0; transition: opacity 0.3s ease;
-            display: flex; align-items: flex-end; padding: 1.5rem;
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(27, 29, 22, 0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
         }
-        .img-card:hover .img-overlay { opacity: 1; }
 
-        /* Controls Panel */
-        #settings-panel {
-            position: fixed; top: 1rem; right: 1rem; z-index: 100;
+        .img-card:hover .img-overlay {
+            opacity: 1;
         }
-        .settings-content {
-            display: none; width: 200px; padding: 1rem;
-            margin-top: 0.5rem; border-radius: 8px;
-        }
-        #settings-panel:hover .settings-content { display: block; }
 
-        .theme-swatch {
-            width: 100%; text-align: left; padding: 6px 10px;
-            font-size: 11px; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: background 0.2s;
+        .fade-in-welcome {
+            animation: fadeIn 1.2s ease-out forwards;
         }
-        .theme-swatch:hover { background: rgba(255,255,255,0.1); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sparkle Click Effect */
+        .click-sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-family: monospace;
+            color: #cadf9e;
+            user-select: none;
+            animation: sparkleOut 0.8s ease-out forwards;
+        }
+
+        @keyframes sparkleOut {
+            0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(var(--tr)); opacity: 0; }
+        }
+
+        #lightbox.active { display: flex; }
+        .gallery-item-transition { transition: all 0.4s ease-in-out; }
+        button, input, a, .nav-filter { cursor: pointer !important; }
+        
+        main {
+            position: relative;
+            z-index: 5;
+        }
     </style>
 </head>
 <body class="min-h-screen">
 
+    <!-- Background Space -->
     <div id="bg-stars"></div>
 
-    <div id="settings-panel">
-        <button class="glass-panel px-4 py-2 text-xs uppercase tracking-tighter">✨ Appearance</button>
-        <div class="settings-content glass-panel">
-            <p class="text-[10px] uppercase opacity-50 mb-2">Themes</p>
-            <button onclick="setTheme('default')" class="theme-swatch">Original</button>
-            <button onclick="setTheme('cherry')" class="theme-swatch">Cherry Pink</button>
-            <button onclick="setTheme('midnight')" class="theme-swatch">Midnight Blue</button>
-            <button onclick="setTheme('desert')" class="theme-swatch">Desert Orange</button>
-            
-            <p class="text-[10px] uppercase opacity-50 mt-4 mb-2">Accessibility</p>
-            <button onclick="setTheme('colorblind')" class="theme-swatch">Colorblind (High Contrast)</button>
-            <button onclick="setTheme('migraine')" class="theme-swatch">Eye Strain / Migraine</button>
-            <button onclick="toggleDyslexic()" class="theme-swatch" id="dys-btn">Toggle Dyslexic Font</button>
-        </div>
-    </div>
-
-    <main id="main-content" class="p-6 lg:p-12 h-full overflow-y-auto relative z-10">
+    <main id="main-content" class="p-6 lg:p-12 h-full overflow-y-auto fade-in-welcome">
         <header class="max-w-7xl mx-auto mb-12 text-center">
-            <h1 class="text-4xl md:text-6xl font-light tracking-tight uppercase" style="color: var(--text-main)">Laine Neufeld</h1>
-            <div class="my-4 text-xl tracking-widest animate-pulse" style="color: var(--accent)">⋆˚☆˖°⋆｡° ✮˖ ࣪ ⊹⋆.˚</div>
-            <h2 class="text-2xl font-light tracking-widest uppercase mb-8" style="color: var(--secondary-text)">Visual Development + UI</h2>
+            <h1 class="text-4xl md:text-5xl font-light tracking-tight text-white uppercase">Laine Neufeld</h1>
+            <div class="text-[#cadf9e] my-4 text-xl tracking-widest animate-pulse">⋆˚☆˖°⋆｡° ✮˖ ࣪ ⊹⋆.˚</div>
+            <h2 class="text-2xl font-light tracking-widest text-[#857f74] uppercase mb-8">Visual Development + UI</h2>
             
             <nav class="flex flex-wrap justify-center gap-4">
-                <button onclick="filterGallery('all')" class="nav-filter px-8 py-2 glass-panel hover:opacity-80 transition-all text-sm font-medium tracking-widest uppercase">Portfolio</button>
-                <button onclick="filterGallery('contact')" class="nav-filter px-8 py-2 glass-panel hover:opacity-80 transition-all text-sm font-medium tracking-widest uppercase">Contact</button>
-                <button onclick="filterGallery('about')" class="nav-filter px-8 py-2 glass-panel hover:opacity-80 transition-all text-sm font-medium tracking-widest uppercase">About</button>
+                <button onclick="filterGallery('all')" class="nav-filter px-8 py-2 rounded-none glass-panel hover:bg-[#cadf9e] hover:text-[#1b1d16] transition-all text-sm font-medium tracking-widest uppercase">Portfolio</button>
+                <button onclick="filterGallery('contact')" class="nav-filter px-8 py-2 rounded-none glass-panel hover:bg-[#cadf9e] hover:text-[#1b1d16] transition-all text-sm font-medium tracking-widest uppercase">Contact</button>
+                <button onclick="filterGallery('about')" class="nav-filter px-8 py-2 rounded-none glass-panel hover:bg-[#cadf9e] hover:text-[#1b1d16] transition-all text-sm font-medium tracking-widest uppercase">About</button>
             </nav>
         </header>
-
         <div id="gallery" class="max-w-7xl mx-auto gallery-grid"></div>
     </main>
 
-    <div id="lightbox" class="fixed inset-0 z-[110] bg-black/95 hidden items-center justify-center p-4 cursor-zoom-out" onclick="closeLightbox()">
-        <img id="lightbox-img" src="" class="max-w-full max-h-full border-2" style="border-color: var(--accent)">
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-[#1b1d16]/95 hidden items-center justify-center p-4 cursor-zoom-out" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-none shadow-2xl border-4 border-[#54465d]">
     </div>
 
     <script>
         (function() {
+            // Assets
             const starShapes = ['+', '*', '°', '.', '✧', '⊹', '⋆', '•', '·', 'x'];
-            const galleryData = [
-                { id: 1, cat: 'Visual Dev', title: 'Gumball Machine', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/001/large/laine-neufeld-gummmmmm.jpg?1767654480' },
+            const clickShapes = ['✧', '⊹', '⋆', '°', '+', '*'];
+          
+           const galleryData = [
+               { id: 1, cat: 'Visual Dev', title: 'Gumball Machine Prop Concept', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/001/large/laine-neufeld-gummmmmm.jpg?1767654480' },
                 { id: 2, cat: 'Visual Dev', title: 'Merry-Go-Round', url: 'https://cdnb.artstation.com/p/assets/images/images/095/115/049/large/laine-neufeld-carouselllll.jpg?1767661890' },
-                { id: 11, cat: 'Visual Dev', title: 'Psychic Lair', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/885/large/laine-neufeld-tarot.webp?1767657422' },
-                { id: 17, cat: 'Visual Dev', title: 'Kitty in the Window', url: 'https://cdnb.artstation.com/p/assets/images/images/095/112/441/large/laine-neufeld-kittybushes.jpg?1767653644' }
+                 { id: 3, cat: 'Visual Dev', title: 'Green Payphone', url: 'https://cdna.artstation.com/p/assets/images/images/095/113/368/large/laine-neufeld-greenphonee.jpg?1767657751' },
+              { id: 4, cat: 'Visual Dev', title: 'Ice Cream Fridge', url: 'https://cdna.artstation.com/p/assets/images/images/095/112/762/large/laine-neufeld-icecreaam.jpg?1767654361' },
+           { id: 5, cat: 'Visual Dev', title: 'Tea Set', url: 'https://cdna.artstation.com/p/assets/images/images/095/115/182/large/laine-neufeld-teacup.jpg?1767662396' },
+             { id: 6, cat: 'Visual Dev', title: 'Ferris Wheel', url: 'https://cdna.artstation.com/p/assets/images/images/095/114/714/large/laine-neufeld-ferriswheel.webp?1767660525' },
+           { id: 7, cat: 'Visual Dev', title: 'Bowl of Sweets', url: 'https://cdnb.artstation.com/p/assets/images/images/095/114/593/large/laine-neufeld-image-7.jpg?1767660195' },
+        { id: 8, cat: 'Visual Dev', title: 'Kitchen Scene', url: 'https://cdnb.artstation.com/p/assets/images/images/095/114/537/large/laine-neufeld-kitchen.jpg?1767659852' },
+               
+{ id: 9, cat: 'Visual Dev', title: 'Drum Kit', url: 'https://cdnb.artstation.com/p/assets/images/images/095/114/281/large/laine-neufeld-drms.webp?1767658910' },
+               { id: 10, cat: 'Visual Dev', title: 'Stairs', url: 'https://cdnb.artstation.com/p/assets/images/images/095/114/203/large/laine-neufeld-steps.jpg?1767658585' },
+{ id: 11, cat: 'Visual Dev', title: 'Psychic Lair', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/885/large/laine-neufeld-tarot.webp?1767657422' },
+{ id: 12, cat: 'Visual Dev', title: 'Skee-Ball', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/769/large/laine-neufeld-game2-1.jpg?1767657172' },
+{ id: 13, cat: 'Visual Dev', title: 'ATM', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/761/large/laine-neufeld-atm.webp?1767656960' },
+{ id: 14, cat: 'Visual Dev', title: 'Retro Video Game Controls', url: 'https://cdna.artstation.com/p/assets/images/images/095/113/604/large/laine-neufeld-game.jpg?1767656451' },
+
+              { id: 15, cat: 'Visual Dev', title: 'TV', url: 'https://cdna.artstation.com/p/assets/images/images/095/113/598/large/laine-neufeld-tv.webp?1767656414' },    
+               { id: 16, cat: 'Visual Dev', title: 'Green Car', url: 'https://cdnb.artstation.com/p/assets/images/images/095/113/359/large/laine-neufeld-greencar.webp?1767655756' },
+                { id: 17, cat: 'Visual Dev', title: 'Kitty in the Window', url: 'https://cdnb.artstation.com/p/assets/images/images/095/112/441/large/laine-neufeld-kittybushes.jpg?1767653644' },
+               { id: 18, cat: 'Visual Dev', title: 'Garden', url: 'https://cdnb.artstation.com/p/assets/images/images/095/114/973/large/laine-neufeld-outdoors.webp?1767661440' },
+           
+             
             ];
 
             const galleryEl = document.getElementById('gallery');
             const bgContainer = document.getElementById('bg-stars');
 
-            // --- Theme & Font Logic ---
-            window.setTheme = (theme) => {
-                if (theme === 'default') document.body.removeAttribute('data-theme');
-                else document.body.setAttribute('data-theme', theme);
-            };
-
-            window.toggleDyslexic = () => {
-                document.body.classList.toggle('dyslexic');
-                const btn = document.getElementById('dys-btn');
-                btn.textContent = document.body.classList.contains('dyslexic') ? "Using Dyslexic Font" : "Toggle Dyslexic Font";
-            };
-
+            // --- Background Stars Logic ---
             function createBgStars() {
                 for (let i = 0; i < 80; i++) {
                     const star = document.createElement('div');
@@ -215,62 +211,132 @@
                     star.style.top = Math.random() * 100 + 'vh';
                     star.style.fontSize = (Math.random() * 10 + 10) + 'px';
                     bgContainer.appendChild(star);
-                    setTimeout(() => star.style.opacity = Math.random() * 0.5 + 0.1, Math.random() * 2000);
-                    setInterval(() => star.style.opacity = Math.random() * 0.5 + 0.1, 3000 + Math.random() * 3000);
+                    
+                    setTimeout(() => {
+                        star.style.opacity = Math.random() * 0.5 + 0.1;
+                    }, Math.random() * 2000);
+
+                    setInterval(() => {
+                        star.style.opacity = Math.random() * 0.5 + 0.1;
+                    }, 3000 + Math.random() * 3000);
                 }
             }
 
+            function launchShootingStar() {
+                const star = document.createElement('div');
+                star.className = 'shooting-star';
+                star.textContent = '✧';
+                const startX = Math.random() * 100;
+                const startY = Math.random() * 50;
+                star.style.left = startX + 'vw';
+                star.style.top = startY + 'vh';
+                bgContainer.appendChild(star);
+
+                requestAnimationFrame(() => {
+                    star.style.opacity = '1';
+                    star.style.transform = `translate(30vw, 30vh) scale(2)`;
+                });
+
+                setTimeout(() => {
+                    star.style.opacity = '0';
+                    setTimeout(() => star.remove(), 1000);
+                }, 3000);
+            }
+
+            // --- Gallery Logic ---
             function renderGallery(filter) {
                 galleryEl.innerHTML = '';
-                if (filter === 'all') {
-                    galleryData.forEach((item, index) => {
-                        const card = document.createElement('div');
-                        card.className = 'img-card opacity-0';
-                        card.onclick = () => openLightbox(item.url);
-                        card.innerHTML = `<img src="${item.url}" alt="${item.title}"><div class="img-overlay"><div><span class="text-xs uppercase font-bold" style="color: var(--accent)">${item.cat}</span><h3 class="text-white text-lg">${item.title}</h3></div></div>`;
-                        galleryEl.appendChild(card);
-                        setTimeout(() => card.classList.replace('opacity-0', 'opacity-100'), index * 80);
-                    });
-                } else {
+                
+                if (filter === 'contact') {
                     const msg = document.createElement('div');
                     msg.className = 'col-span-full py-20 text-center glass-panel p-12 mx-auto max-w-2xl';
-                    msg.innerHTML = `<h3 class="text-2xl uppercase mb-6" style="color: var(--accent)">${filter}</h3><p style="color: var(--secondary-text)">Coming soon...</p>`;
+                    msg.innerHTML = `
+                        <h3 class="text-2xl text-[#cadf9e] uppercase tracking-widest mb-6">Let's Chat</h3>
+                        <p class="text-gray-300 mb-8">I can't wait to hear from you!</p>
+                        <a href="mailto:laineneufeldart@gmail.com" class="text-white border-b border-[#cadf9e] pb-1 hover:text-[#cadf9e] transition-colors">laineneufeldart@gmail.com</a>
+                    `;
                     galleryEl.appendChild(msg);
+                    return;
                 }
+
+                if (filter === 'about') {
+                    const msg = document.createElement('div');
+                    msg.className = 'col-span-full py-20 text-center glass-panel p-12 mx-auto max-w-2xl';
+                    msg.innerHTML = `
+                        <h3 class="text-2xl text-[#cadf9e] uppercase tracking-widest mb-6">About</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Laine Neufeld is a visual development and interface artist interested in illustration and design.
+                          </p>  <br><p>
+                            With an academic background in programming and mathematics, Laine brings dual fluency in art and code. 
+                            Specialties include intuitive interface composition
+                            and cohesive 2d-to-3d visual development.
+                        </p>
+                    `;
+                    galleryEl.appendChild(msg);
+                    return;
+                }
+
+                galleryData.forEach((item, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'img-card gallery-item-transition opacity-0';
+                    card.onclick = () => openLightbox(item.url);
+                    card.innerHTML = `
+                        <img src="${item.url}" alt="${item.title}" loading="lazy">
+                        <div class="img-overlay">
+                            <div>
+                                <span class="text-xs uppercase tracking-widest text-[#cadf9e] font-bold">${item.cat}</span>
+                                <h3 class="text-white text-lg font-semibold">${item.title}</h3>
+                            </div>
+                        </div>`;
+                    galleryEl.appendChild(card);
+                    setTimeout(() => card.classList.replace('opacity-0', 'opacity-100'), index * 80);
+                });
             }
 
-            window.filterGallery = (cat) => renderGallery(cat);
+            window.filterGallery = (category) => renderGallery(category);
             window.openLightbox = (url) => {
                 const lb = document.getElementById('lightbox');
-                document.getElementById('lightbox-img').src = url;
-                lb.classList.remove('hidden'); lb.classList.add('flex');
+                const lbImg = document.getElementById('lightbox-img');
+                lbImg.src = url;
+                lb.classList.remove('hidden');
+                lb.classList.add('active');
             };
             window.closeLightbox = () => {
                 const lb = document.getElementById('lightbox');
-                lb.classList.add('hidden'); lb.classList.remove('flex');
+                lb.classList.add('hidden');
+                lb.classList.remove('active');
             };
 
-            // Click sparkles
+            // Sparkle Click Effect
             document.addEventListener('mousedown', (e) => {
-                const count = 5;
-                for(let i = 0; i < count; i++){
-                    const s = document.createElement('div');
-                    s.className = 'fixed pointer-events-none z-[9999] opacity-0';
-                    s.textContent = '✧';
-                    s.style.color = 'var(--accent)';
-                    s.style.left = e.clientX + 'px';
-                    s.style.top = e.clientY + 'px';
-                    document.body.appendChild(s);
-                    const angle = (i/count) * 6.28;
-                    s.animate([
-                        { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
-                        { transform: `translate(${Math.cos(angle)*50}px, ${Math.sin(angle)*50}px) scale(1.5)`, opacity: 0 }
-                    ], { duration: 800, easing: 'ease-out' }).onfinish = () => s.remove();
+                const count = 6;
+                for(let i = 0; i < count; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'click-sparkle';
+                    sparkle.textContent = clickShapes[Math.floor(Math.random() * clickShapes.length)];
+                    
+                    const angle = (i / count) * Math.PI * 2 + (Math.random() * 0.5);
+                    const distance = 40 + Math.random() * 60;
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+                    const rot = Math.random() * 360;
+                    
+                    sparkle.style.left = `${e.clientX}px`;
+                    sparkle.style.top = `${e.clientY}px`;
+                    sparkle.style.fontSize = (Math.random() * 14 + 10) + 'px';
+                    sparkle.style.setProperty('--tx', `${tx}px`);
+                    sparkle.style.setProperty('--ty', `${ty}px`);
+                    sparkle.style.setProperty('--tr', `${rot}deg`);
+                    
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 800);
                 }
             });
 
+            // Init
             createBgStars();
             renderGallery('all');
+            setInterval(launchShootingStar, 4000);
         })();
     </script>
 </body>
