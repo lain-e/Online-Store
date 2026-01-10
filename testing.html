@@ -124,6 +124,7 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
         }
 
         #branding-bar {
@@ -206,7 +207,7 @@
         </div>
     </div>
 
-    <!-- Restored Branding Bar with all original items -->
+    <!-- Restored Branding Bar -->
     <div id="branding-bar" class="opacity-0 hidden transition-all duration-1000 translate-y-full">
         <div class="flex items-center gap-4">
             <h3 class="text-accent font-bold tracking-[0.2em] text-xs uppercase">Laine Neufeld</h3>
@@ -222,7 +223,6 @@
                 </svg>
             </a>
             
-            <!-- Social Icons or additional links if needed can go here -->
             <div class="flex gap-4">
                 <a href="#" class="text-white/40 hover:text-white transition-colors text-[10px] tracking-widest uppercase">Resume</a>
                 <a href="#" class="text-white/40 hover:text-white transition-colors text-[10px] tracking-widest uppercase">About</a>
@@ -267,13 +267,17 @@
         <header class="max-w-7xl mx-auto mb-12 text-center">
             <h1 class="text-4xl md:text-5xl font-light tracking-tight text-white uppercase">Laine Neufeld</h1>
             <div class="text-accent my-4 text-xl tracking-widest animate-pulse">⋆˚☆˖°⋆｡° ✮˖ ࣪ ⊹⋆.˚</div>
+            
             <nav id="filter-nav" class="flex flex-wrap justify-center gap-2 mb-8">
                 <button data-filter="all" onclick="filterGallery('all')" class="nav-filter active px-6 py-2 glass-panel text-sm">All</button>
                 <button data-filter="personal" onclick="filterGallery('personal')" class="nav-filter px-6 py-2 glass-panel text-sm">Personal</button>
                 <button data-filter="academic" onclick="filterGallery('academic')" class="nav-filter px-6 py-2 glass-panel text-sm">Academic</button>
                 <button data-filter="professional" onclick="filterGallery('professional')" class="nav-filter px-6 py-2 glass-panel text-sm">Professional</button>
+                <button data-filter="traditional" onclick="filterGallery('traditional')" class="nav-filter px-6 py-2 glass-panel text-sm">Traditional</button>
+                <button data-filter="process" onclick="filterGallery('process')" class="nav-filter px-6 py-2 glass-panel text-sm">Process</button>
             </nav>
-            <div id="page-subtitle" class="text-white/60 text-sm italic max-w-2xl mx-auto min-h-[1.5rem]"></div>
+            
+            <div id="page-subtitle" class="text-white/60 text-sm uppercase tracking-widest italic max-w-2xl mx-auto min-h-[1.5rem] transition-opacity duration-300"></div>
         </header>
         <div id="gallery" class="max-w-7xl mx-auto gallery-grid pb-48"></div>
     </main>
@@ -297,6 +301,15 @@
                 night: { bg: '#000c24', accent: '#7fa9ff', starCount: 200 },
                 colorblind: { bg: '#050505', accent: '#00f2ff', starCount: 150 },
                 eyestrain: { bg: '#2b261d', accent: '#e8c99b', starCount: 30 }
+            };
+
+            const subtitles = {
+                all: "Comprehensive gallery of visual development works.",
+                personal: "Environment, prop design, and storytelling explorations.",
+                academic: "Master studies and traditional media fundamentals.",
+                professional: "Client projects and industry commissions.",
+                traditional: "Works made in oil, gouache or watercolor - original reference.",
+                process: "Sketches, color keys, and the evolution of final pieces."
             };
 
             function getAutoTheme() {
@@ -324,7 +337,6 @@
             window.togglePanel = () => {
                 const menu = document.getElementById('theme-menu');
                 const isActive = menu.classList.contains('active');
-                
                 if (isActive) {
                     menu.classList.remove('active');
                 } else {
@@ -399,6 +411,7 @@
             const passInput = document.getElementById('pass-code');
             const unlockBtn = document.getElementById('unlock-btn');
             const galleryEl = document.getElementById('gallery');
+            const subtitleEl = document.getElementById('page-subtitle');
             const themeMenu = document.getElementById('theme-menu');
             const brandingBar = document.getElementById('branding-bar');
 
@@ -424,8 +437,20 @@
             }
 
             function renderGallery(filter) {
+                // Update Subtitle
+                subtitleEl.style.opacity = '0';
+                setTimeout(() => {
+                    subtitleEl.textContent = subtitles[filter] || "";
+                    subtitleEl.style.opacity = '1';
+                }, 200);
+
                 galleryEl.innerHTML = '';
                 const filtered = filter === 'all' ? galleryData : galleryData.filter(d => d.cat === filter);
+                
+                if (filtered.length === 0) {
+                    galleryEl.innerHTML = `<div class="col-span-full py-20 text-center text-white/20 uppercase tracking-[0.3em] text-[10px]">No linked assets found in category: ${filter}</div>`;
+                }
+
                 filtered.forEach((item, index) => {
                     const card = document.createElement('div');
                     card.className = 'img-card opacity-0 transition-opacity duration-500';
