@@ -160,11 +160,21 @@
             margin-top: var(--site-header-h);
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: clamp(0.5rem, 1.5vh, 0.75rem);
             padding-top: 0.5rem;
             padding-bottom: 0.35rem;
             box-sizing: border-box;
             overflow: hidden;
+        }
+        .hero-viewport.site-shell {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        /* 6/8 viewport width — 1/8 margin on each side */
+        .hero-content-width {
+            width: 75vw;
+            max-width: calc(100% - 2rem);
         }
         .hero-window {
             flex: 1 1 0;
@@ -204,6 +214,29 @@
             width: 100%;
             height: auto;
             background: transparent;
+        }
+
+        /* Props section only — uniform boxes matching win95 window (#7b8cde) */
+        #props .gallery-frame-box {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: #7b8cde;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        #props .gallery-frame-box.win-border-inset {
+            border-top-color: #9aa8e8;
+            border-left-color: #9aa8e8;
+            border-bottom-color: #5a6ba8;
+            border-right-color: #5a6ba8;
+        }
+        #props .gallery-frame-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #7b8cde;
         }
 
         .hero-slideshow-wrap {
@@ -349,7 +382,7 @@
 
     <section class="hero-viewport site-shell w-full">
         <!-- Main Hero Window -->
-        <div class="hero-window bg-win95-bg win-border w-full shadow-[8px_8px_0_0_rgba(48,52,44,0.3)]">
+        <div class="hero-window hero-content-width bg-win95-bg win-border shadow-[8px_8px_0_0_rgba(48,52,44,0.3)]">
             <!-- Window Titlebar -->
             <div class="bg-win95-titlebar text-win95-accentText px-2 py-1 flex justify-between items-center font-bold text-base sm:text-lg cursor-default shrink-0">
                 <div class="flex gap-2 items-center">
@@ -375,7 +408,7 @@
         </div>
 
         <!-- Action Buttons (always within first viewport) -->
-        <div class="hero-actions flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-6 z-10 w-full">
+        <div class="hero-actions hero-content-width flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-6 z-10">
             <a href="#visdev" class="win-button win-border px-6 sm:px-8 py-2.5 sm:py-3 font-bold text-base sm:text-xl uppercase w-full sm:w-auto text-center hover:opacity-90 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)]">
                 View VISDEV
             </a>
@@ -474,7 +507,7 @@
                         <!-- Prop Item 1 -->
                         <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Doll" data-category="Prop" data-tag="Asset Design" data-desc="Detailed doll asset design.">
                             <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>doll.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
-                            <div class="image-fit-wrap relative mb-1 sm:mb-2">
+                            <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/369/594/large/laine-neufeld-doll-final.jpg?1779753510" alt="Doll" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Porcelain Doll</h4></div>
@@ -482,7 +515,7 @@
                         <!-- Prop Item 2 -->
                         <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Tea Set" data-category="Prop" data-tag="Asset Design" data-desc="Tea set study.">
                             <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>tea.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
-                            <div class="image-fit-wrap relative mb-1 sm:mb-2">
+                            <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/317/100/large/laine-neufeld-teaset-copy.jpg?1779605932" alt="Tea Set" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Tea Set</h4></div>
@@ -490,7 +523,7 @@
                         <!-- Prop Item 3 -->
                         <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Prop Design" data-category="Prop" data-tag="Asset Design" data-desc="General prop asset design.">
                             <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>prop.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
-                            <div class="image-fit-wrap relative mb-1 sm:mb-2">
+                            <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/095/114/593/large/laine-neufeld-image-7.jpg?1767660195" alt="Prop Design" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Dish of Sweets</h4></div>
@@ -498,7 +531,7 @@
                         <!-- Prop Item 4 -->
                         <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Arcade Game" data-category="Prop" data-tag="Asset Design" data-desc="Arcade game cabinet asset design.">
                             <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>arc.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
-                            <div class="image-fit-wrap relative mb-1 sm:mb-2">
+                            <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/095/113/604/large/laine-neufeld-game.jpg?1767656451" alt="Arcade Game" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Arcade Joystick + Buttons</h4></div>
@@ -506,7 +539,7 @@
                         <!-- Prop Item 5 -->
                         <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Vintage Phone" data-category="Prop" data-tag="Asset Design" data-desc="Vintage phone study.">
                             <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>phone.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
-                            <div class="image-fit-wrap relative mb-1 sm:mb-2">
+                            <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/095/113/368/large/laine-neufeld-greenphonee.jpg?1767657751" alt="Vintage Phone" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Telephone</h4></div>
@@ -514,7 +547,7 @@
                         <!-- Prop Item 6 -->
                         <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Gumball Machine" data-category="Prop" data-tag="Asset Design" data-desc="Gumball machine design.">
                             <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>gum.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
-                            <div class="image-fit-wrap relative mb-1 sm:mb-2">
+                            <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/095/113/001/large/laine-neufeld-gummmmmm.jpg?1767654480" alt="Gumball Machine" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Gumball Machine</h4></div>
