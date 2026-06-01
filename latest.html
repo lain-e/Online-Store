@@ -267,6 +267,24 @@
         .gallery-item .gallery-meta {
             flex-shrink: 0;
         }
+        .gallery-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin-bottom: 0.35rem;
+        }
+        .gallery-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.1rem 0.35rem;
+            background: #30342C;
+            color: #9999c3;
+            border: 1px solid #30342C;
+            line-height: 1.3;
+        }
 
         /* Lightbox: image dominates; info stacks below on small screens */
         .lightbox-layout {
@@ -357,7 +375,20 @@
                 </div>
             </div>
 
-            <a href="#me" class="hover:bg-win95-titlebar hover:text-win95-accentText px-2 py-1 uppercase tracking-widest">ABOUT_ME.TXT</a>
+            <!-- About Menu -->
+            <div class="relative group py-2">
+                <a href="#me" class="hover:bg-win95-titlebar hover:text-win95-accentText px-2 py-1 uppercase tracking-widest flex items-center gap-2">
+                    ABOUT_ME.TXT [+]
+                </a>
+                <div class="absolute left-0 top-full mt-1 w-52 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-none z-50">
+                    <div class="bg-win95-bg win-border p-1 shadow-lg flex flex-col">
+                        <a href="#me" class="about-nav-link block px-4 py-1 uppercase hover:bg-win95-titlebar hover:text-win95-accentText" data-target="tab-about">About</a>
+                        <a href="#me" class="about-nav-link block px-4 py-1 uppercase hover:bg-win95-titlebar hover:text-win95-accentText" data-target="tab-services">Services</a>
+                        <a href="#me" class="about-nav-link block px-4 py-1 uppercase hover:bg-win95-titlebar hover:text-win95-accentText" data-target="tab-professional">Professional</a>
+                        <a href="#me" class="about-nav-link block px-4 py-1 uppercase hover:bg-win95-titlebar hover:text-win95-accentText" data-target="tab-contact">Contact</a>
+                    </div>
+                </div>
+            </div>
         </nav>
 
         <div class="flex items-center gap-4">
@@ -378,6 +409,12 @@
             <a href="#concepts" class="mobile-nav-link hover:bg-win95-titlebar hover:text-win95-accentText px-2 py-1 uppercase">|- Concepts</a>
         </div>
         <a href="#me" class="mobile-nav-link hover:bg-win95-titlebar hover:text-win95-accentText px-2 py-1 uppercase tracking-widest font-bold mt-2">ABOUT_ME.TXT</a>
+        <div class="pl-6 flex flex-col border-l-2 border-win95-textPrimary border-dashed ml-2">
+            <a href="#me" class="mobile-nav-link about-nav-link hover:bg-win95-titlebar hover:text-win95-accentText px-2 py-1 uppercase" data-target="tab-about">|- About</a>
+            <a href="#me" class="mobile-nav-link about-nav-link hover:bg-win95-titlebar hover:text-win95-accentText px-2 py-1 uppercase" data-target="tab-services">|- Services</a>
+            <a href="#me" class="mobile-nav-link about-nav-link hover:bg-win95-titlebar hover:text-win95-accentText px-2 py-1 uppercase" data-target="tab-professional">|- Professional</a>
+            <a href="#me" class="mobile-nav-link about-nav-link hover:bg-win95-titlebar hover:text-win95-accentText px-2 py-1 uppercase" data-target="tab-contact">|- Contact</a>
+        </div>
     </div>
 
     <section class="hero-viewport site-shell w-full">
@@ -439,56 +476,56 @@
                     
                     <div class="gallery-grid">
                         <!-- Background Item 1 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="City Street" data-category="Background Painting" data-tag="Original Art" data-desc="Urban street study with focus on atmospheric depth.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>street.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="City Street" data-category="Background Painting" data-tag="Original Art" data-tags="exterior" data-desc="Urban street study with focus on atmospheric depth.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>street</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/200/463/large/laine-neufeld-citystreetbg.jpg?1779243980" alt="City Street" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">City Street</h4></div>
                         </div>
                         <!-- Background Item 2 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Room Study" data-category="Background Painting" data-tag="Original Art" data-desc="Interior lighting and composition study.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>room.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Room Study" data-category="Background Painting" data-tag="Original Art" data-tags="interior" data-desc="Interior lighting and composition study.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>room</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/230/513/large/laine-neufeld-screenshot-2026-05-20-185757.jpg?1779317928" alt="Room Study" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Warehouse Hallway</h4></div>
                         </div>
                         <!-- Background Item 3 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Industrial Study" data-category="Background Painting" data-tag="Original Art" data-desc="Atmospheric industrial environment design.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>ind.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Industrial Study" data-category="Background Painting" data-tag="Original Art" data-tags="exterior" data-desc="Atmospheric industrial environment design.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>ind</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/200/210/large/laine-neufeld-bb-e-d-f.jpg?1779242857" alt="Industrial Study" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Official Looking Brick Building</h4></div>
                         </div>
                         <!-- Background Item 4 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Subway Interior" data-category="Background Painting" data-tag="Original Art" data-desc="Subway structural design with cinematic lighting.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>subway.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Subway Interior" data-category="Background Painting" data-tag="Original Art" data-tags="interior" data-desc="Subway structural design with cinematic lighting.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>subway</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/455/161/large/laine-neufeld-subwayint2.jpg?1779987669" alt="Subway Interior" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Subway Train Car</h4></div>
                         </div>
                         <!-- Background Item 5 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Infinite Bathroom" data-category="Background Painting" data-tag="Original Art" data-desc="Abstract spatial exploration.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>bath.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Infinite Bathroom" data-category="Background Painting" data-tag="Original Art" data-tags="interior" data-desc="Abstract spatial exploration.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>bath</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/200/336/large/laine-neufeld-infinitebathroom.jpg?1779243351" alt="Infinite Bathroom" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Infinite Bathroom</h4></div>
                         </div>
                         <!-- Background Item 6 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Airport Interior" data-category="Background Painting" data-tag="Original Art" data-desc="Large scale interior architecture study.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>air.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Airport Interior" data-category="Background Painting" data-tag="Original Art" data-tags="interior" data-desc="Large scale interior architecture study.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>air</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/317/202/large/laine-neufeld-airport-interior-final.jpg?1779606399" alt="Airport Interior" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Airport Scene</h4></div>
                         </div>
                         <!-- Background Item 7 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Interior Room" data-category="Background Painting" data-tag="Original Art" data-desc="Interior room lighting study.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>room2.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Interior Room" data-category="Background Painting" data-tag="Original Art" data-tags="exterior" data-desc="Interior room lighting study.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>room2</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/542/306/large/laine-neufeld-screenshot-2026-05-31-190939.jpg?1780269015" alt="Interior Room" class="gallery-img transition-all">
                             </div>
@@ -505,48 +542,48 @@
                     
                     <div class="gallery-grid">
                         <!-- Prop Item 1 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Doll" data-category="Prop" data-tag="Asset Design" data-desc="Detailed doll asset design.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>doll.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Doll" data-category="Prop" data-tag="Asset Design" data-tags="illustration" data-desc="Detailed doll asset design.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>doll</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/369/594/large/laine-neufeld-doll-final.jpg?1779753510" alt="Doll" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Porcelain Doll</h4></div>
                         </div>
                         <!-- Prop Item 2 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Tea Set" data-category="Prop" data-tag="Asset Design" data-desc="Tea set study.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>tea.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Tea Set" data-category="Prop" data-tag="Asset Design" data-tags="illustration" data-desc="Tea set study.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>tea</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/317/100/large/laine-neufeld-teaset-copy.jpg?1779605932" alt="Tea Set" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Tea Set</h4></div>
                         </div>
                         <!-- Prop Item 3 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Prop Design" data-category="Prop" data-tag="Asset Design" data-desc="General prop asset design.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>prop.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Prop Design" data-category="Prop" data-tag="Asset Design" data-tags="illustration" data-desc="General prop asset design.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>prop</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/095/114/593/large/laine-neufeld-image-7.jpg?1767660195" alt="Prop Design" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Dish of Sweets</h4></div>
                         </div>
                         <!-- Prop Item 4 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Arcade Game" data-category="Prop" data-tag="Asset Design" data-desc="Arcade game cabinet asset design.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>arc.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Arcade Game" data-category="Prop" data-tag="Asset Design" data-tags="illustration" data-desc="Arcade game cabinet asset design.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>arc</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/095/113/604/large/laine-neufeld-game.jpg?1767656451" alt="Arcade Game" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Arcade Joystick + Buttons</h4></div>
                         </div>
                         <!-- Prop Item 5 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Vintage Phone" data-category="Prop" data-tag="Asset Design" data-desc="Vintage phone study.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>phone.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Vintage Phone" data-category="Prop" data-tag="Asset Design" data-tags="illustration" data-desc="Vintage phone study.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>phone</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/095/113/368/large/laine-neufeld-greenphonee.jpg?1767657751" alt="Vintage Phone" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Telephone</h4></div>
                         </div>
                         <!-- Prop Item 6 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Gumball Machine" data-category="Prop" data-tag="Asset Design" data-desc="Gumball machine design.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>gum.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Gumball Machine" data-category="Prop" data-tag="Asset Design" data-tags="illustration" data-desc="Gumball machine design.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>gum</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/095/113/001/large/laine-neufeld-gummmmmm.jpg?1767654480" alt="Gumball Machine" class="gallery-img transition-all">
                             </div>
@@ -563,40 +600,40 @@
                     
                     <div class="gallery-grid">
                         <!-- Concept Item 1 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Arch Sketch" data-category="Concept" data-tag="Study" data-desc="Structural architecture sketch.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>arch.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Record Store" data-category="Concept" data-tag="Study" data-tags="sketch,architecture" data-desc="Structural architecture sketch.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>Record Store</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
-                                <img src="https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(1).png" alt="Arch Sketch" class="gallery-img transition-all">
+                                <img src="https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(1).png" alt="Record Store" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Arch Sketch</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Record Store</h4></div>
                         </div>
                         <!-- Concept Item 2 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Env Study" data-category="Concept" data-tag="Study" data-desc="Environmental concept study.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>env.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Env Study" data-category="Concept" data-tag="Study" data-tags="study,environment" data-desc="Environmental concept study.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>Fancy Bedroom</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(8).png" alt="Env Study" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Env Study</h4></div>
                         </div>
                         <!-- Concept Item 3 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Stage Design" data-category="Concept" data-tag="Study" data-desc="Stage background design concept.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>stage.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Stage Design" data-category="Concept" data-tag="Study" data-tags="layout,stage" data-desc="Stage background design concept.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>stage</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/bg_stage.png" alt="Stage Design" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Stage Design</h4></div>
                         </div>
                         <!-- Concept Item 4 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Lighting Study" data-category="Concept" data-tag="Study" data-desc="Composition and lighting layout concept.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>light.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Lighting Study" data-category="Concept" data-tag="Study" data-tags="study,lighting" data-desc="Composition and lighting layout concept.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>light</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/image%20(3).png" alt="Lighting Study" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-win95-titlebar group-hover:text-win95-accentText px-1 -mx-1 transition-colors">Lighting Study</h4></div>
                         </div>
                         <!-- Concept Item 5 -->
-                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Perspective Concept" data-category="Concept" data-tag="Study" data-desc="Perspective and scale exploration.">
-                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>persp.bmp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
+                        <div class="group cursor-pointer gallery-item bg-win95-bg win-border p-1 sm:p-1.5 shadow-[4px_4px_0_0_rgba(48,52,44,0.3)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all" data-title="Perspective Concept" data-category="Concept" data-tag="Study" data-tags="study,perspective" data-desc="Perspective and scale exploration.">
+                            <div class="bg-win95-titlebar text-win95-accentText px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>persp</span><span class="bg-win95-bg text-win95-textPrimary win-border px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/Screenshot%202026-05-31%20192215.png" alt="Perspective Concept" class="gallery-img transition-all">
                             </div>
@@ -731,6 +768,11 @@
                         </div>
 
                         <div class="pt-2 sm:pt-4 border-t-2 border-dashed border-win95-textPrimary/30">
+                            <span class="block text-xs sm:text-sm uppercase font-bold opacity-75">> TAGS</span>
+                            <div id="lightbox-tags" class="gallery-tags mt-1"></div>
+                        </div>
+
+                        <div class="pt-2 sm:pt-4 border-t-2 border-dashed border-win95-textPrimary/30">
                             <span class="block text-xs sm:text-sm uppercase font-bold opacity-75">> METADATA</span>
                             <span id="lightbox-medium" class="text-sm sm:text-base font-bold uppercase">Private Mentorship</span>
                         </div>
@@ -801,34 +843,67 @@
             }, 500);
         }, 3500);
 
+        // --- Gallery tags ---
+        const renderTagList = (tagsString) => {
+            if (!tagsString || !tagsString.trim()) return '';
+            return tagsString.split(',').map((tag) => {
+                const label = tag.trim();
+                return label ? `<span class="gallery-tag">${label}</span>` : '';
+            }).join('');
+        };
+
+        const initGalleryTags = () => {
+            document.querySelectorAll('.gallery-item').forEach((item) => {
+                const tags = item.getAttribute('data-tags');
+                if (!tags) return;
+                const meta = item.querySelector('.gallery-meta');
+                if (!meta || meta.querySelector('.gallery-tags')) return;
+                const tagRow = document.createElement('div');
+                tagRow.className = 'gallery-tags';
+                tagRow.innerHTML = renderTagList(tags);
+                meta.insertBefore(tagRow, meta.firstChild);
+            });
+        };
+
+        initGalleryTags();
+
         // --- About Me Tab Logic ---
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
 
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active styling from all buttons
-                tabBtns.forEach(b => {
-                    b.classList.remove('bg-win95-titlebar', 'text-win95-accentText', 'win-border-inset');
-                    b.classList.add('hover:bg-win95-titlebar', 'hover:text-win95-accentText');
-                });
-                
-                // Add active styling to clicked button
-                btn.classList.add('bg-win95-titlebar', 'text-win95-accentText', 'win-border-inset');
-                btn.classList.remove('hover:bg-win95-titlebar', 'hover:text-win95-accentText');
+        const switchAboutTab = (targetId) => {
+            if (!targetId) return;
+            tabBtns.forEach((b) => {
+                b.classList.remove('bg-win95-titlebar', 'text-win95-accentText', 'win-border-inset');
+                b.classList.add('hover:bg-win95-titlebar', 'hover:text-win95-accentText');
+            });
+            const activeBtn = document.querySelector(`.tab-btn[data-target="${targetId}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-win95-titlebar', 'text-win95-accentText', 'win-border-inset');
+                activeBtn.classList.remove('hover:bg-win95-titlebar', 'hover:text-win95-accentText');
+            }
+            tabContents.forEach((content) => {
+                content.classList.remove('block');
+                content.classList.add('hidden');
+            });
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+                targetContent.classList.add('block');
+            }
+        };
 
-                // Hide all contents
-                tabContents.forEach(content => {
-                    content.classList.remove('block');
-                    content.classList.add('hidden');
-                });
+        tabBtns.forEach((btn) => {
+            btn.addEventListener('click', () => switchAboutTab(btn.getAttribute('data-target')));
+        });
 
-                // Show target content
-                const targetId = btn.getAttribute('data-target');
-                const targetContent = document.getElementById(targetId);
-                if(targetContent) {
-                    targetContent.classList.remove('hidden');
-                    targetContent.classList.add('block');
+        document.querySelectorAll('.about-nav-link').forEach((link) => {
+            link.addEventListener('click', () => {
+                const targetId = link.getAttribute('data-target');
+                switchAboutTab(targetId);
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
                 }
             });
         });
@@ -845,6 +920,7 @@
         const lightboxTitle = document.getElementById('lightbox-title');
         const lightboxDesc = document.getElementById('lightbox-desc');
         const lightboxMedium = document.getElementById('lightbox-medium');
+        const lightboxTags = document.getElementById('lightbox-tags');
 
         const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -852,6 +928,7 @@
             const title = item.getAttribute('data-title');
             const category = item.getAttribute('data-category');
             const tag = item.getAttribute('data-tag');
+            const tags = item.getAttribute('data-tags');
             const desc = item.getAttribute('data-desc');
             
             const imgElement = item.querySelector('.gallery-img');
@@ -861,6 +938,7 @@
             lightboxCategory.innerText = "> " + category;
             lightboxMedium.innerText = tag;
             lightboxDesc.innerText = desc;
+            lightboxTags.innerHTML = renderTagList(tags);
             
             const previewImg = document.createElement('img');
             previewImg.src = imgSrc;
