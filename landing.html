@@ -143,15 +143,15 @@
             --lightbox-overlay-bg: rgba(232, 228, 220, 0.92);
         }
 
-        /* Display menu (footer) */
+        /* Display menu (header) */
         #display-control {
             position: relative;
         }
         #display-menu {
             position: absolute;
-            bottom: calc(100% + 4px);
-            left: 50%;
-            transform: translateX(-50%);
+            top: calc(100% + 4px);
+            right: 0;
+            left: auto;
             min-width: 11rem;
             z-index: 100;
             display: none;
@@ -177,87 +177,91 @@
             background: var(--button-bg-hover);
         }
 
-        /* Stacked hero windows — smaller welcome panel overlaps larger slideshow window */
-        .hero-window-stack {
-            position: relative;
-            flex: 1 1 0;
-            min-height: 0;
-            width: 75vw;
-            max-width: calc(100% - 2rem);
-            overflow: visible;
+        #display-btn {
+            background: #f7ff68;
+            color: #000;
+            border-color: #1e1b38;
         }
-        .hero-window-stack > .hero-window {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
+        #display-btn:hover {
+            background: #eef85a;
         }
-        .hero-welcome-window {
-            position: absolute;
-            top: clamp(1.5rem, 9%, 3.25rem);
-            right: clamp(-1.5rem, -5vw, -0.35rem);
-            z-index: 20;
-            width: clamp(8.5rem, 34%, 12.5rem);
-            pointer-events: none;
-            box-shadow: none;
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .hero-welcome-window .retro-titlebar {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
+        .volume-control {
+            display: flex;
             align-items: center;
             gap: 0.35rem;
-            padding: 0.2rem 0.35rem;
-            border-bottom: 1px solid var(--explorer-divider);
-            font-size: clamp(0.55rem, 1.6vw, 0.7rem);
+            font-size: 0.65rem;
             font-weight: 700;
-            text-transform: lowercase;
-            letter-spacing: 0.02em;
-        }
-        .hero-welcome-window .retro-titlebar-dots {
-            display: flex;
-            gap: 0.2rem;
-            align-items: center;
-        }
-        .hero-welcome-window .retro-titlebar-dots span {
-            width: 0.45rem;
-            height: 0.45rem;
-            border-radius: 50%;
-            background: var(--hollow-box-border);
-            flex-shrink: 0;
-        }
-        .hero-welcome-window .retro-titlebar-label {
-            text-align: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            min-width: 0;
-        }
-        .hero-welcome-window .retro-titlebar-expand {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 0.85rem;
-            height: 0.85rem;
-            border: 1px solid var(--hollow-box-border-thin);
-            font-size: 0.5rem;
-            line-height: 1;
-            flex-shrink: 0;
-        }
-        .hero-welcome-window .hero-welcome-body {
-            padding: 0.85rem 0.5rem 1rem;
-            font-weight: 700;
-            font-size: clamp(0.9rem, 2.8vw, 1.25rem);
-            text-align: center;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            line-height: 1.2;
+            color: var(--explorer-text);
         }
-        @media (max-width: 479px) {
-            .hero-welcome-window {
-                top: clamp(1rem, 6%, 2rem);
-                right: clamp(-0.75rem, -3vw, 0.25rem);
-                width: clamp(7.5rem, 42%, 10rem);
-            }
+        .volume-slider {
+            width: 4.5rem;
+            height: 0.35rem;
+            accent-color: #f7ff68;
+            cursor: pointer;
+        }
+        @media (min-width: 640px) {
+            .volume-slider { width: 5.5rem; }
+        }
+
+        /* Nav flyout — padding bridge keeps submenu reachable while moving cursor down */
+        .nav-flyout {
+            position: relative;
+            padding-bottom: 0.65rem;
+        }
+        .nav-flyout-panel {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            padding-top: 0.5rem;
+            width: 12rem;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 50;
+        }
+        .nav-flyout:hover .nav-flyout-panel,
+        .nav-flyout:focus-within .nav-flyout-panel {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-cta-btn {
+            background: #f7ff68 !important;
+            color: #000 !important;
+            border-color: #1e1b38 !important;
+        }
+        .hero-cta-btn:hover {
+            background: #eef85a !important;
+        }
+
+        .footer-social {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.35rem;
+        }
+        .footer-social-link {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.15rem 0.45rem;
+            border: 1px solid var(--hollow-box-border-thin);
+            color: inherit;
+            white-space: nowrap;
+        }
+        .footer-social-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        @media (min-width: 640px) {
+            .footer-social-link { font-size: 0.7rem; }
         }
 
         ::-webkit-scrollbar { width: 12px; height: 12px; background: var(--scrollbar-track); }
@@ -502,12 +506,13 @@
         @media (min-width: 1024px) {
             .lightbox-layout {
                 flex-direction: row;
-                align-items: flex-start;
+                align-items: stretch;
+                gap: 0.75rem;
             }
             .lightbox-art-panel {
-                flex: 1 1 auto;
+                flex: 1 1 55%;
+                max-width: 55%;
                 max-height: calc(96vh - 3.5rem);
-                max-width: calc(100% - 17rem);
             }
         }
         #lightbox-visual-container {
@@ -528,7 +533,7 @@
         }
         @media (min-width: 1024px) {
             #lightbox-visual-container img {
-                max-width: min(calc(100vw - 22rem), 100%);
+                max-width: 100%;
                 max-height: calc(96vh - 4rem);
             }
         }
@@ -538,10 +543,10 @@
         }
         @media (min-width: 1024px) {
             .lightbox-info-panel {
-                flex: 1 1 0%;
-                max-height: 85vh;
-                min-width: 16rem;
-                max-width: 28rem;
+                flex: 1 1 40%;
+                max-width: 40%;
+                min-width: 18rem;
+                max-height: calc(96vh - 3.5rem);
             }
         }
     </style>
@@ -557,14 +562,13 @@
         
         <nav class="hidden md:flex items-center gap-6 text-lg font-bold">
             <!-- VisDev Menu -->
-            <div class="relative group py-2">
+            <div class="nav-flyout">
                 <a href="#visdev" class="hover:bg-white/10 px-2 py-1 uppercase tracking-widest flex items-center gap-2">
                     VISDEV [+]
                 </a>
-                <div class="absolute left-0 top-full mt-1 w-48 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-none z-50">
+                <div class="nav-flyout-panel w-48">
                     <div class="hollow-box p-1 flex flex-col" style="background: var(--page-bg);">
                         <a href="#backgrounds" class="block px-4 py-1 uppercase hover:bg-white/10">Backgrounds</a>
-                        <!-- Swapped Nav Links -->
                         <a href="#props" class="block px-4 py-1 uppercase hover:bg-white/10">Props</a>
                         <a href="#concepts" class="block px-4 py-1 uppercase hover:bg-white/10">Concepts</a>
                     </div>
@@ -572,12 +576,12 @@
             </div>
 
             <!-- About Menu -->
-            <div class="relative group py-2">
+            <div class="nav-flyout">
                 <a href="#me" class="hover:bg-white/10 px-2 py-1 uppercase tracking-widest flex items-center gap-2">
                     ABOUT_ME.TXT [+]
                 </a>
-                <div class="absolute left-0 top-full mt-1 w-52 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-none z-50">
-                    <div class="bg-win95-bg win-border p-1 shadow-lg flex flex-col">
+                <div class="nav-flyout-panel w-52">
+                    <div class="hollow-box p-1 flex flex-col" style="background: var(--page-bg);">
                         <a href="#me" class="about-nav-link block px-4 py-1 uppercase hover:bg-white/10" data-target="tab-about">About</a>
                         <a href="#me" class="about-nav-link block px-4 py-1 uppercase hover:bg-white/10" data-target="tab-services">Services</a>
                         <a href="#me" class="about-nav-link block px-4 py-1 uppercase hover:bg-white/10" data-target="tab-professional">Professional</a>
@@ -587,8 +591,21 @@
             </div>
         </nav>
 
-        <div class="flex items-center gap-4">
-            <!-- Mobile Menu Button -->
+        <div class="header-controls shrink-0">
+            <label class="volume-control" title="Sound effects volume">
+                <span class="hidden sm:inline">Vol</span>
+                <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="100" aria-label="Sound effects volume">
+            </label>
+            <div id="display-control">
+                <button id="display-btn" type="button" class="hollow-box-thin px-2 sm:px-3 py-0.5 font-bold text-xs sm:text-sm">Display</button>
+                <div id="display-menu" class="hollow-box" role="menu" aria-label="Display options" style="background: var(--page-bg);">
+                    <button type="button" class="display-option active" data-display="default" role="menuitem">Default</button>
+                    <button type="button" class="display-option" data-display="warm" role="menuitem">Low Contrast Warm</button>
+                    <button type="button" class="display-option" data-display="bw" role="menuitem">Black &amp; White</button>
+                    <button type="button" class="display-option" data-display="dyslexic" role="menuitem">Dyslexic Font</button>
+                    <button type="button" class="display-option" data-display="invert" role="menuitem">Invert</button>
+                </div>
+            </div>
             <button id="mobile-menu-btn" class="md:hidden win-button win-border px-3 py-1 font-bold text-base">
                 [ MENU ]
             </button>
@@ -614,9 +631,7 @@
     </div>
 
     <section class="hero-viewport site-shell w-full">
-        <div class="hero-window-stack">
-            <!-- Main Hero Window (slideshow) -->
-            <div class="hero-window hollow-box">
+        <div class="hero-window hero-content-width hollow-box">
                 <!-- Window Titlebar -->
                 <div class="panel-titlebar px-2 py-1 flex justify-between items-center font-bold text-base sm:text-lg cursor-default shrink-0">
                     <div class="flex gap-2 items-center">
@@ -638,27 +653,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Overlapping welcome window (sits on top of larger hero window) -->
-            <div class="hero-welcome-window hollow-box" aria-hidden="true">
-                <div class="retro-titlebar">
-                    <div class="retro-titlebar-dots" aria-hidden="true">
-                        <span></span><span></span><span></span>
-                    </div>
-                    <span class="retro-titlebar-label">welcome.txt</span>
-                    <span class="retro-titlebar-expand" aria-hidden="true">⤢</span>
-                </div>
-                <div class="hero-welcome-body">WELCOME</div>
-            </div>
         </div>
 
         <!-- Action Buttons (always within first viewport) -->
         <div class="hero-actions hero-content-width flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-6 z-10">
-            <a href="#visdev" class="win-button win-border px-6 sm:px-8 py-2.5 sm:py-3 font-bold text-base sm:text-xl uppercase w-full sm:w-auto text-center">
+            <a href="#visdev" class="hero-cta-btn win-button win-border px-6 sm:px-8 py-2.5 sm:py-3 font-bold text-base sm:text-xl uppercase w-full sm:w-auto text-center">
                 View VISDEV
             </a>
-            <a href="#me" class="win-button win-border px-6 sm:px-8 py-2.5 sm:py-3 font-bold text-base sm:text-xl uppercase w-full sm:w-auto text-center">
+            <a href="#me" class="hero-cta-btn win-button win-border px-6 sm:px-8 py-2.5 sm:py-3 font-bold text-base sm:text-xl uppercase w-full sm:w-auto text-center">
                 Peek at Other Stuff
             </a>
         </div>
@@ -685,7 +687,7 @@
                     
                     <div class="gallery-grid">
                         <!-- Background Item 1 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-1" data-title="City Street" data-category="Background Painting" data-tag="private mentorship" data-tags="exterior" data-desc="Urban street private mentorship with focus on atmospheric depth.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-1" data-title="City Street" data-category="Background Painting" data-tag="private mentorship" data-tags="exterior" data-desc="Urban street study with focus on atmospheric depth.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>street</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/200/463/large/laine-neufeld-citystreetbg.jpg?1779243980" alt="City Street" class="gallery-img transition-all">
@@ -693,18 +695,18 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">City Street</h4></div>
                         </div>
                         <!-- Background Item 2 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-2" data-title="Room private mentorship" data-category="Background Painting" data-tag="private mentorship" data-tags="interior" data-desc="Interior lighting and composition private mentorship.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-2" data-title="Warehouse Hallway" data-category="Background Painting" data-tag="private mentorship" data-tags="interior" data-desc="Interior lighting and composition study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>room</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
-                                <img src="https://cdnb.artstation.com/p/assets/images/images/099/230/513/large/laine-neufeld-screenshot-2026-05-20-185757.jpg?1779317928" alt="Room private mentorship" class="gallery-img transition-all">
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/099/230/513/large/laine-neufeld-screenshot-2026-05-20-185757.jpg?1779317928" alt="Warehouse Hallway" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Warehouse Hallway</h4></div>
                         </div>
                         <!-- Background Item 3 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-3" data-title="Industrial private mentorship" data-category="Background Painting" data-tag="private mentorship" data-tags="exterior" data-desc="Atmospheric industrial environment design.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-3" data-title="Official Looking Brick Building" data-category="Background Painting" data-tag="private mentorship" data-tags="exterior" data-desc="Atmospheric industrial environment design.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>building</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
-                                <img src="https://cdna.artstation.com/p/assets/images/images/099/200/210/large/laine-neufeld-bb-e-d-f.jpg?1779242857" alt="Industrial private mentorship" class="gallery-img transition-all">
+                                <img src="https://cdna.artstation.com/p/assets/images/images/099/200/210/large/laine-neufeld-bb-e-d-f.jpg?1779242857" alt="Official Looking Brick Building" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Official Looking Brick Building</h4></div>
                         </div>
@@ -725,7 +727,7 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Infinite Bathroom</h4></div>
                         </div>
                         <!-- Background Item 6 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-6" data-title="Airport Interior" data-category="Background Painting" data-tag="private mentorship" data-tags="interior" data-desc="Large scale interior architecture private mentorship.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-6" data-title="Airport Interior" data-category="Background Painting" data-tag="private mentorship" data-tags="interior" data-desc="Large scale interior architecture study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>room</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/317/202/large/laine-neufeld-airport-interior-final.jpg?1779606399" alt="Airport Interior" class="gallery-img transition-all">
@@ -733,7 +735,7 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Airport Scene</h4></div>
                         </div>
                         <!-- Background Item 7 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-7" data-title="Interior Room" data-category="Background Painting" data-tag="private mentorship" data-tags="exterior" data-desc="Interior room lighting private mentorship.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-7" data-title="Interior Room" data-category="Background Painting" data-tag="private mentorship" data-tags="exterior" data-desc="Interior room lighting study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>construct</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/542/306/large/laine-neufeld-screenshot-2026-05-31-190939.jpg?1780269015" alt="Interior Room" class="gallery-img transition-all">
@@ -751,7 +753,7 @@
                     
                     <div class="gallery-grid">
                         <!-- Prop Item 1 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-1" data-title="Doll" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Detailed doll private mentorship.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-1" data-title="Doll" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Detailed doll study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>item</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/369/594/large/laine-neufeld-doll-final.jpg?1779753510" alt="Doll" class="gallery-img transition-all">
@@ -759,7 +761,7 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Porcelain Doll</h4></div>
                         </div>
                         <!-- Prop Item 2 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-2" data-title="Tea Set" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Tea set private mentorship.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-2" data-title="Tea Set" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Tea set study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>decor</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/317/100/large/laine-neufeld-teaset-copy.jpg?1779605932" alt="Tea Set" class="gallery-img transition-all">
@@ -767,7 +769,7 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Tea Set</h4></div>
                         </div>
                         <!-- Prop Item 3 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-3" data-title="Prop Design" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="General prop private mentorship.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-3" data-title="Prop Design" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="General prop study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>food</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/095/114/593/large/laine-neufeld-image-7.jpg?1767660195" alt="Prop Design" class="gallery-img transition-all">
@@ -775,7 +777,7 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Dish of Sweets</h4></div>
                         </div>
                         <!-- Prop Item 4 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-4" data-title="Arcade Game" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Arcade game cabinet private mentorship.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-4" data-title="Arcade Game" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Arcade game cabinet study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>tool</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/095/113/604/large/laine-neufeld-game.jpg?1767656451" alt="Arcade Game" class="gallery-img transition-all">
@@ -783,7 +785,7 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Arcade Joystick + Buttons</h4></div>
                         </div>
                         <!-- Prop Item 5 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-5" data-title="Vintage Phone" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Vintage phone private mentorship.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-5" data-title="Vintage Phone" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Vintage phone study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>tool</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/095/113/368/large/laine-neufeld-greenphonee.jpg?1767657751" alt="Vintage Phone" class="gallery-img transition-all">
@@ -817,12 +819,12 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Record Store</h4></div>
                         </div>
                         <!-- Concept Item 2 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="co-3" data-title="Env private mentorship" data-category="Concept" data-tag="private mentorship" data-tags="color layout,Interior" data-desc="Environmental concept private mentorship.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="co-3" data-title="Bedroom Env" data-category="Concept" data-tag="private mentorship" data-tags="color layout,Interior" data-desc="Environmental concept study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>bedroom</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
-                                <img src="https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(8).png" alt="Env private mentorship" class="gallery-img transition-all">
+                                <img src="https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(8).png" alt="Bedroom Env" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Env private mentorship</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Bedroom Env</h4></div>
                         </div>
                         <!-- Concept Item 3 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="co-4" data-title="Stage Design" data-category="Concept" data-tag="private mentorship" data-tags="color layout,Interior" data-desc="Stage background design concept.">
@@ -833,10 +835,10 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Small Stage Venue</h4></div>
                         </div>
                         <!-- Concept Item 4 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="co-1" data-title="Lighting private mentorship" data-category="Concept" data-tag="private mentorship" data-tags="color layout,Interior" data-desc="Composition and lighting layout concept.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="co-1" data-title="Cozy Nook" data-category="Concept" data-tag="private mentorship" data-tags="color layout,Interior" data-desc="Composition and lighting layout concept.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>room</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
-                                <img src="https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/image%20(3).png" alt="Lighting private mentorship" class="gallery-img transition-all">
+                                <img src="https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/image%20(3).png" alt="Cozy Nook" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Cozy Nook</h4></div>
                         </div>
@@ -891,7 +893,7 @@
                     > SERVICES_LIST.INI<br><br>
                     - Visual Development & Concept Art<br>
                     - Atmospheric Background Painting<br>
-                    - Prop & private mentorship<br>
+                    - Prop Design<br>
                     - Cinematic Lighting & Composition Exploration<br>
                     - World-Building and Environment Design<br><br>
                     READY FOR INPUT_
@@ -931,15 +933,10 @@
             <span class="hollow-box-thin px-1 leading-none shrink-0">★ Laine Neufeld</span>
             <span class="hidden sm:inline ml-2 border-l hollow-divider pl-2 truncate">visdev + illustration</span>
         </div>
-        <div id="display-control" class="flex justify-center sm:flex-none">
-            <button id="display-btn" type="button" class="hollow-box-thin px-3 py-0.5 font-bold text-xs sm:text-base">Display</button>
-            <div id="display-menu" class="hollow-box" role="menu" aria-label="Display options">
-                <button type="button" class="display-option active" data-display="default" role="menuitem">Default</button>
-                <button type="button" class="display-option" data-display="warm" role="menuitem">Low Contrast Warm</button>
-                <button type="button" class="display-option" data-display="bw" role="menuitem">Black &amp; White</button>
-                <button type="button" class="display-option" data-display="dyslexic" role="menuitem">Dyslexic Font</button>
-                <button type="button" class="display-option" data-display="invert" role="menuitem">Invert</button>
-            </div>
+        <div class="footer-social flex-shrink-0">
+            <a href="https://www.artstation.com/laine-neufeld" class="footer-social-link" target="_blank" rel="noopener noreferrer">ArtStation</a>
+            <a href="https://www.instagram.com/laineneufeldart/" class="footer-social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://laineneufeld.itch.io/" class="footer-social-link" target="_blank" rel="noopener noreferrer">itch.io</a>
         </div>
         <div class="hollow-box-thin px-2 sm:px-3 py-0.5 text-xs sm:text-base font-bold truncate text-center sm:text-right sm:flex-1">
           laineneufeldart@gmail.com
@@ -1011,12 +1008,41 @@
     <script>
         // --- Haptic audio (matches secret.html) ---
         let audioCtx = null;
-        function initAudio() {
-            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let masterGain = null;
+
+        function getSavedSfxVolume() {
+            try {
+                const saved = parseFloat(localStorage.getItem('portfolioSfxVolume'));
+                return Number.isFinite(saved) ? Math.max(0, Math.min(1, saved)) : 1;
+            } catch (e) {
+                return 1;
+            }
         }
+
+        function applySfxVolume(value) {
+            const v = Math.max(0, Math.min(1, value));
+            if (masterGain) masterGain.gain.value = v;
+            try { localStorage.setItem('portfolioSfxVolume', String(v)); } catch (e) {}
+        }
+
+        function getAudioOut() {
+            initAudio();
+            return masterGain || audioCtx?.destination;
+        }
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                masterGain = audioCtx.createGain();
+                masterGain.connect(audioCtx.destination);
+                applySfxVolume(getSavedSfxVolume());
+            }
+        }
+
         function playLoFiClick({ pitch = 860, volume = 0.09, decay = 0.04 } = {}) {
             initAudio();
             if (!audioCtx) return;
+            const audioOut = getAudioOut();
             const now = audioCtx.currentTime;
             const bufferSize = Math.floor(audioCtx.sampleRate * decay);
             const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
@@ -1034,7 +1060,7 @@
             noiseGain.gain.exponentialRampToValueAtTime(0.001, now + decay);
             noise.connect(hp);
             hp.connect(noiseGain);
-            noiseGain.connect(audioCtx.destination);
+            noiseGain.connect(audioOut);
             noise.start(now);
             noise.stop(now + decay);
 
@@ -1046,7 +1072,7 @@
             clickGain.gain.setValueAtTime(volume * 0.45, now);
             clickGain.gain.exponentialRampToValueAtTime(0.001, now + decay);
             click.connect(clickGain);
-            clickGain.connect(audioCtx.destination);
+            clickGain.connect(audioOut);
             click.start(now);
             click.stop(now + decay);
         }
@@ -1058,7 +1084,16 @@
         }
         document.body.addEventListener('click', () => initAudio(), { once: true });
 
-        // Display menu (footer)
+        const volumeSlider = document.getElementById('volume-slider');
+        if (volumeSlider) {
+            volumeSlider.value = String(Math.round(getSavedSfxVolume() * 100));
+            volumeSlider.addEventListener('input', () => {
+                initAudio();
+                applySfxVolume(Number(volumeSlider.value) / 100);
+            });
+        }
+
+        // Display menu (header)
         const displayControl = document.getElementById('display-control');
         const displayBtn = document.getElementById('display-btn');
         const displayMenu = document.getElementById('display-menu');
@@ -1265,7 +1300,7 @@
 
             lightboxTitle.innerText = title + "";
             lightboxCategory.innerText = "> " + category;
-            lightboxMedium.innerText = tag;
+            lightboxMedium.innerText = tag ? tag.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : '';
             lightboxDesc.innerText = desc;
             lightboxTags.innerHTML = renderTagList(tags);
             
