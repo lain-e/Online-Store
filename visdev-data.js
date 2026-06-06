@@ -512,7 +512,7 @@ window.PORTFOLIO_DATA = {
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/substation/image%20(4).png",
-                        "label": "RENDER",
+                        "label": "3D RENDER",
                         "caption": "Rudimentary scene geometry/lighting render to fill in gaps of lighting logic. Rendered in Blender."
                     },
                     {
