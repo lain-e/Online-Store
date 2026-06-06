@@ -238,21 +238,21 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/369/594/large/laine-neufeld-doll-final.jpg?1779753510",
                         "label": "FINAL",
-                        "caption": "Final render for Porcelain Doll. Detailed doll asset design. Material study on cracked porcelain and worn fabric textures."
+                        "caption": "Independent prop study cerated from personal reference. Focus on inventive texture and style."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/doll/download%20(4)%20(1).jpg",
                         "label": "REF",
-                        "caption": "Detailed doll asset design. Material study on cracked porcelain and worn fabric textures."
+                        "caption": "Picture of my doll I've had forever."
                     }
                 ],
-                "description": "Detailed doll asset design. Material study on cracked porcelain and worn fabric textures.",
+                "description": "Doll",
                 "tag": "Prop Design"
             },
             {
                 "id": "pr-2",
                 "title": "Tea Set",
-                "file": "tea study",
+                "file": "★ tea study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/317/100/large/laine-neufeld-teaset-copy.jpg?1779605932",
