@@ -479,20 +479,20 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-1",
                 "title": "Cozy Nook",
-                "file": "nook_concept study",
+                "file": "cozy nook",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/image%20(3).png",
                         "label": "FINAL",
-                        "caption": "Final render for Cozy Nook. Composition and lighting layout concept for a warm, isolated reading nook."
+                        "caption": "Final concept created during mentorship to explore composing a background with only prop inspiration."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/cozy%20nook/breakout.png",
-                        "label": "SKETCH",
-                        "caption": "Sketch pass — loose composition study for Cozy Nook. Exploring layout, silhouette, and narrative read before committing to detail."
+                        "label": "REF",
+                        "caption": "Breakout of inspirations and references, later put into perspective within one scene."
                     }
                 ],
-                "description": "Composition and lighting layout concept for a warm, isolated reading nook.",
+                "description": "Cozy nook",
                 "tag": "Concept Art"
             },
             {
@@ -503,27 +503,27 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/Screenshot%202026-05-31%20192215.png",
                         "label": "FINAL",
-                        "caption": "Final render for Train Platform. Perspective and scale exploration for a subway platform environment."
+                        "caption": "Final concept made during mentorship, focus on building background from limited reference and lots of imagination."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/substation/ref.jpg",
-                        "label": "SKETCH",
-                        "caption": "Sketch pass — loose composition study for Train Platform. Exploring layout, silhouette, and narrative read before committing to detail."
+                        "label": "REF",
+                        "caption": "Reference image later reworked and photobashed to suit cinematic dimensions."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/substation/image%20(4).png",
-                        "label": "BLOCKOUT",
-                        "caption": "Blockout pass for Train Platform. Establishing major forms, depth planes, and value structure across the scene."
+                        "label": "RENDER",
+                        "caption": "Rudimentary scene geometry/lighting render to fill in gaps of lighting logic. Rendered in Blender."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/substation/valuebash.png",
                         "label": "DRAFT",
-                        "caption": "Perspective and scale exploration for a subway platform environment."
+                        "caption": "Adjusting reference in value to match current image's perspective logic."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/substation/photobash%20ref.png",
-                        "label": "LIGHTING",
-                        "caption": "Lighting pass for Train Platform. Refining mood, bounce light, and focal contrast to support the story beat."
+                        "label": "PHOTOBASH",
+                        "caption": "Using first reference image, filled in the rest of the scene to create better reference to work off of. Blender render lighting logic impolemented after."
                     }
                 ],
                 "description": "Perspective and scale exploration for a subway platform environment.",
