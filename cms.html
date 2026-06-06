@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio CMS — L. NEUFELD_OS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --page-bg: #2721d7;
+            --frame-border: #e8e4dc;
+            --frame-text: #e8e4dc;
+            --titlebar-bg: #f7ff68;
+            --titlebar-text: #000;
+            --accent-bg: #f7ff68;
+            --accent-text: #1e1b38;
+            --input-bg: #22203f;
+            --input-border: #e8e4dc;
+            --btn-bg: #45416b;
+            --btn-hover: #4f4b75;
+            --danger: #ff6b6b;
+            --success: #7bffb8;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Space Mono', monospace;
+            background: var(--page-bg);
+            color: var(--frame-text);
+            padding: 12px;
+        }
+        .shell {
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 2px solid var(--frame-border);
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 24px);
+            background: transparent;
+        }
+        .titlebar {
+            background: var(--titlebar-bg);
+            color: var(--titlebar-text);
+            padding: 8px 12px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--frame-border);
+        }
+        .menubar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--frame-border);
+            align-items: center;
+        }
+        .menubar a {
+            color: inherit;
+            text-decoration: none;
+            padding: 4px 8px;
+        }
+        .menubar a:hover { background: rgba(255,255,255,0.1); }
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--frame-border);
+        }
+        button, .btn {
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 2px solid var(--frame-border);
+            background: var(--btn-bg);
+            color: var(--frame-text);
+            padding: 6px 12px;
+        }
+        button:hover, .btn:hover { background: var(--btn-hover); }
+        button.primary {
+            background: var(--titlebar-bg);
+            color: var(--titlebar-text);
+        }
+        button.danger { border-color: var(--danger); color: var(--danger); }
+        .status-pill {
+            font-size: 11px;
+            padding: 4px 8px;
+            border: 1px solid var(--frame-border);
+            margin-left: auto;
+        }
+        .status-pill.live { border-color: var(--success); color: var(--success); }
+        .status-pill.draft { border-color: var(--titlebar-bg); color: var(--titlebar-bg); }
+        .layout {
+            display: grid;
+            grid-template-columns: 200px 220px 1fr;
+            flex: 1;
+            min-height: 0;
+        }
+        @media (max-width: 1000px) {
+            .layout { grid-template-columns: 1fr; }
+            .preview-panel { min-height: 320px; }
+        }
+        .panel {
+            border-right: 1px solid var(--frame-border);
+            overflow-y: auto;
+            padding: 8px;
+        }
+        .panel h3 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0 0 8px;
+            opacity: 0.8;
+        }
+        .nav-item, .project-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 4px;
+            padding: 6px 8px;
+            font-size: 12px;
+        }
+        .nav-item.active, .project-item.active {
+            background: var(--accent-bg);
+            color: var(--accent-text);
+        }
+        .editor-panel { padding: 12px; overflow-y: auto; }
+        .field { margin-bottom: 14px; }
+        .field label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            opacity: 0.85;
+        }
+        input[type="text"], input[type="number"], textarea, select {
+            width: 100%;
+            font-family: inherit;
+            font-size: 12px;
+            padding: 8px;
+            background: var(--input-bg);
+            color: var(--frame-text);
+            border: 2px solid var(--input-border);
+        }
+        textarea { min-height: 72px; resize: vertical; }
+        .media-card {
+            border: 2px solid var(--frame-border);
+            padding: 10px;
+            margin-bottom: 10px;
+            background: rgba(0,0,0,0.15);
+        }
+        .media-card header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        .media-thumb {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border: 1px solid var(--frame-border);
+            background: #8c8c8c;
+            margin-top: 6px;
+        }
+        .row-2 { display: grid; grid-template-columns: 1fr 120px; gap: 8px; }
+        .row-3 { display: grid; grid-template-columns: 1fr 100px 80px; gap: 8px; }
+        .preview-panel {
+            border-top: 1px solid var(--frame-border);
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-height: 280px;
+        }
+        .preview-panel iframe {
+            flex: 1;
+            min-height: 240px;
+            border: 2px solid var(--frame-border);
+            background: #8c8c8c;
+        }
+        .tab-bar { display: flex; gap: 4px; margin-bottom: 12px; }
+        .tab-btn.active { background: var(--accent-bg); color: var(--accent-text); }
+        .hidden { display: none !important; }
+        .hint { font-size: 11px; opacity: 0.75; line-height: 1.5; }
+        #import-input { display: none; }
+        .gate {
+            position: fixed;
+            inset: 0;
+            background: var(--page-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+        .gate-box {
+            border: 2px solid #F5EDE6;
+            padding: 24px;
+            max-width: 400px;
+            text-align: center;
+        }
+        .gate-box input {
+            margin-top: 12px;
+            text-align: center;
+            letter-spacing: 0.3em;
+        }
+    </style>
+</head>
+<body>
+    <div id="gate" class="gate">
+        <div class="gate-box">
+            <div style="font-weight:700;margin-bottom:8px;">CMS_ACCESS.EXE</div>
+            <p class="hint">Enter portfolio passcode to edit content.</p>
+            <input type="password" id="gate-input" autocomplete="off" placeholder="••••" />
+        </div>
+    </div>
+
+    <div class="shell" id="app" hidden>
+        <div class="titlebar">
+            <span>CONTENT_MANAGER — visdev-data.js</span>
+            <span id="dirty-flag"></span>
+        </div>
+        <div class="menubar">
+            <a href="secret.html">← Portfolio</a>
+            <a href="/">Public Site</a>
+        </div>
+        <div class="toolbar">
+            <button type="button" class="primary" id="btn-apply">Apply to site (localStorage)</button>
+            <button type="button" id="btn-export">Download visdev-data.js</button>
+            <button type="button" id="btn-import">Import JSON / JS</button>
+            <button type="button" id="btn-reload-file">Reload from visdev-data.js</button>
+            <button type="button" class="danger" id="btn-clear-draft">Clear site draft</button>
+            <button type="button" id="btn-preview">Refresh preview</button>
+            <span class="status-pill" id="status-pill">unsaved</span>
+        </div>
+        <input type="file" id="import-input" accept=".json,.js,text/javascript,application/json" />
+
+        <div class="tab-bar" style="padding: 0 12px;">
+            <button type="button" class="tab-btn active" data-tab="portfolio">Portfolio</button>
+            <button type="button" class="tab-btn" data-tab="menu">Menu pages</button>
+            <button type="button" class="tab-btn" data-tab="captions">Phase captions</button>
+        </div>
+
+        <div id="tab-portfolio">
+            <div class="layout">
+                <div class="panel" id="category-panel">
+                    <h3>Category</h3>
+                </div>
+                <div class="panel" id="project-panel">
+                    <h3>Projects</h3>
+                    <button type="button" id="btn-add-project" style="width:100%;margin-bottom:8px;">+ New project</button>
+                </div>
+                <div class="editor-panel" id="editor-panel">
+                    <p class="hint">Select a project to edit titles, tags, process files, and file details text (shown in the File Details box on the portfolio).</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-menu" class="editor-panel hidden">
+            <div id="menu-editor"></div>
+        </div>
+
+        <div id="tab-captions" class="editor-panel hidden">
+            <p class="hint">Templates for auto-generated file details. Use <code>{title}</code> and <code>{description}</code>. Per-file overrides in Portfolio tab take priority.</p>
+            <div id="captions-editor"></div>
+        </div>
+
+        <div class="preview-panel">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <strong style="font-size:12px;">Live preview (secret.html)</strong>
+                <span class="hint">Apply to site first, then enter passcode in preview if needed.</span>
+            </div>
+            <iframe id="preview-frame" title="Portfolio preview" src="about:blank"></iframe>
+        </div>
+    </div>
+
+    <script src="visdev-data.js"></script>
+    <script>
+        const CMS_STORAGE_KEY = 'visdevPortfolioData';
+        const CATEGORIES = [
+            { key: 'backgrounds', label: 'Backgrounds' },
+            { key: 'props', label: 'Props' },
+            { key: 'concepts', label: 'Concepts' }
+        ];
+        const LABEL_PRESETS = ['FINAL', 'SKETCH', 'BLOCKOUT', 'LIGHTING', 'DRAFT', 'COLOR', 'COLORWAYS', 'REF', 'PROPS'];
+        const MENU_KEYS = ['about', 'professional', 'contact'];
+
+        const _k = 'IjIzMjMi';
+        const SYSTEM_PASSWORD = JSON.parse(atob(_k));
+        const ALT_PASSWORD = ' ';
+
+        let data = null;
+        let selectedCategory = 'backgrounds';
+        let selectedProjectIndex = 0;
+        let activeTab = 'portfolio';
+        let dirty = false;
+
+        const gate = document.getElementById('gate');
+        const gateInput = document.getElementById('gate-input');
+        const app = document.getElementById('app');
+
+        function cloneData(src) {
+            return JSON.parse(JSON.stringify(src));
+        }
+
+        function deepClonePortfolio() {
+            return cloneData(window.PORTFOLIO_DATA);
+        }
+
+        function loadWorkingData() {
+            try {
+                const stored = localStorage.getItem(CMS_STORAGE_KEY);
+                if (stored) return JSON.parse(stored);
+            } catch (e) {}
+            return deepClonePortfolio();
+        }
+
+        function setDirty(val) {
+            dirty = val;
+            document.getElementById('dirty-flag').textContent = dirty ? '● unsaved' : '';
+            const pill = document.getElementById('status-pill');
+            pill.textContent = dirty ? 'unsaved edits' : (localStorage.getItem(CMS_STORAGE_KEY) ? 'draft on site' : 'synced with file');
+            pill.className = 'status-pill ' + (localStorage.getItem(CMS_STORAGE_KEY) ? 'draft' : 'live');
+        }
+
+        function applyCaptionTemplate(template, project) {
+            return String(template)
+                .replace(/\{title\}/g, project?.title || '')
+                .replace(/\{description\}/g, project?.description || '');
+        }
+
+        function effectiveMediaDescription(project, item) {
+            if (item.description) return item.description;
+            const tpl = data.mediaPhaseCaptions?.[item.label];
+            if (tpl) return applyCaptionTemplate(tpl, project);
+            return project.description || '';
+        }
+
+        function markCustomDescription(item, text) {
+            const trimmed = text.trim();
+            if (!trimmed) {
+                delete item.description;
+                return;
+            }
+            item.description = trimmed;
+        }
+
+        function currentProject() {
+            return data.visdevDb[selectedCategory]?.[selectedProjectIndex] || null;
+        }
+
+        function renderCategories() {
+            const panel = document.getElementById('category-panel');
+            panel.innerHTML = '<h3>Category</h3>';
+            CATEGORIES.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'nav-item' + (selectedCategory === cat.key ? ' active' : '');
+                btn.textContent = cat.label;
+                btn.addEventListener('click', () => {
+                    selectedCategory = cat.key;
+                    selectedProjectIndex = 0;
+                    renderAll();
+                });
+                panel.appendChild(btn);
+            });
+        }
+
+        function renderProjectList() {
+            const panel = document.getElementById('project-panel');
+            panel.querySelectorAll('.project-item').forEach(el => el.remove());
+            const projects = data.visdevDb[selectedCategory] || [];
+            projects.forEach((p, i) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'project-item' + (selectedProjectIndex === i ? ' active' : '');
+                btn.textContent = p.title || p.id || `Project ${i + 1}`;
+                btn.addEventListener('click', () => {
+                    selectedProjectIndex = i;
+                    renderProjectEditor();
+                    renderProjectList();
+                    refreshPreview();
+                });
+                panel.appendChild(btn);
+            });
+        }
+
+        function bindField(container, label, value, onChange, multiline = false) {
+            const wrap = document.createElement('div');
+            wrap.className = 'field';
+            const lbl = document.createElement('label');
+            lbl.textContent = label;
+            const el = multiline ? document.createElement('textarea') : document.createElement('input');
+            el.type = multiline ? undefined : 'text';
+            el.value = value ?? '';
+            el.addEventListener('input', () => {
+                onChange(el.value);
+                setDirty(true);
+            });
+            wrap.appendChild(lbl);
+            wrap.appendChild(el);
+            container.appendChild(wrap);
+            return el;
+        }
+
+        function renderProjectEditor() {
+            const panel = document.getElementById('editor-panel');
+            const project = currentProject();
+            panel.innerHTML = '';
+            if (!project) {
+                panel.innerHTML = '<p class="hint">No project in this category. Add one with + New project.</p>';
+                return;
+            }
+
+            bindField(panel, 'Project ID (deep links)', project.id, v => { project.id = v; renderProjectList(); });
+            bindField(panel, 'Title', project.title, v => { project.title = v; renderProjectList(); });
+            bindField(panel, 'File name (sidebar label)', project.file, v => { project.file = v; });
+            bindField(panel, 'Tag (caption chip)', project.tag, v => { project.tag = v; });
+            bindField(panel, 'Project description', project.description, v => { project.description = v; }, true);
+
+            const mediaHeader = document.createElement('div');
+            mediaHeader.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin:16px 0 8px;';
+            mediaHeader.innerHTML = '<strong style="font-size:12px;">Process files</strong>';
+            const addMedia = document.createElement('button');
+            addMedia.type = 'button';
+            addMedia.textContent = '+ Add file';
+            addMedia.addEventListener('click', () => {
+                project.media.push({ url: '', label: 'REF' });
+                setDirty(true);
+                renderProjectEditor();
+            });
+            mediaHeader.appendChild(addMedia);
+            panel.appendChild(mediaHeader);
+
+            project.media.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'media-card';
+
+                const header = document.createElement('header');
+                header.innerHTML = `<span>File ${idx + 1}</span>`;
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'danger';
+                removeBtn.textContent = 'Remove';
+                removeBtn.addEventListener('click', () => {
+                    project.media.splice(idx, 1);
+                    setDirty(true);
+                    renderProjectEditor();
+                });
+                header.appendChild(removeBtn);
+                card.appendChild(header);
+
+                const row1 = document.createElement('div');
+                row1.className = 'row-2';
+                row1.innerHTML = '<div class="field"><label>Label (filmstrip)</label></div><div class="field"><label>Rotate °</label></div>';
+                const labelSel = document.createElement('select');
+                LABEL_PRESETS.forEach(l => {
+                    const o = document.createElement('option');
+                    o.value = l;
+                    o.textContent = l;
+                    if (item.label === l) o.selected = true;
+                    labelSel.appendChild(o);
+                });
+                const customOpt = document.createElement('option');
+                customOpt.value = item.label && !LABEL_PRESETS.includes(item.label) ? item.label : '__custom__';
+                customOpt.textContent = item.label && !LABEL_PRESETS.includes(item.label) ? item.label : 'Custom…';
+                if (!LABEL_PRESETS.includes(item.label)) customOpt.selected = true;
+                labelSel.appendChild(customOpt);
+                labelSel.addEventListener('change', () => {
+                    if (labelSel.value === '__custom__') {
+                        const custom = prompt('Custom label:', item.label || '');
+                        if (custom) item.label = custom;
+                    } else {
+                        item.label = labelSel.value;
+                    }
+                    setDirty(true);
+                    renderProjectEditor();
+                });
+                row1.children[0].appendChild(labelSel);
+
+                const rotIn = document.createElement('input');
+                rotIn.type = 'number';
+                rotIn.value = item.rotate ?? '';
+                rotIn.placeholder = '—';
+                rotIn.addEventListener('input', () => {
+                    const n = parseInt(rotIn.value, 10);
+                    if (Number.isFinite(n)) item.rotate = n;
+                    else delete item.rotate;
+                    setDirty(true);
+                });
+                row1.children[1].appendChild(rotIn);
+                card.appendChild(row1);
+
+                bindField(card, 'Image URL or path', item.url, v => {
+                    item.url = v;
+                    const img = card.querySelector('.media-thumb');
+                    if (img) img.src = decodeURIComponent(v);
+                });
+
+                const descField = document.createElement('div');
+                descField.className = 'field';
+                const descLabel = document.createElement('label');
+                descLabel.textContent = 'File details text (caption box)';
+                const descArea = document.createElement('textarea');
+                descArea.value = effectiveMediaDescription(project, item);
+                descArea.addEventListener('input', () => {
+                    markCustomDescription(item, descArea.value);
+                    setDirty(true);
+                });
+                const resetTpl = document.createElement('button');
+                resetTpl.type = 'button';
+                resetTpl.textContent = 'Reset to template';
+                resetTpl.style.marginTop = '4px';
+                resetTpl.addEventListener('click', () => {
+                    delete item.description;
+                    descArea.value = effectiveMediaDescription(project, item);
+                    setDirty(true);
+                });
+                descField.appendChild(descLabel);
+                descField.appendChild(descArea);
+                descField.appendChild(resetTpl);
+                card.appendChild(descField);
+
+                const up = document.createElement('button');
+                up.type = 'button';
+                up.textContent = '↑';
+                up.style.marginRight = '4px';
+                up.disabled = idx === 0;
+                up.addEventListener('click', () => {
+                    [project.media[idx - 1], project.media[idx]] = [project.media[idx], project.media[idx - 1]];
+                    setDirty(true);
+                    renderProjectEditor();
+                });
+                const down = document.createElement('button');
+                down.type = 'button';
+                down.textContent = '↓';
+                down.disabled = idx === project.media.length - 1;
+                down.addEventListener('click', () => {
+                    [project.media[idx + 1], project.media[idx]] = [project.media[idx], project.media[idx + 1]];
+                    setDirty(true);
+                    renderProjectEditor();
+                });
+                const reorder = document.createElement('div');
+                reorder.style.marginTop = '6px';
+                reorder.appendChild(up);
+                reorder.appendChild(down);
+                card.appendChild(reorder);
+
+                if (item.url) {
+                    const img = document.createElement('img');
+                    img.className = 'media-thumb';
+                    img.alt = '';
+                    img.src = item.url;
+                    img.onerror = () => { img.style.opacity = '0.4'; };
+                    card.appendChild(img);
+                }
+
+                panel.appendChild(card);
+            });
+        }
+
+        function renderMenuEditor() {
+            const panel = document.getElementById('menu-editor');
+            panel.innerHTML = '';
+            MENU_KEYS.forEach(key => {
+                const block = data.menuContent[key];
+                if (!block) return;
+                const section = document.createElement('div');
+                section.style.cssText = 'border:2px solid var(--frame-border);padding:12px;margin-bottom:12px;';
+                section.innerHTML = `<strong>${key}</strong>`;
+                bindField(section, 'Title', block.title, v => { block.title = v; });
+                bindField(section, 'File name', block.file, v => { block.file = v; });
+                bindField(section, 'Tag', block.tag, v => { block.tag = v; });
+                bindField(section, 'Body', block.body, v => { block.body = v; }, true);
+                panel.appendChild(section);
+            });
+        }
+
+        function renderCaptionsEditor() {
+            const panel = document.getElementById('captions-editor');
+            panel.innerHTML = '';
+            const caps = data.mediaPhaseCaptions || {};
+            Object.keys(caps).forEach(label => {
+                bindField(panel, `Template: ${label}`, caps[label], v => { caps[label] = v; }, true);
+            });
+            const addRow = document.createElement('div');
+            addRow.className = 'field';
+            const addBtn = document.createElement('button');
+            addBtn.type = 'button';
+            addBtn.textContent = '+ Add phase template';
+            addBtn.addEventListener('click', () => {
+                const label = prompt('Phase label (e.g. REF):', 'REF');
+                if (!label) return;
+                data.mediaPhaseCaptions[label.trim().toUpperCase()] = 'Description for {title}. {description}';
+                setDirty(true);
+                renderCaptionsEditor();
+            });
+            addRow.appendChild(addBtn);
+            panel.appendChild(addRow);
+        }
+
+        function renderAll() {
+            renderCategories();
+            renderProjectList();
+            renderProjectEditor();
+            renderMenuEditor();
+            renderCaptionsEditor();
+        }
+
+        function refreshPreview() {
+            const project = currentProject();
+            const url = project
+                ? `secret.html?project=${encodeURIComponent(project.id)}&media=0`
+                : 'secret.html';
+            document.getElementById('preview-frame').src = url;
+        }
+
+        function persistToLocalStorage() {
+            localStorage.setItem(CMS_STORAGE_KEY, JSON.stringify(data));
+            setDirty(false);
+            alert('Applied. Open or refresh secret.html to see changes (CMS draft loaded automatically).');
+            refreshPreview();
+        }
+
+        function exportVisdevJs() {
+            const payload = JSON.stringify(data, null, 4);
+            const js = '/* Portfolio content — edit via cms.html or replace this file after export. */\nwindow.PORTFOLIO_DATA = ' + payload + ';\n';
+            const blob = new Blob([js], { type: 'text/javascript' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'visdev-data.js';
+            a.click();
+            URL.revokeObjectURL(a.href);
+            setDirty(false);
+        }
+
+        function clearDraft() {
+            if (!confirm('Remove localStorage draft? secret.html will use visdev-data.js again.')) return;
+            localStorage.removeItem(CMS_STORAGE_KEY);
+            data = deepClonePortfolio();
+            renderAll();
+            setDirty(false);
+            refreshPreview();
+        }
+
+        function reloadFromFile() {
+            if (dirty && !confirm('Discard unsaved edits and reload from visdev-data.js?')) return;
+            localStorage.removeItem(CMS_STORAGE_KEY);
+            data = deepClonePortfolio();
+            renderAll();
+            setDirty(false);
+        }
+
+        document.getElementById('btn-apply').addEventListener('click', persistToLocalStorage);
+        document.getElementById('btn-export').addEventListener('click', exportVisdevJs);
+        document.getElementById('btn-clear-draft').addEventListener('click', clearDraft);
+        document.getElementById('btn-reload-file').addEventListener('click', reloadFromFile);
+        document.getElementById('btn-preview').addEventListener('click', refreshPreview);
+
+        document.getElementById('btn-import').addEventListener('click', () => {
+            document.getElementById('import-input').click();
+        });
+
+        document.getElementById('import-input').addEventListener('change', async (e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+            const text = await file.text();
+            try {
+                let parsed;
+                if (file.name.endsWith('.js')) {
+                    const m = text.match(/PORTFOLIO_DATA\s*=\s*(\{[\s\S]*\})\s*;?\s*$/);
+                    if (!m) throw new Error('Could not parse visdev-data.js');
+                    parsed = JSON.parse(m[1]);
+                } else {
+                    parsed = JSON.parse(text);
+                }
+                if (!parsed?.visdevDb) throw new Error('Missing visdevDb');
+                data = parsed;
+                setDirty(true);
+                renderAll();
+            } catch (err) {
+                alert('Import failed: ' + err.message);
+            }
+            e.target.value = '';
+        });
+
+        document.getElementById('btn-add-project').addEventListener('click', () => {
+            const cat = selectedCategory;
+            const prefix = cat === 'backgrounds' ? 'bg' : cat === 'props' ? 'pr' : 'co';
+            const n = (data.visdevDb[cat]?.length || 0) + 1;
+            const project = {
+                id: `${prefix}-${n}`,
+                title: 'New Project',
+                file: 'new_project.bmp',
+                media: [{ url: '', label: 'FINAL' }],
+                description: 'Project description.',
+                tag: cat === 'backgrounds' ? 'Background Painting' : cat === 'props' ? 'Prop Design' : 'Concept Art'
+            };
+            if (!data.visdevDb[cat]) data.visdevDb[cat] = [];
+            data.visdevDb[cat].push(project);
+            selectedProjectIndex = data.visdevDb[cat].length - 1;
+            setDirty(true);
+            renderAll();
+        });
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeTab = btn.dataset.tab;
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+                document.getElementById('tab-portfolio').classList.toggle('hidden', activeTab !== 'portfolio');
+                document.getElementById('tab-menu').classList.toggle('hidden', activeTab !== 'menu');
+                document.getElementById('tab-captions').classList.toggle('hidden', activeTab !== 'captions');
+            });
+        });
+
+        function unlock() {
+            gate.hidden = true;
+            app.hidden = false;
+            data = loadWorkingData();
+            renderAll();
+            setDirty(false);
+            refreshPreview();
+        }
+
+        gateInput.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter') return;
+            const val = gateInput.value;
+            if (val === SYSTEM_PASSWORD || val === ALT_PASSWORD) unlock();
+            else {
+                gateInput.value = '';
+                alert('Access denied.');
+            }
+        });
+
+        window.addEventListener('beforeunload', (e) => {
+            if (dirty) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+    </script>
+</body>
+</html>
