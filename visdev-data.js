@@ -15,6 +15,10 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "secret%20portfolio%20process/backgrounds/city%20street/frank-Arb9NKsVS1M-unsplash.jpg",
                         "label": "SKETCH"
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/city%20street/progress.png",
+                        "label": "COLOR"
                     }
                 ],
                 "description": "Urban street study with focus on atmospheric depth. Analyzing architectural decay and neon lighting propagation.",
