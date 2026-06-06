@@ -498,7 +498,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-5",
                 "title": "Train Platform",
-                "file": "train_platform study",
+                "file": "train platform",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/Screenshot%202026-05-31%20192215.png",
