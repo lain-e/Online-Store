@@ -205,6 +205,29 @@
             .volume-slider { width: 5.5rem; }
         }
 
+        #email-copy-toast {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(30, 27, 56, 0.5);
+        }
+        #email-copy-toast.hidden {
+            display: none;
+        }
+        #email-copy-toast .email-copy-toast-box {
+            max-width: 18rem;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
         /* Nav flyout — padding bridge keeps submenu reachable while moving cursor down */
         .nav-flyout {
             position: relative;
@@ -923,9 +946,9 @@
 
             <!-- Global Contact Button inside Notepad -->
             <div class="mt-4 mb-2 flex justify-center gap-4 px-2">
-                <a href="mailto:laineneufeldart@gmail.com" class="win-button win-border px-8 py-2 font-bold text-lg uppercase hover:opacity-90">
+                <button type="button" id="email-me-btn" class="win-button win-border px-8 py-2 font-bold text-lg uppercase hover:opacity-90">
                     EMAIL ME
-                </a>
+                </button>
             </div>
         </div>
     </section>
@@ -945,6 +968,13 @@
           laineneufeldart@gmail.com
         </div>
     </footer>
+
+    <div id="email-copy-toast" class="hidden" role="alertdialog" aria-labelledby="email-copy-toast-message" aria-modal="true">
+        <div class="email-copy-toast-box hollow-box" style="background: var(--page-bg); color: var(--explorer-text);">
+            <p id="email-copy-toast-message">Email has been copied to clipboard.</p>
+            <button type="button" id="email-copy-toast-ok" class="win-button win-border px-6 py-1.5 font-bold text-sm uppercase mt-3">OK</button>
+        </div>
+    </div>
 
     <!-- Fullscreen Lightbox Modal Overlay (Win95 Window Style) -->
     <div id="lightbox-modal" class="fixed inset-0 z-[100] backdrop-blur-sm hidden justify-center items-center p-1 sm:p-2 md:p-3 opacity-0 transition-all duration-100 select-none" style="background: var(--lightbox-overlay-bg);" role="dialog" aria-modal="true">
@@ -1362,6 +1392,58 @@
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', () => playStickyKey());
         });
+
+        const CONTACT_EMAIL = 'laineneufeldart@gmail.com';
+        const emailMeBtn = document.getElementById('email-me-btn');
+        const emailCopyToast = document.getElementById('email-copy-toast');
+        const emailCopyToastOk = document.getElementById('email-copy-toast-ok');
+        let emailCopyToastTimeout = null;
+
+        async function copyContactEmail() {
+            try {
+                await navigator.clipboard.writeText(CONTACT_EMAIL);
+            } catch (e) {
+                const ta = document.createElement('textarea');
+                ta.value = CONTACT_EMAIL;
+                ta.setAttribute('readonly', '');
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            }
+        }
+
+        function showEmailCopyToast() {
+            clearTimeout(emailCopyToastTimeout);
+            emailCopyToast.classList.remove('hidden');
+            emailCopyToastTimeout = setTimeout(hideEmailCopyToast, 4000);
+        }
+
+        function hideEmailCopyToast() {
+            clearTimeout(emailCopyToastTimeout);
+            emailCopyToast.classList.add('hidden');
+        }
+
+        if (emailMeBtn) {
+            emailMeBtn.addEventListener('click', async () => {
+                playLoFiNav();
+                await copyContactEmail();
+                showEmailCopyToast();
+            });
+        }
+        if (emailCopyToastOk) {
+            emailCopyToastOk.addEventListener('click', () => {
+                playStickyKey();
+                hideEmailCopyToast();
+            });
+        }
+        if (emailCopyToast) {
+            emailCopyToast.addEventListener('click', (e) => {
+                if (e.target === emailCopyToast) hideEmailCopyToast();
+            });
+        }
     </script>
 </body>
 </html>
