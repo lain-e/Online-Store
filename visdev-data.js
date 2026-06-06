@@ -536,7 +536,7 @@ window.PORTFOLIO_DATA = {
             "title": "About",
             "file": "about.txt",
             "tag": "System Info",
-            "body": "Laine Neufeld is a visual development artist and illustrator building worlds through color, atmosphere, and design. This private portfolio archives background paintings, prop studies, and concept explorations produced for narrative and interactive projects.\n\nThe archive is organized by asset type and process stage so each file can be read as part of a larger production workflow."
+            "body": "Laine Neufeld is a visual development artist and illustrator based in CT, USA. Laine's work is playful and colorful, with an edge of realism to capture anyone's eye. Subjects include backgrounds, props, and other concepts for various development needs and stages."
         },
         "professional": {
             "title": "Professional",
@@ -548,7 +548,7 @@ window.PORTFOLIO_DATA = {
             "title": "Contact",
             "file": "contact.txt",
             "tag": "Reach Out",
-            "body": "For commissions, collaboration, or portfolio access requests:\n\n✉ hello@laineneufeld.com\n◎ ArtStation: laine-neufeld\n\nPlease include project scope, timeline, and reference material. Response time is typically within 48 hours."
+            "body": "For commissions, collaboration, or additional access requests:\n\n✉ hello@laineneufeld.com\n◎ ArtStation: laine-neufeld\n\n"
         }
     }
 };
