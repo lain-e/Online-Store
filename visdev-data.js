@@ -13,23 +13,24 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "bg-1",
                 "title": "City Street",
-                "file": "city street.bmp",
+                "file": "city street study",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/200/463/large/laine-neufeld-citystreetbg.jpg?1779243980",
                         "label": "FINAL",
-                        "caption": "Final render for City Street. Urban street study with focus on atmospheric depth. Analyzing architectural decay and neon lighting propagation."
-                    },
-                    {
-                        "url": "secret%20portfolio%20process/backgrounds/city%20street/frank-Arb9NKsVS1M-unsplash.jpg",
-                        "label": "REF",
-                        "caption": "Urban street study with focus on atmospheric depth. Analyzing architectural decay and neon lighting propagation."
+                        "caption": "Final render for this study. Focus was on creating stylized atmosphere"
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/city%20street/progress.png",
                         "label": "PROGRESS",
-                        "caption": "Urban street study with focus on atmospheric depth. Analyzing architectural decay and neon lighting propagation."
-                    }
+                        "caption": "Blocked in buildings, cars rendered in sepia-tone value. Details and final colors added afterwards. All worked on discreet layers per object."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/city%20street/frank-Arb9NKsVS1M-unsplash.jpg",
+                        "label": "REF",
+                        "caption": "Sourced from creative commons content on Unsplash."
+                    },
+                    
                 ],
                 "description": "Urban street study with focus on atmospheric depth. Analyzing architectural decay and neon lighting propagation.",
                 "tag": "Background Painting"
@@ -37,7 +38,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "bg-2",
                 "title": "Warehouse Hallway",
-                "file": "warehouse hallway.bmp",
+                "file": "warehouse hallway study",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/230/513/large/laine-neufeld-screenshot-2026-05-20-185757.jpg?1779317928",
@@ -71,7 +72,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "bg-3",
                 "title": "Official Looking Brick Building",
-                "file": "official looking brick building.bmp",
+                "file": "official looking brick building study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/200/210/large/laine-neufeld-bb-e-d-f.jpg?1779242857",
@@ -115,7 +116,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "bg-4",
                 "title": "Subway Train Car",
-                "file": "subway.bmp",
+                "file": "subway study",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/455/161/large/laine-neufeld-subwayint2.jpg?1779987669",
@@ -144,7 +145,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "bg-5",
                 "title": "Infinite Bathroom",
-                "file": "public bathroom.bmp",
+                "file": "public bathroom study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/200/336/large/laine-neufeld-infinitebathroom.jpg?1779243351",
@@ -173,7 +174,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "bg-6",
                 "title": "Airport Scene",
-                "file": "airport.bmp",
+                "file": "airport study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/317/202/large/laine-neufeld-airport-interior-final.jpg?1779606399",
@@ -197,7 +198,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "bg-7",
                 "title": "Ferris Wheel Interior",
-                "file": "ferris wheel.bmp",
+                "file": "ferris wheel study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/542/306/large/laine-neufeld-screenshot-2026-05-31-190939.jpg?1780269015",
@@ -216,7 +217,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "bg-8",
                 "title": "Town Street",
-                "file": "town street.bmp",
+                "file": "town street study",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/200/411/large/laine-neufeld-screenshot-2026-05-19-220427.jpg?1779243783",
@@ -237,7 +238,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "pr-1",
                 "title": "Porcelain Doll",
-                "file": "doll.bmp",
+                "file": "doll study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/369/594/large/laine-neufeld-doll-final.jpg?1779753510",
@@ -256,7 +257,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "pr-2",
                 "title": "Tea Set",
-                "file": "tea.bmp",
+                "file": "tea study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/317/100/large/laine-neufeld-teaset-copy.jpg?1779605932",
@@ -285,7 +286,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "pr-3",
                 "title": "Dish of Sweets",
-                "file": "candy dish.bmp",
+                "file": "candy dish study",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/095/114/593/large/laine-neufeld-image-7.jpg?1767660195",
@@ -304,7 +305,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "pr-4",
                 "title": "Arcade Joystick",
-                "file": "arcade joystick.bmp",
+                "file": "arcade joystick study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/095/113/604/large/laine-neufeld-game.jpg?1767656451",
@@ -323,7 +324,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "pr-5",
                 "title": "Telephone",
-                "file": "green payphone.bmp",
+                "file": "green payphone study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/095/113/368/large/laine-neufeld-greenphonee.jpg?1767657751",
@@ -342,7 +343,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "pr-6",
                 "title": "Gumball Machine",
-                "file": "gumball machine.bmp",
+                "file": "gumball machine study",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/095/113/001/large/laine-neufeld-gummmmmm.jpg?1767654480",
@@ -369,7 +370,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-2",
                 "title": "Record Store",
-                "file": "record_store.bmp",
+                "file": "record_store study",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(1).png",
@@ -388,7 +389,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-6",
                 "title": "Aquarium Store",
-                "file": "aquarium.bmp",
+                "file": "aquarium study",
                 "media": [
                     {
                         "url": "secret%20portfolio%20process/concepts/aquarium/aquariumStore_Interior_final.png",
@@ -422,7 +423,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-3",
                 "title": "Bedroom Env",
-                "file": "env_bedroom.bmp",
+                "file": "env_bedroom study",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(8).png",
@@ -446,7 +447,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-4",
                 "title": "Small Stage Venue",
-                "file": "stage.bmp",
+                "file": "stage study",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/bg_stage.png",
@@ -480,7 +481,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-1",
                 "title": "Cozy Nook",
-                "file": "nook_concept.bmp",
+                "file": "nook_concept study",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/image%20(3).png",
@@ -499,7 +500,7 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-5",
                 "title": "Train Platform",
-                "file": "train_platform.bmp",
+                "file": "train_platform study",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/Screenshot%202026-05-31%20192215.png",
