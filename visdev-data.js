@@ -548,7 +548,7 @@ window.PORTFOLIO_DATA = {
             "title": "Contact",
             "file": "contact.txt",
             "tag": "Reach Out",
-            "body": "For commissions, collaboration, or additional access requests:\n\n✉ hello@laineneufeld.com\n◎ ArtStation: laine-neufeld\n\n"
+            "body": "For commissions, collaboration, or additional access requests:\n\n✉ laineneufeldart@gmail.com\n◎ ArtStation: laine-neufeld\n\n"
         }
     }
 };
