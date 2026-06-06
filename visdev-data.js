@@ -1,4 +1,4 @@
-/* Portfolio content — edit via cms.html or replace this file after export. */
+/* Portfolio content — edit this file directly to update secret.html. */
 window.PORTFOLIO_DATA = {
     "version": 1,
     "visdevDb": {
