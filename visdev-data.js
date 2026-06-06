@@ -421,59 +421,59 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-3",
                 "title": "Bedroom Env",
-                "file": "env_bedroom study",
+                "file": "fancy bedroom",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(8).png",
                         "label": "FINAL",
-                        "caption": "Final render for Bedroom Env. Environmental concept study exploring bedroom layout and lived-in clutter."
+                        "caption": "Final concept render created during mentorship. Focused on inventing custom texture brushes and rendering them in scene."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/fancy%20bedroom/reference.png",
-                        "label": "SKETCH",
-                        "caption": "Sketch pass — loose composition study for Bedroom Env. Exploring layout, silhouette, and narrative read before committing to detail."
+                        "label": "REF",
+                        "caption": "Reference used for value layout, basic prop forms and color key."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/fancy%20bedroom/prop%20breakout.png",
-                        "label": "BLOCKOUT",
-                        "caption": "Blockout pass for Bedroom Env. Establishing major forms, depth planes, and value structure across the scene."
+                        "label": "KEY",
+                        "caption": "Breakout view of props and textures created individually to integrate into concept."
                     }
                 ],
-                "description": "Environmental concept study exploring bedroom layout and lived-in clutter.",
+                "description": "Bedroom concept",
                 "tag": "Concept Art"
             },
             {
                 "id": "co-4",
                 "title": "Small Stage Venue",
-                "file": "stage study",
+                "file": "stage",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/bg_stage.png",
                         "label": "FINAL",
-                        "caption": "Final render for Small Stage Venue. Stage background design concept balancing performance lighting and audience depth."
+                        "caption": "Final render for Small Stage Venue created during mentorship. Focused on balancing realism with colorful style."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/concert/reference.jpg",
-                        "label": "SKETCH",
-                        "caption": "Sketch pass — loose composition study for Small Stage Venue. Exploring layout, silhouette, and narrative read before committing to detail."
+                        "label": "REF",
+                        "caption": "Image I took of a local concert venue I visit often! If you're curious... I'm much better at drawing than music :)"
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/concert/process-1.png",
                         "label": "BLOCKOUT",
-                        "caption": "Blockout pass for Small Stage Venue. Establishing major forms, depth planes, and value structure across the scene."
+                        "caption": "Beginning to establish composition after creating perspective from room geometry. Experimented with small texture additions."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/concert/process-2.png",
-                        "label": "LIGHTING",
-                        "caption": "Lighting pass for Small Stage Venue. Refining mood, bounce light, and focal contrast to support the story beat."
+                        "label": "LAYOUT",
+                        "caption": "Final value pass before adding final details and color."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/concert/sheets_props.png",
                         "label": "PROPS",
-                        "caption": "Stage background design concept balancing performance lighting and audience depth."
+                        "caption": "Some props I created using canva + drawing software to decorate! All posters include my own previous illustrations."
                     }
                 ],
-                "description": "Stage background design concept balancing performance lighting and audience depth.",
+                "description": "Stage Concept",
                 "tag": "Concept Art"
             },
             {
