@@ -372,7 +372,7 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(1).png",
                         "label": "CONCEPT",
-                        "caption": "Concept render, lacking atmosphere and final colors. Inspired by composition of reference image."
+                        "caption": "Concept render created during mentorship, lacking atmosphere and final colors. Inspired by composition of reference image."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/recordstore/ref.avif",
@@ -391,30 +391,31 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "secret%20portfolio%20process/concepts/aquarium/aquariumStore_Interior_final.png",
                         "label": "FINAL",
-                        "caption": "Final render for Aquarium Store. Interior concept for a neon-lit aquarium and pet supply shop. Exploring moody color scripting, tank glow, and retail clutter."
+                        "caption": "Concept I created independently from a bakery interior image exploring multicolored lighting and small critters."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/aquarium/bwsketch.png",
-                        "label": "SKETCH",
-                        "caption": "Sketch pass — loose composition study for Aquarium Store. Exploring layout, silhouette, and narrative read before committing to detail."
+                        "label": "LAYOUT",
+                        "caption": "Value pass working from reference."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/aquarium/texture.png",
-                        "label": "BLOCKOUT",
-                        "caption": "Blockout pass for Aquarium Store. Establishing major forms, depth planes, and value structure across the scene."
+                        "label": "TEXTURE",
+                        "caption": "Two silly fish studies I completed to turn into texturing brushes for fish inside tanks."
                     },
-                    {
-                        "url": "secret%20portfolio%20process/concepts/aquarium/ref1.jpg",
-                        "label": "LIGHTING",
-                        "caption": "Lighting pass for Aquarium Store. Refining mood, bounce light, and focal contrast to support the story beat."
-                    },
+                   
                     {
                         "url": "secret%20portfolio%20process/concepts/aquarium/ref2.jpg",
                         "label": "REF",
-                        "caption": "Interior concept for a neon-lit aquarium and pet supply shop. Exploring moody color scripting, tank glow, and retail clutter."
+                        "caption": "A photograph of fish tanks, one of many referenced during the concept process."
+                    },
+                     {
+                        "url": "secret%20portfolio%20process/concepts/aquarium/ref1.jpg",
+                        "label": "REF",
+                        "caption": "Interior composition reference, lighting and contents changed for concept idea."
                     }
                 ],
-                "description": "Interior concept for a neon-lit aquarium and pet supply shop. Exploring moody color scripting, tank glow, and retail clutter.",
+                "description": "Aquarium interior",
                 "tag": "Concept Art"
             },
             {
