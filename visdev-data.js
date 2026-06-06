@@ -145,25 +145,25 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/200/336/large/laine-neufeld-infinitebathroom.jpg?1779243351",
                         "label": "FINAL",
-                        "caption": "Final render for Infinite Bathroom. Abstract spatial exploration. Repeating patterns and liminal space psychology."
+                        "caption": "Final render for Infinite Bathroom. Explored pushing color variation and cool perspective tricks."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/public%20bathroom/photo-1579616138977-5370304f898e%20(1).avif",
-                        "label": "SKETCH",
-                        "caption": "Sketch pass — loose composition study for Infinite Bathroom. Exploring layout, silhouette, and narrative read before committing to detail."
+                        "label": "REF",
+                        "caption": "Sourced from Unsplash creative commons."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/public%20bathroom/Screenshot%202026-02-21%20011718.png",
                         "label": "BLOCKOUT",
-                        "caption": "Blockout pass for Infinite Bathroom. Establishing major forms, depth planes, and value structure across the scene."
+                        "caption": "Blockout pass geometry and perspective."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/public%20bathroom/Screenshot%202026-02-21%20181419.png",
-                        "label": "LIGHTING",
-                        "caption": "Lighting pass for Infinite Bathroom. Refining mood, bounce light, and focal contrast to support the story beat."
+                        "label": "COMPOSITION",
+                        "caption": "Added flats and minor texture, keeping focus on tight and accurate value read."
                     }
                 ],
-                "description": "Abstract spatial exploration. Repeating patterns and liminal space psychology.",
+                "description": "Study exploring different surface qualities and inventing detail.",
                 "tag": "Background Painting"
             },
             {
@@ -174,39 +174,39 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/317/202/large/laine-neufeld-airport-interior-final.jpg?1779606399",
                         "label": "FINAL",
-                        "caption": "Final render for Airport Scene. Large scale interior architecture study. Managing crowd flow and vast open ceiling structures."
+                        "caption": "Final render for study, created during mentorship."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/airport/processshot.png",
-                        "label": "SKETCH",
-                        "caption": "Sketch pass — loose composition study for Airport Scene. Exploring layout, silhouette, and narrative read before committing to detail."
+                        "label": "LAYOUT",
+                        "caption": "Experimental use of texture brush and photobashing small elements to draw over. Flat color and main texture established."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/airport/concept.jpg",
                         "label": "REF",
-                        "caption": "Large scale interior architecture study. Managing crowd flow and vast open ceiling structures."
+                        "caption": "Sourced from Unsplash creative commons."
                     }
                 ],
-                "description": "Large scale interior architecture study. Managing crowd flow and vast open ceiling structures.",
+                "description": "Interior study",
                 "tag": "Background Painting"
             },
             {
                 "id": "bg-7",
-                "title": "Ferris Wheel Interior",
+                "title": "Ferris Wheel Exterior",
                 "file": "ferris wheel study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/542/306/large/laine-neufeld-screenshot-2026-05-31-190939.jpg?1780269015",
                         "label": "FINAL",
-                        "caption": "Final render for Ferris Wheel Interior. Interior room lighting study utilizing external light dynamics to cast complex shadows."
+                        "caption": "Quick study completed within 2 hours, focus on discreet layering for independent skill excercise."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/ferris%20wheel/ferris_ref.jpg",
                         "label": "REF",
-                        "caption": "Interior room lighting study utilizing external light dynamics to cast complex shadows."
+                        "caption": "Sourced from Unsplash creative commons."
                     }
                 ],
-                "description": "Interior room lighting study utilizing external light dynamics to cast complex shadows.",
+                "description": "Exterior keyframe study.",
                 "tag": "Background Painting"
             },
             {
@@ -217,7 +217,7 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/200/411/large/laine-neufeld-screenshot-2026-05-19-220427.jpg?1779243783",
                         "label": "FINAL",
-                        "caption": "Final render for Town Street. European town street study with historic brick facades, warm sunlight, and layered urban depth."
+                        "caption": "Final render created during mentorship. Focus on inventing details and selectively excluding others."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/town%20street/ref.jpg",
@@ -225,7 +225,7 @@ window.PORTFOLIO_DATA = {
                         "caption": "European town street study with historic brick facades, warm sunlight, and layered urban depth."
                     }
                 ],
-                "description": "European town street study with historic brick facades, warm sunlight, and layered urban depth.",
+                "description": "Town street study",
                 "tag": "Background Painting"
             }
         ],
