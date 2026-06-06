@@ -238,7 +238,7 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/369/594/large/laine-neufeld-doll-final.jpg?1779753510",
                         "label": "FINAL",
-                        "caption": "Independent prop study cerated from personal reference. Focus on inventive texture and style."
+                        "caption": "Independent quick prop study cerated from personal reference. Focus on inventive texture and style."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/doll/download%20(4)%20(1).jpg",
@@ -257,25 +257,27 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/317/100/large/laine-neufeld-teaset-copy.jpg?1779605932",
                         "label": "FINAL",
-                        "caption": "Final render for Tea Set. Tea set study focused on ceramic reflections and intricate painting details."
+                        "caption": "My favorite piece of mine at the moment! Independent study, focus on stylized color and intricate reflective surface detail."
                     },
-                    {
-                        "url": "secret%20portfolio%20process/props/tea/teacupOne%20(1).png",
-                        "label": "BLOCKOUT",
-                        "caption": "Blockout pass for Tea Set. Establishing major forms, depth planes, and value structure across the scene."
-                    },
+            
                     {
                         "url": "secret%20portfolio%20process/props/tea/Screenshot%202026-05-21%20155759.png",
-                        "label": "LIGHTING",
-                        "caption": "Lighting pass for Tea Set. Refining mood, bounce light, and focal contrast to support the story beat."
+                        "label": "LAYOUT",
+                        "caption": "Lighting and flat color established. Gradients follow afterwards."
                     },
+{
+                        "url": "secret%20portfolio%20process/props/tea/teacupOne%20(1).png",
+                        "label": "PROGRESS",
+                        "caption": "Continuing to zone in on smaller and smaller hue shifts and gradients. Began working on metal value map."
+                    },
+                    
                     {
                         "url": "secret%20portfolio%20process/props/tea/download%20-%202026-05-30T155208.440.jpg",
                         "label": "REF",
-                        "caption": "Tea set study focused on ceramic reflections and intricate painting details."
+                        "caption": "Reference I took of my tea set!"
                     }
                 ],
-                "description": "Tea set study focused on ceramic reflections and intricate painting details.",
+                "description": "Tea set study focused on intricate painterly details.",
                 "tag": "Prop Design"
             },
             {
