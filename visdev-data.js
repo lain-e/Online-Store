@@ -367,26 +367,26 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-2",
                 "title": "Record Store",
-                "file": "record_store study",
+                "file": "record store",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(1).png",
-                        "label": "FINAL",
-                        "caption": "Final render for Record Store. Structural architecture sketch for a neighborhood record shop interior."
+                        "label": "CONCEPT",
+                        "caption": "Concept render, lacking atmosphere and final colors. Inspired by composition of reference image."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/recordstore/ref.avif",
                         "label": "REF",
-                        "caption": "Structural architecture sketch for a neighborhood record shop interior."
+                        "caption": "Sourced from Unsplash creative commons."
                     }
                 ],
-                "description": "Structural architecture sketch for a neighborhood record shop interior.",
+                "description": "Store Concept",
                 "tag": "Concept Art"
             },
             {
                 "id": "co-6",
                 "title": "Aquarium Store",
-                "file": "aquarium study",
+                "file": "aquarium",
                 "media": [
                     {
                         "url": "secret%20portfolio%20process/concepts/aquarium/aquariumStore_Interior_final.png",
