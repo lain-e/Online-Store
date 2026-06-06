@@ -32,7 +32,7 @@ window.PORTFOLIO_DATA = {
                     },
                     
                 ],
-                "description": "Urban street study with focus on atmospheric depth. Analyzing architectural decay and neon lighting propagation.",
+                "description": "City street study.",
                 "tag": "Background Painting"
             },
             {
@@ -66,7 +66,7 @@ window.PORTFOLIO_DATA = {
                         "caption": "Value pass nearly complete with some textures added. Final details and color added after to create layout."
                     }
                 ],
-                "description": "Interior lighting and composition study. Balancing cold ambient light with harsh artificial sources.",
+                "description": "Interior lighting and composition study.",
                 "tag": "Background Painting"
             },
             {
@@ -105,7 +105,7 @@ window.PORTFOLIO_DATA = {
                         "caption": "Reference image from Unsplash creative commons."
                     }
                 ],
-                "description": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures.",
+                "description": "Study on texture integration and weather/lighting differences.",
                 "tag": "Background Painting"
             },
             {
@@ -116,25 +116,25 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/455/161/large/laine-neufeld-subwayint2.jpg?1779987669",
                         "label": "FINAL",
-                        "caption": "Final render for Subway Train Car. Subway structural design with cinematic lighting. Evoking narrative tension through claustrophobic framing."
+                        "caption": "Final render for Subway Train Car. Study created independently to explore simplifying complex mechanical interiors."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/subway/juan-carlos-ramirez-yWuk4JhBY-c-unsplash.jpg",
-                        "label": "SKETCH",
-                        "caption": "Sketch pass — loose composition study for Subway Train Car. Exploring layout, silhouette, and narrative read before committing to detail."
+                        "label": "REF",
+                        "caption": "Reference from Unsplash creative commons."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/subway/bw.png",
                         "label": "BLOCKOUT",
-                        "caption": "Blockout pass for Subway Train Car. Establishing major forms, depth planes, and value structure across the scene."
+                        "caption": "Composition while still in the value stages. Final details and textures added after this."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/subway/Screenshot%202026-05-14%20052211.png",
-                        "label": "LIGHTING",
-                        "caption": "Lighting pass for Subway Train Car. Refining mood, bounce light, and focal contrast to support the story beat."
+                        "label": "LAYOUT",
+                        "caption": "Last step before final details and color render. Basic flat colors and textures have been integrated."
                     }
                 ],
-                "description": "Subway structural design with cinematic lighting. Evoking narrative tension through claustrophobic framing.",
+                "description": "Design study with focus on abbreviating detail.",
                 "tag": "Background Painting"
             },
             {
