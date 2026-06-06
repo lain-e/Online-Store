@@ -104,7 +104,7 @@ window.PORTFOLIO_DATA = {
                         "label": "SKETCH"
                     },
                     {
-                        "url": "secret%20portfolio%20process/backgrounds/subway/Screenshot%202026-05-13%20194124.png",
+                        "url": "secret%20portfolio%20process/backgrounds/subway/bw.png",
                         "label": "BLOCKOUT"
                     },
                     {
