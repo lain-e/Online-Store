@@ -536,7 +536,7 @@ window.PORTFOLIO_DATA = {
             "title": "About",
             "file": "about.txt",
             "tag": "System Info",
-            "body": "Laine Neufeld is a visual development artist and illustrator based in CT, USA. Laine's work is playful and colorful, with an edge of realism to capture anyone's eye. Subjects include backgrounds, props, and other concepts for various development needs and stages."
+            "body": "Laine Neufeld is a visual development artist and illustrator based in CT, USA. Laine's work is playful and colorful, with an edge of realism to capture anyone's eye. Fluent in multiple rendering and illustration softwares, subjects include backgrounds, props, and other concepts for various project development needs and stages."
         },
         "professional": {
             "title": "Professional",
