@@ -13,211 +13,215 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "bg-1",
                 "title": "City Street",
-                "file": "city street study",
+                "file": "city street.bmp",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/200/463/large/laine-neufeld-citystreetbg.jpg?1779243980",
                         "label": "FINAL",
-                        "caption": "Final render for this study created during mentorship. Focus was on creating stylized atmosphere."
-                    },
-                    {
-                        "url": "secret%20portfolio%20process/backgrounds/city%20street/progress.png",
-                        "label": "PROGRESS",
-                        "caption": "Blocked in buildings, cars rendered in sepia-tone value. Details and final colors added afterwards. All worked on discreet layers per object."
+                        "caption": "Final render for City Street. Urban street study with focus on atmospheric depth. Analyzing architectural decay and neon lighting propagation."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/city%20street/frank-Arb9NKsVS1M-unsplash.jpg",
                         "label": "REF",
-                        "caption": "Sourced from creative commons content on Unsplash."
+                        "caption": "Urban street study with focus on atmospheric depth. Analyzing architectural decay and neon lighting propagation."
                     },
-                    
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/city%20street/progress.png",
+                        "label": "PROGRESS",
+                        "caption": "Urban street study with focus on atmospheric depth. Analyzing architectural decay and neon lighting propagation."
+                    }
                 ],
-                "description": "City street study.",
+                "description": "Urban street study with focus on atmospheric depth. Analyzing architectural decay and neon lighting propagation.",
                 "tag": "Background Painting"
             },
             {
                 "id": "bg-2",
                 "title": "Warehouse Hallway",
-                "file": "warehouse hallway study",
+                "file": "warehouse hallway.bmp",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/230/513/large/laine-neufeld-screenshot-2026-05-20-185757.jpg?1779317928",
                         "label": "FINAL",
-                        "caption": "Final render for Warehouse Hallway created during mentorship. Interior lighting and composition study, cartoon-like art style."
+                        "caption": "Final render for Warehouse Hallway. Interior lighting and composition study. Balancing cold ambient light with harsh artificial sources."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/warehouse%20hallway/IMG_3701%20(2)%20(1).jpg",
-                        "label": "REF",
-                        "caption": "Reference image that I took while out and about!"
+                        "label": "SKETCH",
+                        "caption": "Sketch pass — loose composition study for Warehouse Hallway. Exploring layout, silhouette, and narrative read before committing to detail."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/warehouse%20hallway/Screenshot%202026-02-22%20221848.png",
                         "label": "BLOCKOUT",
-                        "caption": "The first step is always to establish the geometry of the room, making perspective easy to follow as I work."
+                        "caption": "Blockout pass for Warehouse Hallway. Establishing major forms, depth planes, and value structure across the scene."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/warehouse%20hallway/Screenshot%202026-02-22%20230210.png",
-                        "label": "COMPOSITION",
-                        "caption": "After reviewing reference, I decide what objects to include. I like how the eye follows the left side props in this scene, so I stuck with this composition."
+                        "label": "LIGHTING",
+                        "caption": "Lighting pass for Warehouse Hallway. Refining mood, bounce light, and focal contrast to support the story beat."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/warehouse%20hallway/Screenshot%202026-02-23%20002141.png",
-                        "label": "TEXTURE",
-                        "caption": "Value pass nearly complete with some textures added. Final details and color added after to create layout."
+                        "label": "REF",
+                        "caption": "Interior lighting and composition study. Balancing cold ambient light with harsh artificial sources."
                     }
                 ],
-                "description": "Interior lighting and composition study.",
+                "description": "Interior lighting and composition study. Balancing cold ambient light with harsh artificial sources.",
                 "tag": "Background Painting"
             },
             {
                 "id": "bg-3",
                 "title": "Official Looking Brick Building",
-                "file": "official looking brick building study",
+                "file": "official looking brick building.bmp",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/200/210/large/laine-neufeld-bb-e-d-f.jpg?1779242857",
                         "label": "FINAL",
-                        "caption": "Final render, study during mentorship created to model different weather conditions and times of day."
+                        "caption": "Final render for Official Looking Brick Building. Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/2outdoor3.png",
-                        "label": "FINAL - NIGHT",
-                        "caption": "Night time color."
+                        "label": "BLOCKOUT",
+                        "caption": "Blockout pass for Official Looking Brick Building. Establishing major forms, depth planes, and value structure across the scene."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/bb_e_gh_f.png",
-                        "label": "FINAL - GOLDEN HOUR",
-                        "caption": "Golden hour color."
+                        "label": "LIGHTING",
+                        "caption": "Lighting pass for Official Looking Brick Building. Refining mood, bounce light, and focal contrast to support the story beat."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/bb_e_d_f.png",
+                        "label": "DRAFT",
+                        "caption": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/bb_e_r_f.png",
-                        "label": "FINAL - RAIN",
-                        "caption": "Rainy Day color."
+                        "label": "COLOR",
+                        "caption": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/colorways.png",
                         "label": "COLORWAYS",
-                        "caption": "Overview of keys."
+                        "caption": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/reference.jpg",
                         "label": "REF",
-                        "caption": "Reference image from Unsplash creative commons."
+                        "caption": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures."
                     }
                 ],
-                "description": "Study on texture integration and weather/lighting differences.",
+                "description": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures.",
                 "tag": "Background Painting"
             },
             {
                 "id": "bg-4",
                 "title": "Subway Train Car",
-                "file": "subway study",
+                "file": "subway.bmp",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/455/161/large/laine-neufeld-subwayint2.jpg?1779987669",
                         "label": "FINAL",
-                        "caption": "Final render for Subway Train Car. Study created independently to explore simplifying complex mechanical interiors."
+                        "caption": "Final render for Subway Train Car. Subway structural design with cinematic lighting. Evoking narrative tension through claustrophobic framing."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/subway/juan-carlos-ramirez-yWuk4JhBY-c-unsplash.jpg",
-                        "label": "REF",
-                        "caption": "Reference from Unsplash creative commons."
+                        "label": "SKETCH",
+                        "caption": "Sketch pass — loose composition study for Subway Train Car. Exploring layout, silhouette, and narrative read before committing to detail."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/subway/bw.png",
                         "label": "BLOCKOUT",
-                        "caption": "Composition while still in the value stages. Final details and textures added after this."
+                        "caption": "Blockout pass for Subway Train Car. Establishing major forms, depth planes, and value structure across the scene."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/subway/Screenshot%202026-05-14%20052211.png",
-                        "label": "LAYOUT",
-                        "caption": "Last step before final details and color render. Basic flat colors and textures have been integrated."
+                        "label": "LIGHTING",
+                        "caption": "Lighting pass for Subway Train Car. Refining mood, bounce light, and focal contrast to support the story beat."
                     }
                 ],
-                "description": "Design study with focus on abbreviating detail.",
+                "description": "Subway structural design with cinematic lighting. Evoking narrative tension through claustrophobic framing.",
                 "tag": "Background Painting"
             },
             {
                 "id": "bg-5",
                 "title": "Infinite Bathroom",
-                "file": "public bathroom study",
+                "file": "public bathroom.bmp",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/200/336/large/laine-neufeld-infinitebathroom.jpg?1779243351",
                         "label": "FINAL",
-                        "caption": "Final render for Infinite Bathroom. Explored pushing color variation and cool perspective tricks."
+                        "caption": "Final render for Infinite Bathroom. Abstract spatial exploration. Repeating patterns and liminal space psychology."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/public%20bathroom/photo-1579616138977-5370304f898e%20(1).avif",
-                        "label": "REF",
-                        "caption": "Sourced from Unsplash creative commons."
+                        "label": "SKETCH",
+                        "caption": "Sketch pass — loose composition study for Infinite Bathroom. Exploring layout, silhouette, and narrative read before committing to detail."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/public%20bathroom/Screenshot%202026-02-21%20011718.png",
                         "label": "BLOCKOUT",
-                        "caption": "Blockout pass geometry and perspective."
+                        "caption": "Blockout pass for Infinite Bathroom. Establishing major forms, depth planes, and value structure across the scene."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/public%20bathroom/Screenshot%202026-02-21%20181419.png",
-                        "label": "COMPOSITION",
-                        "caption": "Added flats and minor texture, keeping focus on tight and accurate value read."
+                        "label": "LIGHTING",
+                        "caption": "Lighting pass for Infinite Bathroom. Refining mood, bounce light, and focal contrast to support the story beat."
                     }
                 ],
-                "description": "Study exploring different surface qualities and inventing detail.",
+                "description": "Abstract spatial exploration. Repeating patterns and liminal space psychology.",
                 "tag": "Background Painting"
             },
             {
                 "id": "bg-6",
                 "title": "Airport Scene",
-                "file": "airport study",
+                "file": "airport.bmp",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/317/202/large/laine-neufeld-airport-interior-final.jpg?1779606399",
                         "label": "FINAL",
-                        "caption": "Final render for study, created during mentorship."
+                        "caption": "Final render for Airport Scene. Large scale interior architecture study. Managing crowd flow and vast open ceiling structures."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/airport/processshot.png",
-                        "label": "LAYOUT",
-                        "caption": "Experimental use of texture brush and photobashing small elements to draw over. Flat color and main texture established."
+                        "label": "SKETCH",
+                        "caption": "Sketch pass — loose composition study for Airport Scene. Exploring layout, silhouette, and narrative read before committing to detail."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/airport/concept.jpg",
                         "label": "REF",
-                        "caption": "Sourced from Unsplash creative commons."
+                        "caption": "Large scale interior architecture study. Managing crowd flow and vast open ceiling structures."
                     }
                 ],
-                "description": "Interior study",
+                "description": "Large scale interior architecture study. Managing crowd flow and vast open ceiling structures.",
                 "tag": "Background Painting"
             },
             {
                 "id": "bg-7",
-                "title": "Ferris Wheel Exterior",
-                "file": "ferris wheel study",
+                "title": "Ferris Wheel Interior",
+                "file": "ferris wheel.bmp",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/542/306/large/laine-neufeld-screenshot-2026-05-31-190939.jpg?1780269015",
                         "label": "FINAL",
-                        "caption": "Quick study completed within 2 hours, focus on discreet layering for independent skill excercise."
+                        "caption": "Final render for Ferris Wheel Interior. Interior room lighting study utilizing external light dynamics to cast complex shadows."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/ferris%20wheel/ferris_ref.jpg",
                         "label": "REF",
-                        "caption": "Sourced from Unsplash creative commons."
+                        "caption": "Interior room lighting study utilizing external light dynamics to cast complex shadows."
                     }
                 ],
-                "description": "Exterior keyframe study.",
+                "description": "Interior room lighting study utilizing external light dynamics to cast complex shadows.",
                 "tag": "Background Painting"
             },
             {
                 "id": "bg-8",
                 "title": "Town Street",
-                "file": "town street study",
+                "file": "town street.bmp",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/200/411/large/laine-neufeld-screenshot-2026-05-19-220427.jpg?1779243783",
                         "label": "FINAL",
-                        "caption": "Final render created during mentorship. Focus on inventing details and selectively excluding others."
+                        "caption": "Final render for Town Street. European town street study with historic brick facades, warm sunlight, and layered urban depth."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/town%20street/ref.jpg",
@@ -225,7 +229,7 @@ window.PORTFOLIO_DATA = {
                         "caption": "European town street study with historic brick facades, warm sunlight, and layered urban depth."
                     }
                 ],
-                "description": "Town street study",
+                "description": "European town street study with historic brick facades, warm sunlight, and layered urban depth.",
                 "tag": "Background Painting"
             }
         ],
@@ -233,67 +237,65 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "pr-1",
                 "title": "Porcelain Doll",
-                "file": "doll study",
+                "file": "doll.bmp",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/369/594/large/laine-neufeld-doll-final.jpg?1779753510",
                         "label": "FINAL",
-                        "caption": "Independent quick prop study cerated from personal reference. Focus on inventive texture and style."
+                        "caption": "Final render for Porcelain Doll. Detailed doll asset design. Material study on cracked porcelain and worn fabric textures."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/doll/download%20(4)%20(1).jpg",
                         "label": "REF",
-                        "caption": "Picture of my doll I've had forever."
+                        "caption": "Detailed doll asset design. Material study on cracked porcelain and worn fabric textures."
                     }
                 ],
-                "description": "Doll",
+                "description": "Detailed doll asset design. Material study on cracked porcelain and worn fabric textures.",
                 "tag": "Prop Design"
             },
             {
                 "id": "pr-2",
                 "title": "Tea Set",
-                "file": "★ tea study",
+                "file": "tea.bmp",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/317/100/large/laine-neufeld-teaset-copy.jpg?1779605932",
                         "label": "FINAL",
-                        "caption": "My favorite piece of mine at the moment! Independent study, focus on stylized color and intricate reflective surface detail."
+                        "caption": "Final render for Tea Set. Tea set study focused on ceramic reflections and intricate painting details."
                     },
-            
+                    {
+                        "url": "secret%20portfolio%20process/props/tea/teacupOne%20(1).png",
+                        "label": "BLOCKOUT",
+                        "caption": "Blockout pass for Tea Set. Establishing major forms, depth planes, and value structure across the scene."
+                    },
                     {
                         "url": "secret%20portfolio%20process/props/tea/Screenshot%202026-05-21%20155759.png",
-                        "label": "LAYOUT",
-                        "caption": "Lighting and flat color established. Gradients follow afterwards."
+                        "label": "LIGHTING",
+                        "caption": "Lighting pass for Tea Set. Refining mood, bounce light, and focal contrast to support the story beat."
                     },
-{
-                        "url": "secret%20portfolio%20process/props/tea/teacupOne%20(1).png",
-                        "label": "PROGRESS",
-                        "caption": "Continuing to zone in on smaller and smaller hue shifts and gradients. Began working on metal value map."
-                    },
-                    
                     {
                         "url": "secret%20portfolio%20process/props/tea/download%20-%202026-05-30T155208.440.jpg",
                         "label": "REF",
-                        "caption": "Reference I took of my tea set!"
+                        "caption": "Tea set study focused on ceramic reflections and intricate painting details."
                     }
                 ],
-                "description": "Tea set study focused on intricate painterly details.",
+                "description": "Tea set study focused on ceramic reflections and intricate painting details.",
                 "tag": "Prop Design"
             },
             {
                 "id": "pr-3",
                 "title": "Dish of Sweets",
-                "file": "candy dish study",
+                "file": "candy dish.bmp",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/095/114/593/large/laine-neufeld-image-7.jpg?1767660195",
                         "label": "FINAL",
-                        "caption": "Final render for Dish of Sweets. Focus on material qualities and realism."
+                        "caption": "Final render for Dish of Sweets. General prop asset design. Exploring sub-surface scattering on gummy materials."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/candy%20dish/yves-scheuber-e5Ov-h_-rCs-unsplash.jpg",
                         "label": "REF",
-                        "caption": "Sourced from Unsplash creative commons."
+                        "caption": "General prop asset design. Exploring sub-surface scattering on gummy materials."
                     }
                 ],
                 "description": "General prop asset design. Exploring sub-surface scattering on gummy materials.",
@@ -302,17 +304,17 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "pr-4",
                 "title": "Arcade Joystick",
-                "file": "arcade joystick study",
+                "file": "arcade joystick.bmp",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/095/113/604/large/laine-neufeld-game.jpg?1767656451",
                         "label": "FINAL",
-                        "caption": "Final image of quick prop study. Focus on realism and hue variation."
+                        "caption": "Final render for Arcade Joystick. Arcade game cabinet asset design. Wear and tear on heavily used interactive surfaces."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/arcade%20joystick/thomas-despeyroux-i_qs6f6y8ag-unsplash.jpg",
                         "label": "REF",
-                        "caption": "Sourced from Unsplash creative commons."
+                        "caption": "Arcade game cabinet asset design. Wear and tear on heavily used interactive surfaces."
                     }
                 ],
                 "description": "Arcade game cabinet asset design. Wear and tear on heavily used interactive surfaces.",
@@ -321,45 +323,45 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "pr-5",
                 "title": "Telephone",
-                "file": "green payphone study",
+                "file": "green payphone.bmp",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/095/113/368/large/laine-neufeld-greenphonee.jpg?1767657751",
                         "label": "FINAL",
-                        "caption": "Final render for study, focused on creating realistic dimension through simple value organization."
+                        "caption": "Final render for Telephone. Vintage telephone prop study. Material focus on aged plastic housing and coiled cord wear."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/green%20payphone/dean-zhang-1rirarYD1qo-unsplash.jpg",
                         "label": "REF",
-                        "caption": "Sourced from Unsplash creative commons."
+                        "caption": "Vintage telephone prop study. Material focus on aged plastic housing and coiled cord wear."
                     }
                 ],
-                "description": "Telephone study",
+                "description": "Vintage telephone prop study. Material focus on aged plastic housing and coiled cord wear.",
                 "tag": "Prop Design"
             },
             {
                 "id": "pr-6",
                 "title": "Gumball Machine",
-                "file": "gumball machine study",
+                "file": "gumball machine.bmp",
                 "media": [
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/095/113/001/large/laine-neufeld-gummmmmm.jpg?1767654480",
                         "label": "FINAL",
-                        "caption": "Study of a gumball machine I keep in my room. Created during mentorship, focus on creating clean and simple planes in cartoon-like style."
+                        "caption": "Final render for Gumball Machine. Gumball machine design with glass refraction and painted metal cabinet details."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/gumball%20machine/gum.gif",
-                        "label": "DEMO",
+                        "label": "SKETCH",
                         "rotate": 90,
-                        "caption": "Full timelapse! Features workflow of establishing discreet shapes and amending their details at a later stage."
+                        "caption": "Sketch pass — loose composition study for Gumball Machine. Exploring layout, silhouette, and narrative read before committing to detail."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/gumball%20machine/IMG_4825.jpg",
                         "label": "REF",
-                        "caption": "Reference taken by me, right after I purchased my lightbox!"
+                        "caption": "Gumball machine design with glass refraction and painted metal cabinet details."
                     }
                 ],
-                "description": "Gumball machine design",
+                "description": "Gumball machine design with glass refraction and painted metal cabinet details.",
                 "tag": "Prop Design"
             }
         ],
@@ -367,163 +369,162 @@ window.PORTFOLIO_DATA = {
             {
                 "id": "co-2",
                 "title": "Record Store",
-                "file": "record store",
+                "file": "record_store.bmp",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(1).png",
-                        "label": "CONCEPT",
-                        "caption": "Concept render created during mentorship, lacking atmosphere and final colors. Inspired by composition of reference image."
+                        "label": "FINAL",
+                        "caption": "Final render for Record Store. Structural architecture sketch for a neighborhood record shop interior."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/recordstore/ref.avif",
                         "label": "REF",
-                        "caption": "Sourced from Unsplash creative commons."
+                        "caption": "Structural architecture sketch for a neighborhood record shop interior."
                     }
                 ],
-                "description": "Store Concept",
+                "description": "Structural architecture sketch for a neighborhood record shop interior.",
                 "tag": "Concept Art"
             },
             {
                 "id": "co-6",
                 "title": "Aquarium Store",
-                "file": "aquarium",
+                "file": "aquarium.bmp",
                 "media": [
                     {
                         "url": "secret%20portfolio%20process/concepts/aquarium/aquariumStore_Interior_final.png",
                         "label": "FINAL",
-                        "caption": "Concept I created independently from a bakery interior image exploring multicolored lighting and small critters."
+                        "caption": "Final render for Aquarium Store. Interior concept for a neon-lit aquarium and pet supply shop. Exploring moody color scripting, tank glow, and retail clutter."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/aquarium/bwsketch.png",
-                        "label": "LAYOUT",
-                        "caption": "Value pass working from reference."
+                        "label": "SKETCH",
+                        "caption": "Sketch pass — loose composition study for Aquarium Store. Exploring layout, silhouette, and narrative read before committing to detail."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/aquarium/texture.png",
-                        "label": "TEXTURE",
-                        "caption": "Two silly fish studies I completed to turn into texturing brushes for fish inside tanks."
+                        "label": "BLOCKOUT",
+                        "caption": "Blockout pass for Aquarium Store. Establishing major forms, depth planes, and value structure across the scene."
                     },
-                   
+                    {
+                        "url": "secret%20portfolio%20process/concepts/aquarium/ref1.jpg",
+                        "label": "LIGHTING",
+                        "caption": "Lighting pass for Aquarium Store. Refining mood, bounce light, and focal contrast to support the story beat."
+                    },
                     {
                         "url": "secret%20portfolio%20process/concepts/aquarium/ref2.jpg",
                         "label": "REF",
-                        "caption": "A photograph of fish tanks, one of many referenced during the concept process."
-                    },
-                     {
-                        "url": "secret%20portfolio%20process/concepts/aquarium/ref1.jpg",
-                        "label": "REF",
-                        "caption": "Interior composition reference, lighting and contents changed for concept idea."
+                        "caption": "Interior concept for a neon-lit aquarium and pet supply shop. Exploring moody color scripting, tank glow, and retail clutter."
                     }
                 ],
-                "description": "Aquarium interior",
+                "description": "Interior concept for a neon-lit aquarium and pet supply shop. Exploring moody color scripting, tank glow, and retail clutter.",
                 "tag": "Concept Art"
             },
             {
                 "id": "co-3",
                 "title": "Bedroom Env",
-                "file": "fancy bedroom",
+                "file": "env_bedroom.bmp",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(8).png",
                         "label": "FINAL",
-                        "caption": "Final concept render created during mentorship. Focused on inventing custom texture brushes and rendering them in scene."
+                        "caption": "Final render for Bedroom Env. Environmental concept study exploring bedroom layout and lived-in clutter."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/fancy%20bedroom/reference.png",
-                        "label": "REF",
-                        "caption": "Reference used for value layout, basic prop forms and color key."
+                        "label": "SKETCH",
+                        "caption": "Sketch pass — loose composition study for Bedroom Env. Exploring layout, silhouette, and narrative read before committing to detail."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/fancy%20bedroom/prop%20breakout.png",
-                        "label": "KEY",
-                        "caption": "Breakout view of props and textures created individually to integrate into concept."
+                        "label": "BLOCKOUT",
+                        "caption": "Blockout pass for Bedroom Env. Establishing major forms, depth planes, and value structure across the scene."
                     }
                 ],
-                "description": "Bedroom concept",
+                "description": "Environmental concept study exploring bedroom layout and lived-in clutter.",
                 "tag": "Concept Art"
             },
             {
                 "id": "co-4",
                 "title": "Small Stage Venue",
-                "file": "stage",
+                "file": "stage.bmp",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/bg_stage.png",
                         "label": "FINAL",
-                        "caption": "Final render for Small Stage Venue created during mentorship. Focused on balancing realism with colorful style."
+                        "caption": "Final render for Small Stage Venue. Stage background design concept balancing performance lighting and audience depth."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/concert/reference.jpg",
-                        "label": "REF",
-                        "caption": "Image I took of a local concert venue I visit often! If you're curious... I'm much better at drawing than music :)"
+                        "label": "SKETCH",
+                        "caption": "Sketch pass — loose composition study for Small Stage Venue. Exploring layout, silhouette, and narrative read before committing to detail."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/concert/process-1.png",
                         "label": "BLOCKOUT",
-                        "caption": "Beginning to establish composition after creating perspective from room geometry. Experimented with small texture additions."
+                        "caption": "Blockout pass for Small Stage Venue. Establishing major forms, depth planes, and value structure across the scene."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/concert/process-2.png",
-                        "label": "LAYOUT",
-                        "caption": "Final value pass before adding final details and color."
+                        "label": "LIGHTING",
+                        "caption": "Lighting pass for Small Stage Venue. Refining mood, bounce light, and focal contrast to support the story beat."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/concert/sheets_props.png",
                         "label": "PROPS",
-                        "caption": "Some props I created using canva + drawing software to decorate! All posters include my own previous illustrations."
+                        "caption": "Stage background design concept balancing performance lighting and audience depth."
                     }
                 ],
-                "description": "Stage Concept",
+                "description": "Stage background design concept balancing performance lighting and audience depth.",
                 "tag": "Concept Art"
             },
             {
                 "id": "co-1",
                 "title": "Cozy Nook",
-                "file": "cozy nook",
+                "file": "nook_concept.bmp",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/image%20(3).png",
                         "label": "FINAL",
-                        "caption": "Final concept created during mentorship to explore composing a background with only prop inspiration."
+                        "caption": "Final render for Cozy Nook. Composition and lighting layout concept for a warm, isolated reading nook."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/cozy%20nook/breakout.png",
-                        "label": "REF",
-                        "caption": "Breakout of inspirations and references, later put into perspective within one scene."
+                        "label": "SKETCH",
+                        "caption": "Sketch pass — loose composition study for Cozy Nook. Exploring layout, silhouette, and narrative read before committing to detail."
                     }
                 ],
-                "description": "Cozy nook",
+                "description": "Composition and lighting layout concept for a warm, isolated reading nook.",
                 "tag": "Concept Art"
             },
             {
                 "id": "co-5",
                 "title": "Train Platform",
-                "file": "train platform",
+                "file": "train_platform.bmp",
                 "media": [
                     {
                         "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/Screenshot%202026-05-31%20192215.png",
                         "label": "FINAL",
-                        "caption": "Final concept made during mentorship, focus on building background from limited reference and lots of imagination."
+                        "caption": "Final render for Train Platform. Perspective and scale exploration for a subway platform environment."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/substation/ref.jpg",
-                        "label": "REF",
-                        "caption": "Reference image later reworked and photobashed to suit cinematic dimensions."
+                        "label": "SKETCH",
+                        "caption": "Sketch pass — loose composition study for Train Platform. Exploring layout, silhouette, and narrative read before committing to detail."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/substation/image%20(4).png",
-                        "label": "3D RENDER",
-                        "caption": "Rudimentary scene geometry/lighting render to fill in gaps of lighting logic. Rendered in Blender."
+                        "label": "BLOCKOUT",
+                        "caption": "Blockout pass for Train Platform. Establishing major forms, depth planes, and value structure across the scene."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/substation/valuebash.png",
                         "label": "DRAFT",
-                        "caption": "Adjusting reference in value to match current image's perspective logic."
+                        "caption": "Perspective and scale exploration for a subway platform environment."
                     },
                     {
                         "url": "secret%20portfolio%20process/concepts/substation/photobash%20ref.png",
-                        "label": "PHOTOBASH",
-                        "caption": "Using first reference image, filled in the rest of the scene to create better reference to work off of. Blender render lighting logic impolemented after."
+                        "label": "LIGHTING",
+                        "caption": "Lighting pass for Train Platform. Refining mood, bounce light, and focal contrast to support the story beat."
                     }
                 ],
                 "description": "Perspective and scale exploration for a subway platform environment.",
@@ -536,7 +537,7 @@ window.PORTFOLIO_DATA = {
             "title": "About",
             "file": "about.txt",
             "tag": "System Info",
-            "body": "Laine Neufeld is a visual development artist and illustrator based in CT, USA. Laine's work is playful and colorful, with an edge of realism to capture anyone's eye. Fluent in multiple rendering and illustration softwares, subjects include backgrounds, props, and other concepts for various project development needs and stages. Workflow follows standard pipeline order, working from block ins to layout and value to full color in discreet layering technique."
+            "body": "Laine Neufeld is a visual development artist and illustrator building worlds through color, atmosphere, and design. This private portfolio archives background paintings, prop studies, and concept explorations produced for narrative and interactive projects.\n\nThe archive is organized by asset type and process stage so each file can be read as part of a larger production workflow."
         },
         "professional": {
             "title": "Professional",
@@ -548,7 +549,7 @@ window.PORTFOLIO_DATA = {
             "title": "Contact",
             "file": "contact.txt",
             "tag": "Reach Out",
-            "body": "For commissions, collaboration, or additional access requests:\n\n✉ laineneufeldart@gmail.com\n◎ ArtStation: laine-neufeld\n\n"
+            "body": "For commissions, collaboration, or portfolio access requests:\n\n✉ hello@laineneufeld.com\n◎ ArtStation: laine-neufeld\n\nPlease include project scope, timeline, and reference material. Response time is typically within 48 hours."
         }
     }
 };
