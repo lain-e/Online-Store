@@ -18,7 +18,7 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/200/463/large/laine-neufeld-citystreetbg.jpg?1779243980",
                         "label": "FINAL",
-                        "caption": "Final render for this study. Focus was on creating stylized atmosphere"
+                        "caption": "Final render for this study created during mentorship. Focus was on creating stylized atmosphere."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/city%20street/progress.png",
@@ -43,27 +43,27 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/230/513/large/laine-neufeld-screenshot-2026-05-20-185757.jpg?1779317928",
                         "label": "FINAL",
-                        "caption": "Final render for Warehouse Hallway. Interior lighting and composition study. Balancing cold ambient light with harsh artificial sources."
+                        "caption": "Final render for Warehouse Hallway created during mentorship. Interior lighting and composition study, cartoon-like art style."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/warehouse%20hallway/IMG_3701%20(2)%20(1).jpg",
-                        "label": "SKETCH",
-                        "caption": "Sketch pass — loose composition study for Warehouse Hallway. Exploring layout, silhouette, and narrative read before committing to detail."
+                        "label": "REF",
+                        "caption": "Reference image that I took while out and about!"
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/warehouse%20hallway/Screenshot%202026-02-22%20221848.png",
                         "label": "BLOCKOUT",
-                        "caption": "Blockout pass for Warehouse Hallway. Establishing major forms, depth planes, and value structure across the scene."
+                        "caption": "The first step is always to establish the geometry of the room, making perspective easy to follow as I work."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/warehouse%20hallway/Screenshot%202026-02-22%20230210.png",
-                        "label": "LIGHTING",
-                        "caption": "Lighting pass for Warehouse Hallway. Refining mood, bounce light, and focal contrast to support the story beat."
+                        "label": "COMPOSITION",
+                        "caption": "After reviewing reference, I decide what objects to include. I like how the eye follows the left side props in this scene, so I stuck with this composition."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/warehouse%20hallway/Screenshot%202026-02-23%20002141.png",
-                        "label": "REF",
-                        "caption": "Interior lighting and composition study. Balancing cold ambient light with harsh artificial sources."
+                        "label": "TEXTURE",
+                        "caption": "Value pass nearly complete with some textures added. Final details and color added after to create layout."
                     }
                 ],
                 "description": "Interior lighting and composition study. Balancing cold ambient light with harsh artificial sources.",
@@ -77,37 +77,32 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/200/210/large/laine-neufeld-bb-e-d-f.jpg?1779242857",
                         "label": "FINAL",
-                        "caption": "Final render for Official Looking Brick Building. Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures."
+                        "caption": "Final render, study during mentorship created to model different weather conditions and times of day."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/2outdoor3.png",
-                        "label": "BLOCKOUT",
-                        "caption": "Blockout pass for Official Looking Brick Building. Establishing major forms, depth planes, and value structure across the scene."
+                        "label": "FINAL - NIGHT",
+                        "caption": "Night time color."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/bb_e_gh_f.png",
-                        "label": "LIGHTING",
-                        "caption": "Lighting pass for Official Looking Brick Building. Refining mood, bounce light, and focal contrast to support the story beat."
-                    },
-                    {
-                        "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/bb_e_d_f.png",
-                        "label": "DRAFT",
-                        "caption": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures."
+                        "label": "FINAL - GOLDEN HOUR",
+                        "caption": "Golden hour color."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/bb_e_r_f.png",
-                        "label": "COLOR",
-                        "caption": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures."
+                        "label": "FINAL - RAIN",
+                        "caption": "Rainy Day color."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/colorways.png",
                         "label": "COLORWAYS",
-                        "caption": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures."
+                        "caption": "Overview of keys."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/official%20looking%20brick%20building/reference.jpg",
                         "label": "REF",
-                        "caption": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures."
+                        "caption": "Reference image from Unsplash creative commons."
                     }
                 ],
                 "description": "Atmospheric industrial environment design. Focusing on imposing structural presence and institutional textures.",
