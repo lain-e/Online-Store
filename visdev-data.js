@@ -288,12 +288,12 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/095/114/593/large/laine-neufeld-image-7.jpg?1767660195",
                         "label": "FINAL",
-                        "caption": "Final render for Dish of Sweets. General prop asset design. Exploring sub-surface scattering on gummy materials."
+                        "caption": "Final render for Dish of Sweets. Focus on material qualities and realism."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/candy%20dish/yves-scheuber-e5Ov-h_-rCs-unsplash.jpg",
                         "label": "REF",
-                        "caption": "General prop asset design. Exploring sub-surface scattering on gummy materials."
+                        "caption": "Sourced from Unsplash creative commons."
                     }
                 ],
                 "description": "General prop asset design. Exploring sub-surface scattering on gummy materials.",
@@ -307,12 +307,12 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/095/113/604/large/laine-neufeld-game.jpg?1767656451",
                         "label": "FINAL",
-                        "caption": "Final render for Arcade Joystick. Arcade game cabinet asset design. Wear and tear on heavily used interactive surfaces."
+                        "caption": "Final image of quick prop study. Focus on realism and hue variation."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/arcade%20joystick/thomas-despeyroux-i_qs6f6y8ag-unsplash.jpg",
                         "label": "REF",
-                        "caption": "Arcade game cabinet asset design. Wear and tear on heavily used interactive surfaces."
+                        "caption": "Sourced from Unsplash creative commons."
                     }
                 ],
                 "description": "Arcade game cabinet asset design. Wear and tear on heavily used interactive surfaces.",
@@ -326,15 +326,15 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/095/113/368/large/laine-neufeld-greenphonee.jpg?1767657751",
                         "label": "FINAL",
-                        "caption": "Final render for Telephone. Vintage telephone prop study. Material focus on aged plastic housing and coiled cord wear."
+                        "caption": "Final render for study, focused on creating realistic dimension through simple value organization."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/green%20payphone/dean-zhang-1rirarYD1qo-unsplash.jpg",
                         "label": "REF",
-                        "caption": "Vintage telephone prop study. Material focus on aged plastic housing and coiled cord wear."
+                        "caption": "Sourced from Unsplash creative commons."
                     }
                 ],
-                "description": "Vintage telephone prop study. Material focus on aged plastic housing and coiled cord wear.",
+                "description": "Telephone study",
                 "tag": "Prop Design"
             },
             {
@@ -345,21 +345,21 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/095/113/001/large/laine-neufeld-gummmmmm.jpg?1767654480",
                         "label": "FINAL",
-                        "caption": "Final render for Gumball Machine. Gumball machine design with glass refraction and painted metal cabinet details."
+                        "caption": "Study of a gumball machine I keep in my room. Created during mentorship, focus on creating clean and simple planes in cartoon-like style."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/gumball%20machine/gum.gif",
-                        "label": "SKETCH",
+                        "label": "DEMO",
                         "rotate": 90,
-                        "caption": "Sketch pass — loose composition study for Gumball Machine. Exploring layout, silhouette, and narrative read before committing to detail."
+                        "caption": "Full timelapse! Features workflow of establishing discreet shapes and amending their details at a later stage."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/gumball%20machine/IMG_4825.jpg",
                         "label": "REF",
-                        "caption": "Gumball machine design with glass refraction and painted metal cabinet details."
+                        "caption": "Reference taken by me, right after I purchased my lightbox!"
                     }
                 ],
-                "description": "Gumball machine design with glass refraction and painted metal cabinet details.",
+                "description": "Gumball machine design",
                 "tag": "Prop Design"
             }
         ],
