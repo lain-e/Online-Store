@@ -647,3 +647,70 @@ window.renderProjectPlatformTagChips = function (project, chipClass) {
         return '<span class="' + cls + '">' + tag + '</span>';
     }).join('');
 };
+
+/** Deep-link intent: URL ?project= and sessionStorage (survives page switches). */
+window.PORTFOLIO_DEEP_LINK_KEY = 'portfolioDeepLinkProject';
+window.PORTFOLIO_DEEP_LINK_MEDIA_KEY = 'portfolioDeepLinkMedia';
+
+window.persistPortfolioDeepLinkFromUrl = function () {
+    var params = new URLSearchParams(window.location.search);
+    var projectId = params.get('project');
+    if (!projectId) return;
+    try {
+        sessionStorage.setItem(window.PORTFOLIO_DEEP_LINK_KEY, projectId);
+        var media = params.get('media');
+        if (media != null && media !== '') {
+            sessionStorage.setItem(window.PORTFOLIO_DEEP_LINK_MEDIA_KEY, media);
+        }
+    } catch (e) {}
+};
+
+window.storePortfolioDeepLinkProject = function (projectId, mediaIndex) {
+    if (!projectId) return;
+    try {
+        sessionStorage.setItem(window.PORTFOLIO_DEEP_LINK_KEY, projectId);
+        if (mediaIndex != null && mediaIndex !== '') {
+            sessionStorage.setItem(window.PORTFOLIO_DEEP_LINK_MEDIA_KEY, String(mediaIndex));
+        }
+    } catch (e) {}
+};
+
+window.clearPortfolioDeepLink = function () {
+    try {
+        sessionStorage.removeItem(window.PORTFOLIO_DEEP_LINK_KEY);
+        sessionStorage.removeItem(window.PORTFOLIO_DEEP_LINK_MEDIA_KEY);
+    } catch (e) {}
+};
+
+window.resolvePortfolioDeepLink = function (visdevDb, categories) {
+    var projectId = null;
+    var params = new URLSearchParams(window.location.search);
+    projectId = params.get('project');
+    if (!projectId) {
+        try { projectId = sessionStorage.getItem(window.PORTFOLIO_DEEP_LINK_KEY); } catch (e) {}
+    }
+    if (!projectId || !visdevDb) return null;
+
+    var mediaIndex = 0;
+    var urlMedia = params.get('media');
+    if (urlMedia != null && urlMedia !== '') {
+        mediaIndex = parseInt(urlMedia, 10) || 0;
+    } else {
+        try {
+            var storedMedia = sessionStorage.getItem(window.PORTFOLIO_DEEP_LINK_MEDIA_KEY);
+            if (storedMedia != null && storedMedia !== '') {
+                mediaIndex = parseInt(storedMedia, 10) || 0;
+            }
+        } catch (e) {}
+    }
+
+    for (var i = 0; i < categories.length; i++) {
+        var cat = categories[i];
+        var list = visdevDb[cat] || [];
+        var idx = list.findIndex(function (p) { return p.id === projectId; });
+        if (idx >= 0) {
+            return { category: cat, index: idx, mediaIndex: mediaIndex, projectId: projectId };
+        }
+    }
+    return null;
+};

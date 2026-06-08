@@ -1336,6 +1336,25 @@
 
         const galleryItems = document.querySelectorAll('.gallery-item');
 
+        function isMobilePrivatePortfolio() {
+            return window.matchMedia('(max-width: 767px)').matches
+                || window.matchMedia('(pointer: coarse)').matches;
+        }
+
+        function buildPrivatePortfolioUrl(projectId) {
+            const page = isMobilePrivatePortfolio() ? 'secretmobile.html' : 'secret.html';
+            return projectId ? `${page}?project=${encodeURIComponent(projectId)}` : page;
+        }
+
+        function syncFullProcessLink(projectId) {
+            if (!seeFullProcessLink || !projectId) return;
+            try {
+                sessionStorage.setItem('portfolioDeepLinkProject', projectId);
+                sessionStorage.setItem('portfolioDeepLinkMedia', '0');
+            } catch (e) {}
+            seeFullProcessLink.href = buildPrivatePortfolioUrl(projectId);
+        }
+
         const openLightbox = (item) => {
             activeLightboxItem = item;
             playLoFiClick({ pitch: 820, volume: 0.085, decay: 0.038 });
@@ -1360,8 +1379,8 @@
             previewImg.alt = title;
             lightboxVisual.replaceChildren(previewImg);
 
-            if (seeFullProcessLink) {
-                seeFullProcessLink.href = secretId ? `secret.html?project=${secretId}` : 'secret.html';
+            if (seeFullProcessLink && secretId) {
+                syncFullProcessLink(secretId);
             }
 
             document.body.classList.add('overflow-hidden');
@@ -1395,7 +1414,13 @@
         });
 
         if (seeFullProcessLink) {
-            seeFullProcessLink.addEventListener('click', () => playStickyKey());
+            seeFullProcessLink.addEventListener('click', () => {
+                playStickyKey();
+                if (activeLightboxItem) {
+                    const secretId = activeLightboxItem.getAttribute('data-secret-id');
+                    if (secretId) syncFullProcessLink(secretId);
+                }
+            });
         }
         lightboxCornerClose.addEventListener('click', () => { playStickyKey(); closeLightbox(); });
         lightboxBg.addEventListener('click', closeLightbox);
