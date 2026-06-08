@@ -234,7 +234,7 @@ window.PORTFOLIO_DATA = {
                 "file": "laundry study",
                 "media": [
                     {
-                        "url": "secret%20portfolio%20process/backgrounds/laundry/FINAL.png",
+                        "url": "https://cdna.artstation.com/p/assets/images/images/099/754/212/large/laine-neufeld-washingmachine2room.jpg?1780901719",
                         "label": "FINAL",
                         "caption": "Final rendered study of \"Laundrette\" by Ross O'Leary. Focused on reflective material quality and ambient color interactions."
                     },
@@ -268,7 +268,7 @@ window.PORTFOLIO_DATA = {
                 "file": "kitchen study",
                 "media": [
                     {
-                        "url": "secret%20portfolio%20process/backgrounds/kitchen/Final.png",
+                        "url": "https://cdnb.artstation.com/p/assets/images/images/099/754/241/large/laine-neufeld-kitchenfina1080l.jpg?1780901587",
                         "label": "FINAL",
                         "caption": "Final background painting study, focusing on material quality of reflective surfaces."
                     },
