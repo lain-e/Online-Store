@@ -227,6 +227,74 @@ window.PORTFOLIO_DATA = {
                 ],
                 "description": "Town street study",
                 "tag": "Background Painting"
+            },
+            {
+                "id": "bg-9",
+                "title": "Laundry Room",
+                "file": "laundry study",
+                "media": [
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/laundry/FINAL.png",
+                        "label": "FINAL",
+                        "caption": "Final rendered study of \"Laundrette\" by Ross O'Leary. Focused on reflective material quality and ambient color interactions."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/laundry/REF.jpg",
+                        "label": "REF",
+                        "caption": "\"Laundrette\" by Ross O'Leary- 3DS Max and Corona via https://rossoleary.co.uk/laundrette"
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/laundry/BLOCKIN.png",
+                        "label": "BLOCKOUT",
+                        "caption": "Establish room geometry and perspective"
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/laundry/LAYOUT.png",
+                        "label": "LAYOUT",
+                        "caption": "established flat colors."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/laundry/PASS1.png",
+                        "label": "PROGRESS",
+                        "caption": "Lighting established, beginning to texture surface planes and add reflectivity."
+                    }
+                ],
+                "description": "Laundry room interior study.",
+                "tag": "Background Painting"
+            },
+            {
+                "id": "bg-10",
+                "title": "Kitchen Scene",
+                "file": "kitchen study",
+                "media": [
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/kitchen/Final.png",
+                        "label": "FINAL",
+                        "caption": "Final background painting study, focusing on material quality of reflective surfaces."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/kitchen/REF.jpg",
+                        "label": "REF",
+                        "caption": "Study material from House and Garden UK via Simon Bergström"
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/kitchen/BLOCKOUT.png",
+                        "label": "BLOCKOUT",
+                        "caption": "Geometry and perspective blockout pass."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/kitchen/Value%20rendering.png",
+                        "label": "VALUE",
+                        "caption": "Composition established and value gradients beginning to solidify."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/kitchen/Layout.png",
+                        "label": "LAYOUT",
+                        "caption": "Still playing with prop placement, textures now established and ready for color."
+                    }
+                ],
+                "description": "Interior kitchen study.",
+                "tag": "Background Painting"
             }
         ],
         "props": [
