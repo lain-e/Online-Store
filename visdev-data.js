@@ -620,3 +620,30 @@ window.PORTFOLIO_DATA = {
         }
     }
 };
+
+/* Secret portfolio display order: most process files → fewest, within each section */
+(function sortVisdevSectionsByMediaCount() {
+    const db = window.PORTFOLIO_DATA && window.PORTFOLIO_DATA.visdevDb;
+    if (!db) return;
+    ['backgrounds', 'props', 'concepts'].forEach(function (section) {
+        const list = db[section];
+        if (!Array.isArray(list)) return;
+        list.sort(function (a, b) {
+            return (b.media && b.media.length || 0) - (a.media && a.media.length || 0);
+        });
+    });
+})();
+
+/** Platform tags shown on secret portfolio project views (PC + mobile). */
+window.getProjectPlatformTags = function (project) {
+    const tags = ['Krita/PS'];
+    if (project && project.id === 'co-5') tags.push('Blender');
+    return tags;
+};
+
+window.renderProjectPlatformTagChips = function (project, chipClass) {
+    const cls = chipClass || 'label-chip px-2 py-0.5 text-xs font-bold uppercase';
+    return window.getProjectPlatformTags(project).map(function (tag) {
+        return '<span class="' + cls + '">' + tag + '</span>';
+    }).join('');
+};
