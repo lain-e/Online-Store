@@ -612,22 +612,22 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "secret%20portfolio%20process/vehicles/plane/ref.jpg",
                         "label": "REF",
-                        "caption": "Reference image used for aircraft proportions and color key."
+                        "caption": "Sourced from Unsplash creative commons."
                     },
                     {
                         "url": "secret%20portfolio%20process/vehicles/plane/blockout.png",
                         "label": "BLOCKOUT",
-                        "caption": "Geometry blockout establishing perspective and major plane divisions."
+                        "caption": "Geometry blockout establishing perspective and major value divisions."
                     },
                     {
                         "url": "secret%20portfolio%20process/vehicles/plane/progress.png",
                         "label": "PROGRESS",
-                        "caption": "Value and lighting pass before final color and detail refinement."
+                        "caption": "Working further into plane (haha get it) divisions."
                     },
                     {
                         "url": "secret%20portfolio%20process/vehicles/plane/layout.png",
                         "label": "LAYOUT",
-                        "caption": "Flat color layout pass with basic surface separation."
+                        "caption": "Value finalized, moving into color..."
                     },
                     {
                         "url": "secret%20portfolio%20process/vehicles/plane/color%20layout.png",
@@ -640,18 +640,18 @@ window.PORTFOLIO_DATA = {
             },
             {
                 "id": "ve-2",
-                "title": "Classic Car",
+                "title": "Vintage Car",
                 "file": "car study",
                 "media": [
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/831/986/large/laine-neufeld-car2.jpg?1781097493",
                         "label": "FINAL",
-                        "caption": "Independent study for Classic Car. Focus on reflective material quality and stylized color on vintage automotive forms."
+                        "caption": "Independent study for a car design. Focus on reflective material quality and stylized color on vintage automotive forms."
                     },
                     {
                         "url": "secret%20portfolio%20process/vehicles/car/ref.jpg",
                         "label": "REF",
-                        "caption": "Reference image used for vehicle proportions and surface detail."
+                        "caption": "Sourced from Unsplash creative commons."
                     },
                     {
                         "url": "secret%20portfolio%20process/vehicles/car/blockout.png",
@@ -661,12 +661,12 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "secret%20portfolio%20process/vehicles/car/progress.png",
                         "label": "PROGRESS",
-                        "caption": "Value and lighting pass before final color and detail refinement."
+                        "caption": "Value gradient and lighting pass before detail refinement."
                     },
                     {
                         "url": "secret%20portfolio%20process/vehicles/car/layout.png",
                         "label": "LAYOUT",
-                        "caption": "Flat color layout pass with basic surface separation."
+                        "caption": "Final value pass."
                     }
                 ],
                 "description": "Classic car vehicle study.",
