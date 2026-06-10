@@ -288,7 +288,8 @@
         const CATEGORIES = [
             { key: 'backgrounds', label: 'Backgrounds' },
             { key: 'props', label: 'Props' },
-            { key: 'concepts', label: 'Concepts' }
+            { key: 'concepts', label: 'Concepts' },
+            { key: 'vehicles', label: 'Vehicles' }
         ];
         const LABEL_PRESETS = ['FINAL', 'SKETCH', 'BLOCKOUT', 'LIGHTING', 'DRAFT', 'COLOR', 'COLORWAYS', 'REF', 'PROPS'];
         const MENU_KEYS = ['about', 'professional', 'contact'];
@@ -694,7 +695,7 @@
 
         document.getElementById('btn-add-project').addEventListener('click', () => {
             const cat = selectedCategory;
-            const prefix = cat === 'backgrounds' ? 'bg' : cat === 'props' ? 'pr' : 'co';
+            const prefix = cat === 'backgrounds' ? 'bg' : cat === 'props' ? 'pr' : cat === 'vehicles' ? 've' : 'co';
             const n = (data.visdevDb[cat]?.length || 0) + 1;
             const project = {
                 id: `${prefix}-${n}`,
@@ -702,7 +703,7 @@
                 file: 'new_project.bmp',
                 media: [{ url: '', label: 'FINAL' }],
                 description: 'Project description.',
-                tag: cat === 'backgrounds' ? 'Background Painting' : cat === 'props' ? 'Prop Design' : 'Concept Art'
+                tag: cat === 'backgrounds' ? 'Background Painting' : cat === 'props' ? 'Prop Design' : cat === 'vehicles' ? 'Vehicle Design' : 'Concept Art'
             };
             if (!data.visdevDb[cat]) data.visdevDb[cat] = [];
             data.visdevDb[cat].push(project);

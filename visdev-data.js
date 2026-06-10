@@ -236,7 +236,7 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/754/212/large/laine-neufeld-washingmachine2room.jpg?1780901719",
                         "label": "FINAL",
-                        "caption": "Final rendered study of \"Laundrette\" by Ross O'Leary. Focused on reflective material quality and ambient color interactions."
+                        "caption": "Independent study rendered from \"Laundrette\" by Ross O'Leary. Focused on reflective material quality and ambient color interactions."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/laundry/REF.jpg",
@@ -270,7 +270,7 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdnb.artstation.com/p/assets/images/images/099/754/241/large/laine-neufeld-kitchenfina1080l.jpg?1780901587",
                         "label": "FINAL",
-                        "caption": "Final background painting study, focusing on material quality of reflective surfaces."
+                        "caption": "Independent background painting study, focusing on material quality of reflective surfaces."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/kitchen/REF.jpg",
@@ -597,6 +597,81 @@ window.PORTFOLIO_DATA = {
                 "description": "Perspective and scale exploration for a subway platform environment.",
                 "tag": "Concept Art"
             }
+        ],
+        "vehicles": [
+            {
+                "id": "ve-1",
+                "title": "Light Aircraft",
+                "file": "plane study",
+                "media": [
+                    {
+                        "url": "https://cdnb.artstation.com/p/assets/images/images/099/831/987/large/laine-neufeld-plane2.jpg?1781097522",
+                        "label": "FINAL",
+                        "caption": "Independent study for Light Aircraft. Focus on simplifying complex mechanical forms in a stylized cartoon-like approach."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/vehicles/plane/ref.jpg",
+                        "label": "REF",
+                        "caption": "Reference image used for aircraft proportions and color key."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/vehicles/plane/blockout.png",
+                        "label": "BLOCKOUT",
+                        "caption": "Geometry blockout establishing perspective and major plane divisions."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/vehicles/plane/progress.png",
+                        "label": "PROGRESS",
+                        "caption": "Value and lighting pass before final color and detail refinement."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/vehicles/plane/layout.png",
+                        "label": "LAYOUT",
+                        "caption": "Flat color layout pass with basic surface separation."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/vehicles/plane/color%20layout.png",
+                        "label": "COLOR LAYOUT",
+                        "caption": "Color layout, without atmosphere/motion effects."
+                    }
+                ],
+                "description": "Light aircraft vehicle study.",
+                "tag": "Vehicle Design"
+            },
+            {
+                "id": "ve-2",
+                "title": "Classic Car",
+                "file": "car study",
+                "media": [
+                    {
+                        "url": "https://cdna.artstation.com/p/assets/images/images/099/831/986/large/laine-neufeld-car2.jpg?1781097493",
+                        "label": "FINAL",
+                        "caption": "Independent study for Classic Car. Focus on reflective material quality and stylized color on vintage automotive forms."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/vehicles/car/ref.jpg",
+                        "label": "REF",
+                        "caption": "Reference image used for vehicle proportions and surface detail."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/vehicles/car/blockout.png",
+                        "label": "BLOCKOUT",
+                        "caption": "Geometry blockout establishing perspective and major body panels."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/vehicles/car/progress.png",
+                        "label": "PROGRESS",
+                        "caption": "Value and lighting pass before final color and detail refinement."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/vehicles/car/layout.png",
+                        "label": "LAYOUT",
+                        "caption": "Flat color layout pass with basic surface separation."
+                    }
+                ],
+                "description": "Classic car vehicle study.",
+                "tag": "Vehicle Design"
+            }
         ]
     },
     "menuContent": {
@@ -625,7 +700,7 @@ window.PORTFOLIO_DATA = {
 (function sortVisdevSectionsByMediaCount() {
     const db = window.PORTFOLIO_DATA && window.PORTFOLIO_DATA.visdevDb;
     if (!db) return;
-    ['backgrounds', 'props', 'concepts'].forEach(function (section) {
+    ['backgrounds', 'props', 'concepts', 'vehicles'].forEach(function (section) {
         const list = db[section];
         if (!Array.isArray(list)) return;
         list.sort(function (a, b) {

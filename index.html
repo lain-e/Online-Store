@@ -438,8 +438,9 @@
             background: transparent;
         }
 
-        /* Props section only — uniform boxes matching win95 window (#7b8cde) */
-        #props .gallery-frame-box {
+        /* Props + vehicles — uniform boxes matching win95 window (#7b8cde) */
+        #props .gallery-frame-box,
+        #vehicles .gallery-frame-box {
             width: 100%;
             aspect-ratio: 16 / 10;
             background: transparent;
@@ -449,7 +450,8 @@
             overflow: hidden;
             border: 1px solid var(--hollow-box-border-thin);
         }
-        #props .gallery-frame-box img {
+        #props .gallery-frame-box img,
+        #vehicles .gallery-frame-box img {
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -588,6 +590,7 @@
                     <div class="hollow-box p-1 flex flex-col" style="background: var(--page-bg);">
                         <a href="#backgrounds" class="block px-4 py-1 uppercase hover:bg-white/10">Backgrounds</a>
                         <a href="#props" class="block px-4 py-1 uppercase hover:bg-white/10">Props</a>
+                        <a href="#vehicles" class="block px-4 py-1 uppercase hover:bg-white/10">Vehicles</a>
                         <a href="#concepts" class="block px-4 py-1 uppercase hover:bg-white/10">Concepts</a>
                     </div>
                 </div>
@@ -636,6 +639,7 @@
             <a href="#backgrounds" class="mobile-nav-link hover:bg-white/10 px-2 py-1 uppercase">|- Backgrounds</a>
             <!-- Swapped Mobile Nav Links -->
             <a href="#props" class="mobile-nav-link hover:bg-white/10 px-2 py-1 uppercase">|- Props</a>
+            <a href="#vehicles" class="mobile-nav-link hover:bg-white/10 px-2 py-1 uppercase">|- Vehicles</a>
             <a href="#concepts" class="mobile-nav-link hover:bg-white/10 px-2 py-1 uppercase">|- Concepts</a>
         </div>
         <a href="#me" class="mobile-nav-link hover:bg-white/10 px-2 py-1 uppercase tracking-widest font-bold mt-2">ABOUT_ME.TXT</a>
@@ -768,7 +772,7 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Town Street</h4></div>
                         </div>
                         <!-- Background Item 9 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-9" data-title="Laundry Room" data-category="Background Painting" data-tag="private mentorship" data-tags="interior" data-desc="Laundry room interior study.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-9" data-title="Laundry Room" data-category="Background Painting" data-tag="independent study" data-tags="interior" data-desc="Laundry room interior study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>laundry</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/754/212/large/laine-neufeld-washingmachine2room.jpg?1780901719" alt="Laundry Room" class="gallery-img transition-all">
@@ -776,7 +780,7 @@
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Laundry Room</h4></div>
                         </div>
                         <!-- Background Item 10 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-10" data-title="Kitchen Scene" data-category="Background Painting" data-tag="private mentorship" data-tags="interior" data-desc="Interior kitchen study with warm domestic lighting.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-10" data-title="Kitchen Scene" data-category="Background Painting" data-tag="independent study" data-tags="interior" data-desc="Interior kitchen study with warm domestic lighting.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>kitchen</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/754/241/large/laine-neufeld-kitchenfina1080l.jpg?1780901587" alt="Kitchen Scene" class="gallery-img transition-all">
@@ -840,6 +844,32 @@
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/095/113/001/large/laine-neufeld-gummmmmm.jpg?1767654480" alt="Gumball Machine" class="gallery-img transition-all">
                             </div>
                             <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Gumball Machine</h4></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="vehicles" class="scroll-mt-24 border-t-2 border-dashed hollow-divider pt-10">
+                    <div class="flex items-center gap-3 mb-8 panel-titlebar px-4 py-2 inline-flex hollow-box-thin">
+                        <span>★</span>
+                        <h4 class="text-xl font-bold uppercase tracking-widest">VEHICLES</h4>
+                    </div>
+                    
+                    <div class="gallery-grid">
+                        <!-- Vehicle Item 1 -->
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="ve-1" data-title="Light Aircraft" data-category="Vehicle" data-tag="independent study" data-tags="illustration" data-desc="Light aircraft vehicle study with stylized mechanical forms.">
+                            <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>plane</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
+                            <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/099/831/987/large/laine-neufeld-plane2.jpg?1781097522" alt="Light Aircraft" class="gallery-img transition-all">
+                            </div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Vehicle</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Light Aircraft</h4></div>
+                        </div>
+                        <!-- Vehicle Item 2 -->
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="ve-2" data-title="Classic Car" data-category="Vehicle" data-tag="independent study" data-tags="illustration" data-desc="Classic car vehicle study with reflective material quality.">
+                            <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>car</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
+                            <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
+                                <img src="https://cdna.artstation.com/p/assets/images/images/099/831/986/large/laine-neufeld-car2.jpg?1781097493" alt="Classic Car" class="gallery-img transition-all">
+                            </div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Vehicle</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Classic Car</h4></div>
                         </div>
                     </div>
                 </div>
