@@ -306,7 +306,7 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "https://cdna.artstation.com/p/assets/images/images/099/369/594/large/laine-neufeld-doll-final.jpg?1779753510",
                         "label": "FINAL",
-                        "caption": "Independent quick prop study cerated from personal reference. Focus on inventive texture and style."
+                        "caption": "Independent quick prop study created from personal reference. Focus on inventive texture and style."
                     },
                     {
                         "url": "secret%20portfolio%20process/props/doll/download%20(4)%20(1).jpg",

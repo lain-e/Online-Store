@@ -181,6 +181,86 @@
             background: #eef85a;
         }
 
+        /* Main nav Contact — same layout as VISDEV / ABOUT, Display button colors */
+        .nav-contact-btn {
+            background: #f7ff68 !important;
+            color: #000 !important;
+            border: 1px solid #1e1b38 !important;
+        }
+        .nav-contact-btn:hover {
+            background: #eef85a !important;
+        }
+
+        .contact-social {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .contact-social-link {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.35rem 0.65rem;
+            border: 1px solid var(--hollow-box-border-thin);
+            color: inherit;
+            background: var(--button-bg);
+        }
+        .contact-social-link:hover {
+            background: var(--button-bg-hover);
+        }
+
+        .site-copyright {
+            text-align: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            opacity: 0.75;
+            padding: 1.5rem 1rem 6rem;
+        }
+        @media (min-width: 640px) {
+            .site-copyright { font-size: 0.7rem; padding-bottom: 5.5rem; }
+        }
+
+        /* ABOUT_ME.TXT window — Display button frame color */
+        .about-me-window {
+            --hollow-box-text: #000;
+            --hollow-box-border: #1e1b38;
+            --hollow-box-border-thin: #1e1b38;
+            background: #f7ff68 !important;
+            border-color: #1e1b38 !important;
+            color: #000 !important;
+        }
+        .about-me-window .panel-titlebar {
+            color: #000;
+            border-bottom-color: #1e1b38;
+        }
+        .about-me-window .about-me-tabs {
+            border-color: #1e1b38;
+            color: #000;
+        }
+        .about-me-window .tab-btn {
+            color: #000 !important;
+        }
+        .about-me-window .tab-btn:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
+        .about-me-window .tab-btn.hollow-box-thin {
+            border-color: #1e1b38;
+            color: #000 !important;
+        }
+        .about-me-window .about-me-content {
+            background: #fffef5;
+            border-color: #1e1b38 !important;
+            color: #000 !important;
+        }
+        .about-me-window .about-me-content .contact-social-link {
+            color: #000;
+            border-color: #1e1b38;
+        }
+
         .header-controls {
             display: flex;
             align-items: center;
@@ -610,6 +690,8 @@
                     </div>
                 </div>
             </div>
+
+            <a href="#me" class="nav-contact-btn about-nav-link px-2 py-1 uppercase tracking-widest flex items-center gap-2" data-target="tab-contact">Contact</a>
         </nav>
 
         <div class="header-controls shrink-0">
@@ -642,6 +724,7 @@
             <a href="#vehicles" class="mobile-nav-link hover:bg-white/10 px-2 py-1 uppercase">|- Vehicles</a>
             <a href="#concepts" class="mobile-nav-link hover:bg-white/10 px-2 py-1 uppercase">|- Concepts</a>
         </div>
+        <a href="#me" class="mobile-nav-link about-nav-link nav-contact-btn px-2 py-1 uppercase tracking-widest font-bold mt-2 inline-flex items-center gap-2 w-fit" data-target="tab-contact">Contact</a>
         <a href="#me" class="mobile-nav-link hover:bg-white/10 px-2 py-1 uppercase tracking-widest font-bold mt-2">ABOUT_ME.TXT</a>
         <div class="pl-6 flex flex-col border-l-2 border-win95-textPrimary border-dashed ml-2">
             <a href="#me" class="mobile-nav-link about-nav-link hover:bg-white/10 px-2 py-1 uppercase" data-target="tab-about">|- About</a>
@@ -798,7 +881,7 @@
                     
                     <div class="gallery-grid">
                         <!-- Prop Item 1 -->
-                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-1" data-title="Doll" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Detailed doll study.">
+                        <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-1" data-title="Doll" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Independent quick prop study created from personal reference. Focus on inventive texture and style.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>item</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/369/594/large/laine-neufeld-doll-final.jpg?1779753510" alt="Doll" class="gallery-img transition-all">
@@ -930,26 +1013,26 @@
 
     <!-- Me Section (Styled as an OS Info Window) -->
     <section id="me" class="py-12 sm:py-20 site-shell w-full">
-        <div class="w-full max-w-3xl lg:max-w-4xl mx-auto hollow-box p-1">
+        <div class="about-me-window w-full max-w-3xl lg:max-w-4xl mx-auto hollow-box p-1">
             <!-- Title Bar -->
             <div class="panel-titlebar px-2 py-1 flex justify-between items-center font-bold text-lg cursor-default mb-4">
                 <div class="flex gap-2 items-center">
                     <span>★</span>
                     <span>ABOUT_ME.TXT - Notepad</span>
                 </div>
-                <div class="hollow-box-thin px-2 leading-none font-bold text-base cursor-pointer hover:bg-white/10">X</div>
+                <div class="hollow-box-thin px-2 leading-none font-bold text-base cursor-pointer hover:bg-black/10" style="border-color: #1e1b38;">X</div>
             </div>
             
             <!-- Menu bar fake (Now Functional Tabs) -->
-            <div class="flex flex-wrap gap-2 sm:gap-4 px-2 pb-2 border-b hollow-divider mb-4 text-sm sm:text-base font-bold select-none">
+            <div class="about-me-tabs flex flex-wrap gap-2 sm:gap-4 px-2 pb-2 border-b hollow-divider mb-4 text-sm sm:text-base font-bold select-none">
                 <span class="tab-btn hollow-box-thin px-2 cursor-pointer" data-target="tab-about">About</span>
-                <span class="tab-btn hover:bg-white/10 px-2 cursor-pointer transition-colors" data-target="tab-services">Services</span>
-                <span class="tab-btn hover:bg-white/10 px-2 cursor-pointer transition-colors" data-target="tab-professional">Professional</span>
-                <span class="tab-btn hover:bg-white/10 px-2 cursor-pointer transition-colors" data-target="tab-contact">Contact</span>
+                <span class="tab-btn px-2 cursor-pointer transition-colors" data-target="tab-services">Services</span>
+                <span class="tab-btn px-2 cursor-pointer transition-colors" data-target="tab-professional">Professional</span>
+                <span class="tab-btn px-2 cursor-pointer transition-colors" data-target="tab-contact">Contact</span>
             </div>
             
             <!-- Tab Contents -->
-            <div class="hollow-box-thin p-6 text-lg min-h-64 max-h-80 overflow-y-auto mx-2 mb-2 relative font-sans leading-relaxed">
+            <div class="about-me-content hollow-box-thin p-6 text-lg min-h-64 max-h-80 overflow-y-auto mx-2 mb-2 relative font-sans leading-relaxed">
                 
                 <!-- About Tab -->
                 <div id="tab-about" class="tab-content block">
@@ -984,7 +1067,12 @@
                     > COMM_LINK<br><br>
                     Let's chat!<br><br>
                     Email: laineneufeldart@gmail.com<br>
-                  
+                    <div class="contact-social">
+                        <a href="https://www.artstation.com/laine-neufeld" class="contact-social-link" target="_blank" rel="noopener noreferrer">ArtStation</a>
+                        <a href="https://laineloo.itch.io" class="contact-social-link" target="_blank" rel="noopener noreferrer">itch.io</a>
+                        <a href="https://www.instagram.com/lainepaint/" class="contact-social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        <a href="https://www.linkedin.com/in/laine-neufeld-6863351a5" class="contact-social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
                 </div>
 
             </div>
@@ -997,6 +1085,8 @@
             </div>
         </div>
     </section>
+
+    <p class="site-copyright site-shell w-full">© 2026 Laine Neufeld. All rights reserved.</p>
 
     <!-- Footer -->
     <footer class="hollow-box-thin border-t-2 p-2 fixed bottom-0 left-0 w-full z-40 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-2 select-none" style="background: var(--page-bg); border-left: none; border-right: none; border-bottom: none;">
@@ -1316,12 +1406,10 @@
             playLoFiClick({ pitch: 800, volume: 0.085, decay: 0.038 });
             tabBtns.forEach((b) => {
                 b.classList.remove('hollow-box-thin');
-                b.classList.add('hover:bg-white/10');
             });
             const activeBtn = document.querySelector(`.tab-btn[data-target="${targetId}"]`);
             if (activeBtn) {
                 activeBtn.classList.add('hollow-box-thin');
-                activeBtn.classList.remove('hover:bg-white/10');
             }
             tabContents.forEach((content) => {
                 content.classList.remove('block');
