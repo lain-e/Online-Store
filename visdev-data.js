@@ -672,6 +672,120 @@ window.PORTFOLIO_DATA = {
                 "description": "Classic car vehicle study.",
                 "tag": "Vehicle Design"
             }
+        ],
+        "motionGraphics": [
+            {
+                "id": "mg-1",
+                "title": "Tabletop Fan",
+                "file": "fan animation study",
+                "media": [
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/fan/fan.gif",
+                        "label": "FINAL",
+                        "caption": "Looping motion graphic study of a tabletop fan. Focused on colorful stylization, maintains semi-realism."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/fan/block%20infan.png",
+                        "label": "BLOCKOUT",
+                        "caption": "Initial geometry block-in establishing the fan head, guard, and base proportions."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/fan/fan_layout.png",
+                        "label": "LAYOUT",
+                        "caption": "Value and shape layout pass before color and motion timing."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/fan/fan.png",
+                        "label": "FINAL COLOR STILL",
+                        "caption": "Final color render prior to animating."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/fan/fanref.jpg",
+                        "label": "REF",
+                        "caption": "Reference photo."
+                    }
+                ],
+                "description": "Tabletop fan motion graphics study.",
+                "tag": "Motion Graphics"
+            },
+            {
+                "id": "mg-2",
+                "title": "Gramophone",
+                "file": "gramophone animation study",
+                "media": [
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/gram/grammy.gif",
+                        "label": "FINAL",
+                        "caption": "Animated gramophone study with highly simplified styling."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/gram/gram_block.png",
+                        "label": "BLOCKOUT",
+                        "caption": "Early block-in of the gramophone silhouette and horn structure."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/gram/gram_progress.png",
+                        "label": "PROGRESS",
+                        "caption": "Progress between block in and final B&W layout, just before tackling details."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/gram/gram_layout.png",
+                        "label": "LAYOUT",
+                        "caption": "Final value structure prior to color pass."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/gram/grammy_still.png",
+                        "label": "FINAL COLOR STILL",
+                        "caption": "Final color render prior to animating."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/gram/gramref.jpg",
+                        "label": "REF",
+                        "caption": "Reference image for vintage gramophone design."
+                    }
+                ],
+                "description": "Gramophone motion graphics study.",
+                "tag": "Motion Graphics"
+            },
+            {
+                "id": "mg-3",
+                "title": "Retro TV stack",
+                "file": "tv animation study",
+                "media": [
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/tvs/tvsmlotion.gif",
+                        "label": "FINAL",
+                        "caption": "Motion graphic animation study exploring ambient glow and simple visual FX, done in simplified cartoon style."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/tvs/blockin-tv.png",
+                        "label": "BLOCKOUT",
+                        "caption": "Initial block-in of television proportions and perspective."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/tvs/tvprogress.png",
+                        "label": "PROGRESS",
+                        "caption": "Adding in lighting information as gradients and value blocking, prior to details."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/tvs/tvlayout.png",
+                        "label": "LAYOUT",
+                        "caption": "Final value structure before color pass."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/tvs/tvs.png",
+                        "label": "FINAL COLOR STILL",
+                        "caption": "Final color render prior to animating."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/motion%20graphics/tvs/tvref.jpg",
+                        "label": "REF",
+                        "caption": "Reference photo for vintage TV form and material."
+                    }
+                ],
+                "description": "Retro TV stack motion graphics study.",
+                "tag": "Motion Graphics"
+            }
         ]
     },
     "menuContent": {
@@ -700,7 +814,7 @@ window.PORTFOLIO_DATA = {
 (function sortVisdevSectionsByMediaCount() {
     const db = window.PORTFOLIO_DATA && window.PORTFOLIO_DATA.visdevDb;
     if (!db) return;
-    ['backgrounds', 'props', 'concepts', 'vehicles'].forEach(function (section) {
+    ['backgrounds', 'props', 'concepts', 'vehicles', 'motionGraphics'].forEach(function (section) {
         const list = db[section];
         if (!Array.isArray(list)) return;
         list.sort(function (a, b) {
