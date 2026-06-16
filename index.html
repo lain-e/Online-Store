@@ -67,6 +67,8 @@
             --font-main: "Space Mono", monospace, "Courier New", Courier;
             --hero-caption-bg: rgba(39, 33, 215, 0.75);
             --lightbox-overlay-bg: rgba(30, 27, 56, 0.9);
+            --gallery-item-hover-bg: rgba(255, 255, 255, 0.1);
+            --gallery-item-hover-title-bg: rgba(255, 255, 255, 0.12);
         }
 
         /* Display preset: Low Contrast Warm */
@@ -136,6 +138,8 @@
             --scrollbar-thumb: #2721d7;
             --hero-caption-bg: rgba(232, 228, 220, 0.88);
             --lightbox-overlay-bg: rgba(232, 228, 220, 0.92);
+            --gallery-item-hover-bg: rgba(39, 33, 215, 0.08);
+            --gallery-item-hover-title-bg: rgba(39, 33, 215, 0.14);
         }
 
         /* Display menu (header) */
@@ -628,9 +632,21 @@
             display: flex;
             flex-direction: column;
             min-width: 0;
+            transition: background-color 0.15s ease;
         }
         .gallery-item .gallery-meta {
             flex-shrink: 0;
+        }
+        .gallery-item-title {
+            transition: background-color 0.15s ease;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .gallery-item:hover {
+                background: var(--gallery-item-hover-bg);
+            }
+            .gallery-item:hover .gallery-item-title {
+                background: var(--gallery-item-hover-title-bg);
+            }
         }
         .gallery-tags {
             display: flex;
@@ -873,7 +889,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/200/463/large/laine-neufeld-citystreetbg.jpg?1779243980" alt="City Street" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">City Street</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">City Street</h4></div>
                         </div>
                         <!-- Background Item 2 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-2" data-title="Warehouse Hallway" data-category="Background Painting" data-tag="private mentorship" data-tags="interior" data-desc="Interior lighting and composition study.">
@@ -881,7 +897,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/230/513/large/laine-neufeld-screenshot-2026-05-20-185757.jpg?1779317928" alt="Warehouse Hallway" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Warehouse Hallway</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Warehouse Hallway</h4></div>
                         </div>
                         <!-- Background Item 3 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-3" data-title="Official Looking Brick Building" data-category="Background Painting" data-tag="private mentorship" data-tags="exterior" data-desc="Environment Study and color key exercise.">
@@ -889,7 +905,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/200/210/large/laine-neufeld-bb-e-d-f.jpg?1779242857" alt="Official Looking Brick Building" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Official Looking Brick Building</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Official Looking Brick Building</h4></div>
                         </div>
                         <!-- Background Item 4 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-4" data-title="Subway Interior" data-category="Background Painting" data-tag="private mentorship" data-tags="interior" data-desc="Subway structural design with cinematic lighting.">
@@ -897,7 +913,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/455/161/large/laine-neufeld-subwayint2.jpg?1779987669" alt="Subway Interior" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Subway Train Car</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Subway Train Car</h4></div>
                         </div>
                         <!-- Background Item 5 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-5" data-title="Infinite Bathroom" data-category="Background Painting" data-tag="private mentorship" data-tags="interior" data-desc="Inventive interior study.">
@@ -905,7 +921,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/200/336/large/laine-neufeld-infinitebathroom.jpg?1779243351" alt="Infinite Bathroom" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Infinite Bathroom</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Infinite Bathroom</h4></div>
                         </div>
                         <!-- Background Item 6 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-6" data-title="Airport Interior" data-category="Background Painting" data-tag="private mentorship" data-tags="interior" data-desc="Interior lighting study.">
@@ -913,7 +929,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/317/202/large/laine-neufeld-airport-interior-final.jpg?1779606399" alt="Airport Interior" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Airport Scene</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Airport Scene</h4></div>
                         </div>
                         <!-- Background Item 7 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-7" data-title="Interior Room" data-category="Background Painting" data-tag="private mentorship" data-tags="exterior" data-desc="Exterior atmospheric study.">
@@ -921,7 +937,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/542/306/large/laine-neufeld-screenshot-2026-05-31-190939.jpg?1780269015" alt="Interior Room" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Ferris Wheel</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Ferris Wheel</h4></div>
                         </div>
                         <!-- Background Item 8 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-8" data-title="Town Street" data-category="Background Painting" data-tag="private mentorship" data-tags="exterior" data-desc="Pedestrian view of brick facades and warm sunlight.">
@@ -929,7 +945,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/200/411/large/laine-neufeld-screenshot-2026-05-19-220427.jpg?1779243783" alt="Town Street" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Town Street</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Town Street</h4></div>
                         </div>
                         <!-- Background Item 9 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-9" data-title="Laundry Room" data-category="Background Painting" data-tag="independent study" data-tags="interior" data-desc="Laundry room interior study.">
@@ -937,7 +953,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/754/212/large/laine-neufeld-washingmachine2room.jpg?1780901719" alt="Laundry Room" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Laundry Room</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Laundry Room</h4></div>
                         </div>
                         <!-- Background Item 10 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="bg-10" data-title="Kitchen Scene" data-category="Background Painting" data-tag="independent study" data-tags="interior" data-desc="Interior kitchen study with warm domestic lighting.">
@@ -945,7 +961,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/754/241/large/laine-neufeld-kitchenfina1080l.jpg?1780901587" alt="Kitchen Scene" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Kitchen Scene</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Background Painting</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Kitchen Scene</h4></div>
                         </div>
                     </div>
                 </div>
@@ -963,7 +979,7 @@
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/369/594/large/laine-neufeld-doll-final.jpg?1779753510" alt="Doll" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Porcelain Doll</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Porcelain Doll</h4></div>
                         </div>
                         <!-- Prop Item 2 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-2" data-title="Tea Set" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Tea set study.">
@@ -971,7 +987,7 @@
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/317/100/large/laine-neufeld-teaset-copy.jpg?1779605932" alt="Tea Set" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Tea Set</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Tea Set</h4></div>
                         </div>
                         <!-- Prop Item 3 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-3" data-title="Prop Design" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Small prop study.">
@@ -979,7 +995,7 @@
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/095/114/593/large/laine-neufeld-image-7.jpg?1767660195" alt="Prop Design" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Dish of Sweets</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Dish of Sweets</h4></div>
                         </div>
                         <!-- Prop Item 4 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-4" data-title="Arcade Game" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Arcade controls study.">
@@ -987,7 +1003,7 @@
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/095/113/604/large/laine-neufeld-game.jpg?1767656451" alt="Arcade Game" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Arcade Joystick + Buttons</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Arcade Joystick + Buttons</h4></div>
                         </div>
                         <!-- Prop Item 5 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-5" data-title="Vintage Phone" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Public phone study.">
@@ -995,7 +1011,7 @@
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/095/113/368/large/laine-neufeld-greenphonee.jpg?1767657751" alt="Vintage Phone" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Telephone</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Telephone</h4></div>
                         </div>
                         <!-- Prop Item 6 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="pr-6" data-title="Gumball Machine" data-category="Prop" data-tag="private mentorship" data-tags="illustration" data-desc="Gumball machine design.">
@@ -1003,7 +1019,7 @@
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/095/113/001/large/laine-neufeld-gummmmmm.jpg?1767654480" alt="Gumball Machine" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Gumball Machine</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Prop</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Gumball Machine</h4></div>
                         </div>
                     </div>
                 </div>
@@ -1021,7 +1037,7 @@
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdnb.artstation.com/p/assets/images/images/099/831/987/large/laine-neufeld-plane2.jpg?1781097522" alt="Light Aircraft" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Vehicle</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Light Aircraft</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Vehicle</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Light Aircraft</h4></div>
                         </div>
                         <!-- Vehicle Item 2 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="ve-2" data-title="Classic Car" data-category="Vehicle" data-tag="independent study" data-tags="illustration" data-desc="Classic car vehicle study with reflective material quality.">
@@ -1029,7 +1045,7 @@
                             <div class="gallery-frame-box win-border-inset relative mb-1 sm:mb-2">
                                 <img src="https://cdna.artstation.com/p/assets/images/images/099/831/986/large/laine-neufeld-car2.jpg?1781097493" alt="Classic Car" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Vehicle</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Classic Car</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Vehicle</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Classic Car</h4></div>
                         </div>
                     </div>
                 </div>
@@ -1047,7 +1063,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(1).png" alt="Record Store" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Record Store</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Record Store</h4></div>
                         </div>
                         <!-- Concept Item 2 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="co-3" data-title="Bedroom Env" data-category="Concept" data-tag="private mentorship" data-tags="color layout,Interior" data-desc="Small bedroom study.">
@@ -1055,7 +1071,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://raw.githubusercontent.com/lain-e/Online-Store/a5c75ae1fb0ee0e4a2ccbae1497b647f17517c19/bgCompressed%20(8).png" alt="Bedroom Env" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Bedroom Env</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Bedroom Env</h4></div>
                         </div>
                         <!-- Concept Item 3 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="co-4" data-title="Stage Design" data-category="Concept" data-tag="private mentorship" data-tags="color layout,Interior" data-desc="Recreating a local venue.">
@@ -1063,7 +1079,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/bg_stage.png" alt="Stage Design" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Small Stage Venue</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Small Stage Venue</h4></div>
                         </div>
                         <!-- Concept Item 4 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="co-1" data-title="Cozy Nook" data-category="Concept" data-tag="private mentorship" data-tags="color layout,Interior" data-desc="Composition and prop design concept.">
@@ -1071,7 +1087,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/image%20(3).png" alt="Cozy Nook" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Cozy Nook</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Cozy Nook</h4></div>
                         </div>
                         <!-- Concept Item 5 -->
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="co-5" data-title="Train Station Platform" data-category="Concept" data-tag="private mentorship" data-tags="color layout,Interior" data-desc="Perspective and lighting exploration.">
@@ -1079,7 +1095,7 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/Screenshot%202026-05-31%20192215.png" alt="Perspective Concept" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Train Platform</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Concept</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Train Platform</h4></div>
                         </div>
                     </div>
                 </div>
@@ -1096,21 +1112,21 @@
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="secret%20portfolio%20process/motion%20graphics/fan/fan.gif" alt="Tabletop Fan" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Motion Graphics</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Tabletop Fan</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Motion Graphics</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Tabletop Fan</h4></div>
                         </div>
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="mg-2" data-title="Gramophone" data-category="Motion Graphics" data-tag="independent study" data-tags="animation" data-desc="Looping animated gramophone study.">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>gram</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="secret%20portfolio%20process/motion%20graphics/gram/grammy.gif" alt="Gramophone" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Motion Graphics</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Gramophone</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Motion Graphics</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Gramophone</h4></div>
                         </div>
                         <div class="group cursor-pointer gallery-item hollow-box p-1 sm:p-1.5 active:translate-y-1 active:translate-x-1 transition-all" data-secret-id="mg-3" data-title="Retro TV stack" data-category="Motion Graphics" data-tag="independent study" data-tags="animation" data-desc="Motion graphic study of looping TV animation. Ooooh, pretty colors....">
                             <div class="panel-titlebar px-2 py-0.5 flex justify-between items-center text-xs font-bold mb-1.5"><span>tvs</span><span class="hollow-box-thin px-1.5 leading-none">X</span></div>
                             <div class="image-fit-wrap relative mb-1 sm:mb-2">
                                 <img src="secret%20portfolio%20process/motion%20graphics/tvs/tvsmlotion.gif" alt="Retro TV stack" class="gallery-img transition-all">
                             </div>
-                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Motion Graphics</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight bg-transparent group-hover:bg-white/10 px-1 -mx-1 transition-colors">Retro TV stack</h4></div>
+                            <div class="gallery-meta px-1 pb-1"><span class="text-xs font-bold opacity-75 uppercase">Motion Graphics</span><h4 class="text-xl font-bold mt-1 uppercase leading-tight gallery-item-title px-1 -mx-1 transition-colors">Retro TV stack</h4></div>
                         </div>
                     </div>
                 </div>
