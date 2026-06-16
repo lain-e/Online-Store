@@ -266,6 +266,72 @@
             align-items: center;
             gap: 0.5rem;
         }
+
+        .search-control { position: relative; }
+        .search-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2rem;
+            min-height: 2rem;
+            cursor: pointer;
+        }
+        .site-search-panel {
+            position: absolute;
+            top: calc(100% + 4px);
+            right: 0;
+            min-width: 18rem;
+            max-width: min(22rem, 92vw);
+            z-index: 200;
+            padding: 0.5rem;
+            background: var(--page-bg);
+        }
+        .site-search-panel.hollow-box {
+            background: var(--page-bg);
+        }
+        .site-search-panel.hidden { display: none; }
+        .site-search-input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.375rem 0.5rem;
+            font: inherit;
+            font-size: 0.75rem;
+            border: 1px solid var(--hollow-box-border-thin);
+            background: var(--page-bg);
+            color: var(--explorer-text);
+        }
+        .site-search-results {
+            list-style: none;
+            margin: 0.375rem 0 0;
+            padding: 0;
+            max-height: 14rem;
+            overflow-y: auto;
+            background: var(--page-bg);
+        }
+        .site-search-result {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            text-align: left;
+            padding: 0.375rem 0.5rem;
+            border: none;
+            background: var(--page-bg);
+            color: var(--explorer-text);
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.75rem;
+        }
+        .site-search-result:hover { background: var(--button-bg); }
+        .site-search-result-title { font-weight: 700; }
+        .site-search-result-sub { font-size: 0.625rem; opacity: 0.75; margin-top: 1px; }
+        .site-search-empty {
+            padding: 0.375rem 0.5rem;
+            font-size: 0.6875rem;
+            opacity: 0.75;
+            background: var(--page-bg);
+        }
+
         .volume-control {
             display: flex;
             align-items: center;
@@ -696,6 +762,15 @@
         </nav>
 
         <div class="header-controls shrink-0">
+            <div class="search-control">
+                <button id="search-toggle" type="button" class="search-toggle hollow-box-thin px-2 py-0.5 font-bold text-xs sm:text-sm" aria-label="Search site" aria-expanded="false" aria-controls="site-search-panel">
+                    <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+                </button>
+                <div id="site-search-panel" class="site-search-panel hidden hollow-box" role="dialog" aria-label="Site search">
+                    <input id="site-search-input" type="search" class="site-search-input" placeholder="Help me find...." autocomplete="off" spellcheck="false" />
+                    <ul id="site-search-results" class="site-search-results"></ul>
+                </div>
+            </div>
             <label class="volume-control" title="Sound effects volume">
                 <span class="hidden sm:inline">Vol</span>
                 <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="100" aria-label="Sound effects volume">
@@ -1207,6 +1282,7 @@
         </div>
     </div>
 
+    <script src="portfolio-search.js"></script>
     <script>
         // --- Haptic audio (matches secret.html) ---
         let audioCtx = null;
@@ -1638,6 +1714,22 @@
                 if (e.target === emailCopyToast) hideEmailCopyToast();
             });
         }
+
+        window.initSiteSearch({
+            getResults: (query) => window.searchPublicSite(query),
+            onSelect: (item) => {
+                playLoFiClick({ pitch: 800, volume: 0.085, decay: 0.038 });
+                if (item.kind === 'gallery' && item.element) {
+                    item.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    openLightbox(item.element);
+                } else if (item.kind === 'about' && item.target) {
+                    switchAboutTab(item.target);
+                    document.getElementById('me')?.scrollIntoView({ behavior: 'smooth' });
+                } else if (item.kind === 'section' && item.href) {
+                    document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
     </script>
 </body>
 </html>
