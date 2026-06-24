@@ -829,7 +829,7 @@ window.getProjectPlatformTags = function (project) {
     if (project && project.id === 'co-5') tags.push('Blender');
     return tags;
 };
-
+//how are the search slices being determined? are there ways we can optimize results so that they are adaptive to the content that I add to the site as I go?
 window.renderProjectPlatformTagChips = function (project, chipClass) {
     const cls = chipClass || 'label-chip px-2 py-0.5 text-xs font-bold uppercase';
     return window.getProjectPlatformTags(project).map(function (tag) {
@@ -879,7 +879,7 @@ window.resolvePortfolioDeepLink = function (visdevDb, categories) {
         try { projectId = sessionStorage.getItem(window.PORTFOLIO_DEEP_LINK_KEY); } catch (e) {}
     }
     if (!projectId || !visdevDb) return null;
-
+//load another DB in case of external artstation failure. store the images in the site itself- pay attention to the storage if you decide to go with internal storage
     var mediaIndex = 0;
     var urlMedia = params.get('media');
     if (urlMedia != null && urlMedia !== '') {
@@ -900,6 +900,7 @@ window.resolvePortfolioDeepLink = function (visdevDb, categories) {
         if (idx >= 0) {
             return { category: cat, index: idx, mediaIndex: mediaIndex, projectId: projectId };
         }
+        //needs debug feature so that returning a null or no response has message for user. How is alg searching? Just in tags? can we optimize for adaptive search?
     }
     return null;
 };
