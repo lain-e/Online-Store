@@ -180,7 +180,8 @@
             { title: 'Concepts', href: '#concepts' },
             { title: 'Motion Graphics', href: '#motion-graphics' },
             { title: 'VisDev', href: '#visdev' },
-            { title: 'About', href: '#me' }
+            { title: 'About', href: '#me' },
+            { title: 'Graphics', href: '#graphics' }
         ].forEach(function (section) {
             if (matchesQuery(q, [section.title, section.href])) {
                 results.push({
