@@ -4,7 +4,7 @@
  *
  *   "media": [
  *       { "url": "...", "label": "FINAL", "caption": "Your custom text here." }
- *   ]
+ *   ] honestly this entire thing can be a json, right?
  */
 window.PORTFOLIO_DATA = {
     "version": 1,
