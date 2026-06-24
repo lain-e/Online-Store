@@ -1350,7 +1350,8 @@
                 applySfxVolume(getSavedSfxVolume());
             }
         }
-
+/* see if you can match the audio FX from the mobile version to the pc version. much better haptics.
+double check - is the UI for the mobile site version too crowded?*/
         function playLoFiClick({ pitch = 860, volume = 0.09, decay = 0.04 } = {}) {
             initAudio();
             if (!audioCtx) return;
@@ -1427,7 +1428,7 @@
             clearTimeout(displayMenuTimeout);
             displayMenu.classList.add('is-open');
         }
-
+//is this feature compat with the mobile version or no?
         function closeDisplayMenu() {
             displayMenu.classList.remove('is-open');
         }
@@ -1491,7 +1492,7 @@
             "https://cdna.artstation.com/p/assets/images/images/099/754/212/large/laine-neufeld-washingmachine2room.jpg?1780901719",
             "https://cdnb.artstation.com/p/assets/images/images/099/754/241/large/laine-neufeld-kitchenfina1080l.jpg?1780901587"
         ];
-        
+        //update the uploads to Artstation. also, double check how deep linking affects latency for the asset load on user open
         let currentSlide = 0;
         const heroSlideshowImg = document.getElementById('hero-slideshow-img');
 
@@ -1737,6 +1738,7 @@
                 showEmailCopyToast();
             });
         }
+        //may want to add an animation for the contact button in order to draw user attention
         if (emailCopyToastOk) {
             emailCopyToastOk.addEventListener('click', () => {
                 playStickyKey();
