@@ -302,7 +302,7 @@ window.PORTFOLIO_DATA = {
                 "file": "dark forest study",
                 "media": [
                     {
-                        "url": "secret%20portfolio%20process/backgrounds/dark%20forest/finalbg.png",
+                        "url": "https://cdnb.artstation.com/p/assets/images/images/100/280/059/large/laine-neufeld-finalbg2.jpg?1782397982",
                         "label": "FINAL",
                         "caption": "Final render for Dark Forest. Independent study focused on atmospheric depth and a single warm light source cutting through dense woodland."
                     },
@@ -838,7 +838,7 @@ window.PORTFOLIO_DATA = {
                 "file": "berry graphic study",
                 "media": [
                     {
-                        "url": "secret%20portfolio%20process/graphics/berry/final.png",
+                        "url": "https://cdna.artstation.com/p/assets/images/images/100/279/790/large/laine-neufeld-bewwies-copy.jpg?1782397485",
                         "label": "FINAL",
                         "caption": "Tileable strawberry and bloom graphic, drawn in a vivid low-poly style. Focused on bringing out saturated color complements and bright accents while retaining semi-realistic quality."
                     },
