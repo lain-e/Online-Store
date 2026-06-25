@@ -295,6 +295,50 @@ window.PORTFOLIO_DATA = {
                 ],
                 "description": "Interior kitchen study.",
                 "tag": "Background Painting"
+            },
+            {
+                "id": "bg-11",
+                "title": "Dark Forest",
+                "file": "dark forest study",
+                "media": [
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/dark%20forest/finalbg.png",
+                        "label": "FINAL",
+                        "caption": "Final render for Dark Forest. Independent study focused on atmospheric depth and a single warm light source cutting through dense woodland."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/dark%20forest/blockout.png",
+                        "label": "BLOCKOUT",
+                        "caption": "Tree massing and composition established in flat value shapes."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/dark%20forest/gradientpass.png",
+                        "label": "GRADIENT",
+                        "caption": "Gradient pass mapping light falloff and ambient color before final texture and detail."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/dark%20forest/progress.png",
+                        "label": "PROGRESS",
+                        "caption": "Mid-stage render with lighting and base textures in place."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/dark%20forest/progress2.png",
+                        "label": "PROGRESS 2",
+                        "caption": "Further refinement of foliage, bark texture, and ground plane detail."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/dark%20forest/ref1.jpg",
+                        "label": "REF",
+                        "caption": "Reference photo for lighting mood and forest floor composition."
+                    },
+                    {
+                        "url": "secret%20portfolio%20process/backgrounds/dark%20forest/ref2.jpg",
+                        "label": "REF 2",
+                        "caption": "Additional reference for tree density and nighttime atmosphere."
+                    }
+                ],
+                "description": "Exterior woodland study with dramatic localized lighting.",
+                "tag": "Background Painting"
             }
         ],
         "props": [
