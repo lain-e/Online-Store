@@ -329,12 +329,12 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "secret%20portfolio%20process/backgrounds/dark%20forest/ref1.jpg",
                         "label": "REF",
-                        "caption": "Reference photo for lighting mood and forest floor composition."
+                        "caption": "Reference photo for lighting mood and forest floor composition. Sourced from Unsplash Commons."
                     },
                     {
                         "url": "secret%20portfolio%20process/backgrounds/dark%20forest/ref2.jpg",
                         "label": "REF 2",
-                        "caption": "Additional reference for tree density and nighttime atmosphere."
+                        "caption": "Additional reference for tree density and nighttime atmosphere. Sourced from Unsplash Commons."
                     }
                 ],
                 "description": "Exterior woodland study with dramatic localized lighting.",
