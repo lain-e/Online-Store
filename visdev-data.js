@@ -853,6 +853,11 @@ window.PORTFOLIO_DATA = {
                         "caption": "Step by step render."
                     },
                     {
+                        "url": "secret%20portfolio%20process/graphics/berry/layer_isolated.png",
+                        "label": "ISOLATED",
+                        "caption": "Isolated berries, used to layer for tiling."
+                    },
+                    {
                         "url": "secret%20portfolio%20process/graphics/berry/texture_seeds.png",
                         "label": "TEXTURE",
                         "caption": "Brush created for this project to quickly cover surfaces. Adjusted for perspectives on individual strawberries."
