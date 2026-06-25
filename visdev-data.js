@@ -850,7 +850,7 @@ window.PORTFOLIO_DATA = {
                     {
                         "url": "secret%20portfolio%20process/graphics/berry/berry_layer.png",
                         "label": "LAYER",
-                        "caption": "Isolation of strawberry drawings prior to layering depth and adjusting for tile format."
+                        "caption": "Step by step render."
                     },
                     {
                         "url": "secret%20portfolio%20process/graphics/berry/texture_seeds.png",
