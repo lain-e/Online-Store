@@ -849,12 +849,12 @@ window.PORTFOLIO_DATA = {
                     },
                     {
                         "url": "secret%20portfolio%20process/graphics/berry/berry_layer.png",
-                        "label": "LAYER",
+                        "label": "RENDER PROCESS",
                         "caption": "Step by step render."
                     },
                     {
                         "url": "secret%20portfolio%20process/graphics/berry/layer_isolated.png",
-                        "label": "ISOLATED",
+                        "label": "LAYER",
                         "caption": "Isolated berries, used to layer for tiling."
                     },
                     {
