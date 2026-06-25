@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Center content vertically */
+            z-index: 1000;
+        }
+
+        .popup-img {
+            max-width: 90%;
+            max-height: 90%;
+            transform-origin: center center;
+            transition: transform 0.3s ease-out;
+        }
+
+        .popup.zoomed {
+            cursor: zoom-out;
+        }
+
+        .popup.zoomed .popup-img {
+            transform: scale(2); /* Zoom level */
+        }
+
+        .caption {
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gallery">
+        <img src="busts.png" alt="Oil painting of bust from life, original">
+         <img src="tea.jpg" alt="My favorite tea set from life, oil, original">
+        <img src="doll.jpg" alt="Doll painted from life, original">
+        <img src="apple.jpg" alt="Obligatory apple from life, in oil, original">
+         <img src="floral.jpg" alt="Flowers painted from life, original">
+        <img src="boug.jpg" alt="Study of Biblis by Bouguereau, oil">
+         <img src="sasha.jpg" alt="My mom's dog, Sasha, painted from photograph, oil, original">
+         <img src="peggy.jpg" alt="Painting of jpegmafia's album cover 'All My Heroes Are Cornballs', oil">
+        <img src="charlie.jpg" alt="Dog painted from photo, original">
+        <img src="andy.jpg" alt="Model painted from photo, oil, original">
+        <img src="lamp.jpg" alt="My lamp painted from life, original">
+        <img src="mucha.jpg" alt="Study of a Mucha, gouache">
+        <img src="beaux.jpg" alt="Study of Henry Drinker's portrait by Beaux, oil">
+        <img src="kasaj.jpg" alt="My friend painted from a photo, original">
+       
+        <img src="mermaid.jpg" alt="a SUPER messy draft of a sketch, original">
+        
+       <img src="comp.jpg" alt="Typical Comp sketch from my notebook, original">
+        <img src="cup.jpg" alt="Still life study of a cup, oil, original">
+        <img src="picasso.png" alt="Painting of a photo of Pablo Picasso and his friend, oil">
+        <img src="sargent.jpg" alt="Life size study of my FAVORITE painting, Carnation Lily Lily Rose, by Sargent">
+       
+       
+    </div>
+
+    <div class="popup">
+        <span class="close-btn">&times;</span>
+        <img src="" alt="" class="popup-img">
+        <div class="caption"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gallery = document.querySelector('.gallery');
+            const popup = document.querySelector('.popup');
+            const popupImg = document.querySelector('.popup-img');
+            const closeBtn = document.querySelector('.close-btn');
+            const caption = document.querySelector('.caption'); // New caption element
+
+            gallery.addEventListener('click', (e) => {
+                if (e.target.tagName === 'IMG') {
+                    const imageUrl = e.target.getAttribute('src');
+                    const imageAlt = e.target.getAttribute('alt'); // Get alt text
+                    popupImg.setAttribute('src', imageUrl);
+                    caption.textContent = imageAlt; // Set caption text
+                    popup.style.display = 'flex';
+                }
+            });
+
+            closeBtn.addEventListener('click', () => {
+                popup.style.display = 'none';
+                popup.classList.remove('zoomed');
+            });
+
+            popup.addEventListener('click', (e) => {
+                if (e.target.classList.contains('popup')) {
+                    popup.style.display = 'none';
+                    popup.classList.remove('zoomed');
+                } else if (e.target.classList.contains('popup-img')) {
+                    popup.classList.toggle('zoomed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
