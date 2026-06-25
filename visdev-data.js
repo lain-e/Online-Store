@@ -560,7 +560,7 @@ window.PORTFOLIO_DATA = {
                 "file": "stage",
                 "media": [
                     {
-                        "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/bg_stage.png",
+                        "url": "https://cdna.artstation.com/p/assets/images/images/099/200/662/large/laine-neufeld-bg-stage.webp?1779244928",
                         "label": "FINAL",
                         "caption": "Final render for Small Stage Venue created during mentorship. Focused on balancing realism with colorful style."
                     },
@@ -594,7 +594,7 @@ window.PORTFOLIO_DATA = {
                 "file": "cozy nook",
                 "media": [
                     {
-                        "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/image%20(3).png",
+                        "url": "other/image%20(3).png",
                         "label": "FINAL",
                         "caption": "Final concept created during mentorship to explore composing a background with only prop inspiration."
                     },
@@ -613,7 +613,7 @@ window.PORTFOLIO_DATA = {
                 "file": "train platform",
                 "media": [
                     {
-                        "url": "https://raw.githubusercontent.com/lain-e/Online-Store/refs/heads/main/Screenshot%202026-05-31%20192215.png",
+                        "url": "other/Screenshot%202026-05-31%20192215.png",
                         "label": "FINAL",
                         "caption": "Final concept made during mentorship, focus on building background from limited reference and lots of imagination."
                     },
