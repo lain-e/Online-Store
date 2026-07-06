@@ -1402,7 +1402,8 @@
                 return 1;
             }
         }
-
+//let returnFunction for haptics outlast the haptic donwpress. aka the action should trigger for the entirety of the 
+        //action being rendered
         function applySfxVolume(value) {
             const v = Math.max(0, Math.min(1, value));
             if (masterGain) masterGain.gain.value = v;
@@ -1528,6 +1529,9 @@
         try {
             const savedDisplay = localStorage.getItem('portfolioDisplayMode');
             if (savedDisplay && savedDisplay !== 'dyslexic') applyDisplayMode(savedDisplay, true);
+
+                //DOM is not loading the dyslexic font, why?
+                //does this have to be loaded internally? does it vary device to device?
             else if (savedDisplay === 'dyslexic') localStorage.removeItem('portfolioDisplayMode');
         } catch (e) {}
 
@@ -1563,6 +1567,9 @@
             "https://cdna.artstation.com/p/assets/images/images/099/754/212/large/laine-neufeld-washingmachine2room.jpg?1780901719",
             "https://cdnb.artstation.com/p/assets/images/images/099/754/241/large/laine-neufeld-kitchenfina1080l.jpg?1780901587"
         ];
+
+        //if DOm fails to load onRender, what happens if the files from Artstaion aren't stable anymore?
+        //can we enable lazy rendereing?
         
         let currentSlide = 0;
         const heroSlideshowImg = document.getElementById('hero-slideshow-img');
@@ -1631,6 +1638,10 @@
                 content.classList.remove('block');
                 content.classList.add('hidden');
             });
+            //the render box for the image elements are exceeding bounds again?
+
+            //DOm should be loading these before the page is rendeed. check alternative
+            //dimensions aren't fucking with the viewport
             const targetContent = document.getElementById(targetId);
             if (targetContent) {
                 targetContent.classList.remove('hidden');
@@ -1737,6 +1748,8 @@
             const isGraphicsItem = category === 'Graphics';
             if (lightboxTileBtn) {
                 lightboxTileBtn.classList.toggle('hidden', !isGraphicsItem);
+                //this is why the graphics item isn't loading on pageRender, the box is not adjusting to the alternative dims
+                \
                 lightboxTileBtn.textContent = 'Tile View';
                 lightboxTileBtn.setAttribute('aria-pressed', 'false');
             }
