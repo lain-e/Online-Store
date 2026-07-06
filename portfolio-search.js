@@ -184,7 +184,9 @@
             }
             return;
         }
-
+/*why are the window sizes variable to the size of the pro0porttion taking up the screen and not the 
+viewport of the user's device instead?*/
+        
         var showGrid = function (srcOverride) {
             var imgSrc = srcOverride || window.resolveGraphicsMediaSrc(imgEl, mediaUrl);
             if (!imgSrc) return;
@@ -223,6 +225,7 @@
         var captionTop = caption.getBoundingClientRect().top;
         var available = rootRect.bottom - captionTop - 10;
         var viewportCap = Math.round(window.innerHeight * 0.26);
+        /*maybe dont use a round number*/
         var cssCap = 256;
         var maxH = Math.max(72, Math.min(available, viewportCap, cssCap));
 
@@ -259,6 +262,7 @@
                         subtitle: label + ' · ' + (project.tag || 'Project'),
                         kind: 'project',
                         category: cat,
+                       /* indexing is broken*/
                         index: index
                     });
                 }
