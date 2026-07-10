@@ -397,7 +397,8 @@
             z-index: 50;
         }
         .nav-flyout:hover .nav-flyout-panel,
-        .nav-flyout:focus-within .nav-flyout-panel {
+        .nav-flyout:focus-within .nav-flyout-panel,
+        .nav-flyout.is-open .nav-flyout-panel {
             opacity: 1;
             pointer-events: auto;
         }
@@ -1486,8 +1487,10 @@
         const displayBtn = document.getElementById('display-btn');
         const displayMenu = document.getElementById('display-menu');
         let displayMenuTimeout = null;
+        let displayMenuOpenedByClick = false;
 
         function applyDisplayMode(mode, silent = false) {
+            if (!displayMenu) return;
             document.documentElement.classList.remove('display-warm', 'display-bw', 'display-invert');
             if (mode === 'warm') document.documentElement.classList.add('display-warm');
             if (mode === 'bw') document.documentElement.classList.add('display-bw');
@@ -1500,34 +1503,44 @@
         }
 
         function openDisplayMenu() {
+            if (!displayMenu) return;
             clearTimeout(displayMenuTimeout);
             displayMenu.classList.add('is-open');
         }
 
         function closeDisplayMenu() {
+            if (!displayMenu) return;
             displayMenu.classList.remove('is-open');
+            displayMenuOpenedByClick = false;
         }
 
-        displayControl.addEventListener('mouseenter', openDisplayMenu);
-        displayControl.addEventListener('mouseleave', () => {
-            displayMenuTimeout = setTimeout(closeDisplayMenu, 250);
-        });
-        displayBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            initAudio();
-            displayMenu.classList.toggle('is-open');
-        });
-        displayMenu.querySelectorAll('.display-option').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+        if (displayControl && displayBtn && displayMenu) {
+            displayControl.addEventListener('mouseenter', () => {
+                if (!displayMenuOpenedByClick) openDisplayMenu();
+            });
+            displayControl.addEventListener('mouseleave', () => {
+                if (displayMenuOpenedByClick) return;
+                displayMenuTimeout = setTimeout(closeDisplayMenu, 250);
+            });
+            displayBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 initAudio();
-                applyDisplayMode(btn.dataset.display);
-                closeDisplayMenu();
+                displayMenuOpenedByClick = true;
+                clearTimeout(displayMenuTimeout);
+                displayMenu.classList.toggle('is-open');
             });
-        });
-        document.addEventListener('click', (e) => {
-            if (!displayControl.contains(e.target)) closeDisplayMenu();
-        });
+            displayMenu.querySelectorAll('.display-option').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    initAudio();
+                    applyDisplayMode(btn.dataset.display);
+                    closeDisplayMenu();
+                });
+            });
+            document.addEventListener('click', (e) => {
+                if (!displayControl.contains(e.target)) closeDisplayMenu();
+            });
+        }
 
         try {
             const savedDisplay = localStorage.getItem('portfolioDisplayMode');
@@ -1555,6 +1568,30 @@
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
             });
+        });
+
+        // Nav flyouts — click/touch toggle (hover alone fails on touch devices)
+        document.querySelectorAll('.nav-flyout').forEach((flyout) => {
+            const trigger = flyout.querySelector(':scope > a');
+            if (!trigger) return;
+            trigger.addEventListener('click', (e) => {
+                const href = trigger.getAttribute('href');
+                const isOpen = flyout.classList.contains('is-open');
+                document.querySelectorAll('.nav-flyout.is-open').forEach((other) => {
+                    if (other !== flyout) other.classList.remove('is-open');
+                });
+                if (!isOpen) {
+                    e.preventDefault();
+                    flyout.classList.add('is-open');
+                } else if (href && href.startsWith('#')) {
+                    flyout.classList.remove('is-open');
+                }
+            });
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-flyout')) {
+                document.querySelectorAll('.nav-flyout.is-open').forEach((flyout) => flyout.classList.remove('is-open'));
+            }
         });
 
         // --- Slideshow Logic ---
@@ -1751,8 +1788,6 @@
             const isGraphicsItem = category === 'Graphics';
             if (lightboxTileBtn) {
                 lightboxTileBtn.classList.toggle('hidden', !isGraphicsItem);
-                //this is why the graphics item isn't loading on pageRender, the box is not adjusting to the alternative dims
-                \
                 lightboxTileBtn.textContent = 'Tile View';
                 lightboxTileBtn.setAttribute('aria-pressed', 'false');
             }
